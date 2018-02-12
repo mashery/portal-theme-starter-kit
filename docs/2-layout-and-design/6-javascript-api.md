@@ -1,3 +1,5 @@
+# JavaScript API
+
 Blackbeard includes smart defaults and simple options and settings to make it easy for you to configure and customize your Portal.
 
 But for developers who want more fine-grained control and customization, it also provides a robust JavaScript API that you can use to extend functionality with your own scripts.

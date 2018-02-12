@@ -1,3 +1,5 @@
+# Templates
+
 Blackbeard includes a templating system that you can use to modify the layout and content of any page on your Portal.
 
 To add your templates:

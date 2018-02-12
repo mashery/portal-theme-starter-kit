@@ -1,3 +1,5 @@
+# Custom Fonts
+
 Most browsers do a bad job of loading web fonts.
 
 They will often display nothing while the font is downloading and parsing, leaving your users with a flash of invisible text, or in some cases, a page that never displays.

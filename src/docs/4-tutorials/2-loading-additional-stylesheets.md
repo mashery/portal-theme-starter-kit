@@ -1,3 +1,5 @@
+# Loading Additional Stylesheets
+
 The Portal only allows you to load a single stylesheet by default under `Manage > Portal > Portal Settings` in the API Control Center.
 
 There are two techniques you can use to load additional stylesheets.

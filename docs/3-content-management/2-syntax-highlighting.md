@@ -1,3 +1,5 @@
+# Syntax Highlighting
+
 Blackbeard has built-in syntax highlighting powered by [Prism.js](http://prismjs.com/).
 
 All of the themes in the Portal Theme Starter Kit include syntax highlighting styles. They can be modified in your theme CSS, or if you're rolling your own theme, you can grab one of the themes on the [Prism website](http://prismjs.com/).

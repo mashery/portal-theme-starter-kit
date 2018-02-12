@@ -1,3 +1,5 @@
+# CSS and JavaScript Hooks
+
 Blackbeard includes unique classes and JavaScript variables you can use to more easily to apply styles, layouts, and scripts to specific pages and content types.
 
 ## CSS Hooks

@@ -1,3 +1,5 @@
+# Copying Content from Word
+
 If you copy/paste content from MS Word or other word processing software into your Portal with TinyMCE enabled, it will include a bunch of hidden HTML and inline styles that will be hidden behind the scenes.
 
 This often causes unexpected layout issues and visual design problems.

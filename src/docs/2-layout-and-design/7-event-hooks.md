@@ -1,3 +1,5 @@
+# Event Hooks
+
 Blackbeard emits custom JavaScript events that you can hook into to run scripts and further customize your Portal.
 
 Use `addEventListener()` on the `window` element to listen for Portal events.

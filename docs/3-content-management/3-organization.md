@@ -1,3 +1,5 @@
+# Organization
+
 To create a piece of content, click on the folder you want to add it to, and then click the `Create new page in...` button.
 
 ## Nested Content

@@ -1,3 +1,5 @@
+# Configurations and Settings
+
 Blackbeard includes smart defaults out-of-the-box. But if you want to customize things, you can adjust many of the options and settings.
 
 To add your configuration settings:

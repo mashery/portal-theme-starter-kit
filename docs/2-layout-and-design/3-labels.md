@@ -1,3 +1,5 @@
+# Labels
+
 Labels make it easy for you to change headlines, labels, and messages in your Portal without modifying the entire layout.
 
 To customize labels:

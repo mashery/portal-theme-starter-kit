@@ -1,3 +1,5 @@
+# Quick Start
+
 <style>
 	.color-swatch {
 		background-color: #f7f7f7;
