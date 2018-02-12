@@ -1,0 +1,61 @@
+/**
+ * @section Layout
+ * Styling for section layouts
+ */
+
+
+#nav-user-wrapper {}
+
+#nav-user-list {
+	@media (min-width: $bp-large) {
+		float: right;
+	}
+
+	@media (max-width: $bp-large) {
+		.js-astro & {
+			border-bottom: calc-em(1px) solid $color-gray-light;
+		}
+	}
+}
+
+#nav-primary {
+	background-color: $color-white;
+	border-bottom: calc-em(1px) solid $color-gray-light;
+	margin-bottom: $spacing;
+
+	.loading &,
+	.full-width & {
+		margin-bottom: 0;
+	}
+}
+
+#nav-secondary-list {
+	@extend .list-inline;
+}
+
+#nav-account {
+	@extend .list-inline;
+
+	a {
+		@extend .link-no-underline;
+	}
+}
+
+#nav-mashery-account {
+	@extend .list-inline;
+
+	a {
+		@extend .link-no-underline;
+	}
+}
+
+#nav-docs {
+	// Active link
+	.current-page > a {
+		color: $color-gray-dark;
+	}
+}
+
+#footer {
+	background-color: $color-white;
+}
