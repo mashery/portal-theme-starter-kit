@@ -211,6 +211,10 @@ button:-moz-focusring,
 	@extend .btn;
 }
 
+#main-wrapper button.btn-secondary {
+	@extend .btn-secondary;
+}
+
 
 /**
  * Search

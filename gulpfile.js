@@ -93,19 +93,13 @@ var paths = {
 		output: 'img/'
 	},
 	static: {
-		input: 'src/static/*/**',
+		input: 'src/static/**',
 		output: 'dist/'
 	},
 	setup: {
 		templates: 'src/setup/templates/*.js',
 		inits: 'src/setup/inits/*.js',
 		output: 'setup/'
-	},
-	patterns: {
-		input: 'src/pattern-library/*.{html,md,markdown}',
-		output: 'dist/',
-		templates: 'src/pattern-library/_templates/',
-		assets: 'src/pattern-library/assets/**'
 	},
 	docs: {
 		input: 'src/docs/**',
@@ -280,26 +274,6 @@ gulp.task('build:static', ['clean:dist'], function() {
 		.pipe(multidest(dirs));
 });
 
-// Generate pattern library
-gulp.task('build:patterns', function() {
-	if ( !settings.patterns ) return;
-
-	return gulp.src(paths.patterns.input)
-		.pipe(plumber())
-		.pipe(fileinclude({
-			prefix: '@@',
-			basepath: '@file'
-		}))
-		.pipe(tap(function (file, t) {
-			if ( /\.md|\.markdown/.test(file.path) ) {
-				return t.through(markdown);
-			}
-		}))
-		.pipe(header(fs.readFileSync(paths.patterns.templates + '/_header.html', 'utf8')))
-		.pipe(footer(fs.readFileSync(paths.patterns.templates + '/_footer.html', 'utf8')))
-		.pipe(gulp.dest(paths.patterns.output));
-});
-
 // Lint scripts
 gulp.task('lint:scripts', function () {
 	if ( !settings.scripts ) return;
@@ -389,8 +363,7 @@ gulp.task('compile', [
 	'build:images',
 	'build:static',
 	'build:setup',
-	'build:svgs',
-	'build:patterns'
+	'build:svgs'
 ]);
 
 // Generate documentation

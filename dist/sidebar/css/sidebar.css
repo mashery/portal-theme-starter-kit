@@ -947,16 +947,22 @@ a #search-button:active, .link-block-styled #search-button:active, .btn.active, 
  * Secondary buttons
  */
 /* line 47, src/sass/components/_buttons.scss */
-.btn-secondary {
+.btn-secondary, #main-wrapper button.btn-secondary {
   background-color: #808080;
   border-color: #808080;
 }
 
 /* line 51, src/sass/components/_buttons.scss */
-.btn-secondary:hover,
-a .btn-secondary:hover, .link-block-styled .btn-secondary:hover, .btn-secondary:focus,
-a .btn-secondary:focus, .link-block-styled .btn-secondary:focus, .btn-secondary:active,
-a .btn-secondary:active, .link-block-styled .btn-secondary:active, .btn-secondary.active {
+.btn-secondary:hover, #main-wrapper button.btn-secondary:hover,
+a .btn-secondary:hover, .link-block-styled .btn-secondary:hover,
+a #main-wrapper button.btn-secondary:hover, #main-wrapper
+a button.btn-secondary:hover, .link-block-styled #main-wrapper button.btn-secondary:hover, #main-wrapper .link-block-styled button.btn-secondary:hover, .btn-secondary:focus, #main-wrapper button.btn-secondary:focus,
+a .btn-secondary:focus, .link-block-styled .btn-secondary:focus,
+a #main-wrapper button.btn-secondary:focus, #main-wrapper
+a button.btn-secondary:focus, .link-block-styled #main-wrapper button.btn-secondary:focus, #main-wrapper .link-block-styled button.btn-secondary:focus, .btn-secondary:active, #main-wrapper button.btn-secondary:active,
+a .btn-secondary:active, .link-block-styled .btn-secondary:active,
+a #main-wrapper button.btn-secondary:active, #main-wrapper
+a button.btn-secondary:active, .link-block-styled #main-wrapper button.btn-secondary:active, #main-wrapper .link-block-styled button.btn-secondary:active, .btn-secondary.active, #main-wrapper button.active.btn-secondary {
   background-color: #5a5a5a;
   border-color: #5a5a5a;
 }
@@ -1278,7 +1284,7 @@ button:-moz-focusring,
   * 1. Correct the odd appearance in Chrome and Safari.
   * 2. Correct the outline style in Safari.
   */
-/* line 224, src/sass/components/_forms.scss */
+/* line 228, src/sass/components/_forms.scss */
 [type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -1291,13 +1297,13 @@ button:-moz-focusring,
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-/* line 234, src/sass/components/_forms.scss */
+/* line 238, src/sass/components/_forms.scss */
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 241, src/sass/components/_forms.scss */
+/* line 245, src/sass/components/_forms.scss */
 #search-form {
   margin-bottom: 0;
 }
@@ -1305,7 +1311,7 @@ button:-moz-focusring,
 /**
  * Create rounded search bar
  */
-/* line 249, src/sass/components/_forms.scss */
+/* line 253, src/sass/components/_forms.scss */
 .input-search,
 #search-input {
   border-radius: 1.3125em;
@@ -1318,7 +1324,7 @@ button:-moz-focusring,
 /**
  * Special styling for search icon as button
  */
-/* line 272, src/sass/components/_forms.scss */
+/* line 276, src/sass/components/_forms.scss */
 .btn-search,
 #search-button,
 #main-wrapper .btn-search,
@@ -1331,7 +1337,7 @@ button:-moz-focusring,
   margin-bottom: 0;
 }
 
-/* line 283, src/sass/components/_forms.scss */
+/* line 287, src/sass/components/_forms.scss */
 .btn-search svg,
 #search-button svg,
 #main-wrapper .btn-search svg,
@@ -1339,7 +1345,7 @@ button:-moz-focusring,
   fill: #808080;
 }
 
-/* line 287, src/sass/components/_forms.scss */
+/* line 291, src/sass/components/_forms.scss */
 .btn-search:active, .btn-search:focus, .btn-search:hover,
 #search-button:active,
 #search-button:focus,
@@ -1355,7 +1361,7 @@ button:-moz-focusring,
   color: #5a5a5a;
 }
 
-/* line 294, src/sass/components/_forms.scss */
+/* line 298, src/sass/components/_forms.scss */
 .btn-search:active svg, .btn-search:focus svg, .btn-search:hover svg,
 #search-button:active svg,
 #search-button:focus svg,
@@ -2327,7 +2333,6 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   color: #272727;
 }
 
-/*! SPLIT: Overrides */
 /**
  * @section Overrides
  * Nudge and tweak alignment, spacing, and visibility.
@@ -2335,38 +2340,38 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Backgrounds
  */
-/* line 12, src/sass/components/_overrides.scss */
+/* line 10, src/sass/components/_overrides.scss */
 .bg-dark, .bg-primary {
   background-color: #272727;
   color: #ffffff;
 }
 
-/* line 16, src/sass/components/_overrides.scss */
+/* line 14, src/sass/components/_overrides.scss */
 .bg-dark a, .bg-primary a, .bg-dark .link-block-styled, .bg-primary .link-block-styled {
   color: #e5e5e5;
 }
 
-/* line 19, src/sass/components/_overrides.scss */
+/* line 17, src/sass/components/_overrides.scss */
 .bg-dark a:hover, .bg-primary a:hover, .bg-dark .link-block-styled:hover, .bg-primary .link-block-styled:hover, .bg-dark .link-block:hover .link-block-styled, .link-block:hover .bg-dark .link-block-styled, .bg-primary .link-block:hover .link-block-styled, .link-block:hover .bg-primary .link-block-styled, .bg-dark a:active, .bg-primary a:active, .bg-dark .link-block-styled:active, .bg-primary .link-block-styled:active {
   color: #ffffff;
 }
 
-/* line 25, src/sass/components/_overrides.scss */
+/* line 23, src/sass/components/_overrides.scss */
 .bg-dark .text-muted, .bg-primary .text-muted {
   color: #e5e5e5;
 }
 
-/* line 30, src/sass/components/_overrides.scss */
+/* line 28, src/sass/components/_overrides.scss */
 .bg-muted {
   background-color: #f7f7f7;
 }
 
-/* line 34, src/sass/components/_overrides.scss */
+/* line 32, src/sass/components/_overrides.scss */
 .bg-white {
   background-color: #ffffff;
 }
 
-/* line 42, src/sass/components/_overrides.scss */
+/* line 40, src/sass/components/_overrides.scss */
 .bg-primary {
   background-color: #0088cc;
 }
@@ -2374,27 +2379,27 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Hero
  */
-/* line 52, src/sass/components/_overrides.scss */
+/* line 50, src/sass/components/_overrides.scss */
 .bg-hero {
   background-position: center;
   background-size: cover;
   width: 100%;
 }
 
-/* line 58, src/sass/components/_overrides.scss */
+/* line 56, src/sass/components/_overrides.scss */
 .bg-hero-video {
   overflow: hidden;
   position: relative;
 }
 
-/* line 63, src/sass/components/_overrides.scss */
+/* line 61, src/sass/components/_overrides.scss */
 .bg-hero-video-player {
   position: absolute;
   top: 0;
   width: 100%;
 }
 
-/* line 69, src/sass/components/_overrides.scss */
+/* line 67, src/sass/components/_overrides.scss */
 .bg-hero-video-overlay {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   height: 100%;
@@ -2404,7 +2409,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   z-index: 2;
 }
 
-/* line 78, src/sass/components/_overrides.scss */
+/* line 76, src/sass/components/_overrides.scss */
 .bg-hero-video-text {
   position: relative;
   z-index: 3;
@@ -2413,32 +2418,32 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Text sizes
  */
-/* line 88, src/sass/components/_overrides.scss */
+/* line 86, src/sass/components/_overrides.scss */
 .text-small {
   font-size: 0.9375em;
 }
 
-/* line 92, src/sass/components/_overrides.scss */
+/* line 90, src/sass/components/_overrides.scss */
 .text-large {
   font-size: 1.1875em;
   line-height: 1.4;
 }
 
 @media (min-width: 40em) {
-  /* line 92, src/sass/components/_overrides.scss */
+  /* line 90, src/sass/components/_overrides.scss */
   .text-large {
     font-size: 1.3125em;
   }
 }
 
-/* line 101, src/sass/components/_overrides.scss */
+/* line 99, src/sass/components/_overrides.scss */
 .text-hero {
   font-size: 2em;
   line-height: 1.4;
 }
 
 @media (min-width: 40em) {
-  /* line 101, src/sass/components/_overrides.scss */
+  /* line 99, src/sass/components/_overrides.scss */
   .text-hero {
     font-size: 3em;
   }
@@ -2447,7 +2452,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Text colors
  */
-/* line 115, src/sass/components/_overrides.scss */
+/* line 113, src/sass/components/_overrides.scss */
 .text-muted {
   color: #808080;
 }
@@ -2455,12 +2460,12 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Text decoration
  */
-/* line 124, src/sass/components/_overrides.scss */
+/* line 122, src/sass/components/_overrides.scss */
 .text-no-bold {
   font-weight: normal;
 }
 
-/* line 128, src/sass/components/_overrides.scss */
+/* line 126, src/sass/components/_overrides.scss */
 .text-no-italic {
   font-style: normal;
 }
@@ -2468,23 +2473,23 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Text alignment
  */
-/* line 137, src/sass/components/_overrides.scss */
+/* line 135, src/sass/components/_overrides.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 141, src/sass/components/_overrides.scss */
+/* line 139, src/sass/components/_overrides.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 145, src/sass/components/_overrides.scss */
+/* line 143, src/sass/components/_overrides.scss */
 .text-left {
   text-align: left;
 }
 
 @media (min-width: 60em) {
-  /* line 150, src/sass/components/_overrides.scss */
+  /* line 148, src/sass/components/_overrides.scss */
   .text-right-large {
     text-align: right;
   }
@@ -2493,19 +2498,19 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Floats
  */
-/* line 160, src/sass/components/_overrides.scss */
+/* line 158, src/sass/components/_overrides.scss */
 .float-left {
   float: left;
 }
 
-/* line 164, src/sass/components/_overrides.scss */
+/* line 162, src/sass/components/_overrides.scss */
 .float-center {
   float: none;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 170, src/sass/components/_overrides.scss */
+/* line 168, src/sass/components/_overrides.scss */
 .float-right {
   float: right;
 }
@@ -2513,32 +2518,32 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Margins
  */
-/* line 179, src/sass/components/_overrides.scss */
+/* line 177, src/sass/components/_overrides.scss */
 .no-margin-top {
   margin-top: 0;
 }
 
-/* line 183, src/sass/components/_overrides.scss */
+/* line 181, src/sass/components/_overrides.scss */
 .no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* line 187, src/sass/components/_overrides.scss */
+/* line 185, src/sass/components/_overrides.scss */
 .margin-top {
   margin-top: 1.5625em;
 }
 
-/* line 191, src/sass/components/_overrides.scss */
+/* line 189, src/sass/components/_overrides.scss */
 .margin-bottom {
   margin-bottom: 1.5625em;
 }
 
-/* line 195, src/sass/components/_overrides.scss */
+/* line 193, src/sass/components/_overrides.scss */
 .margin-bottom-small {
   margin-bottom: 0.5em;
 }
 
-/* line 199, src/sass/components/_overrides.scss */
+/* line 197, src/sass/components/_overrides.scss */
 .margin-bottom-large {
   margin-bottom: 2em;
 }
@@ -2546,52 +2551,52 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Padding
  */
-/* line 208, src/sass/components/_overrides.scss */
+/* line 206, src/sass/components/_overrides.scss */
 .no-padding-top {
   padding-top: 0;
 }
 
-/* line 212, src/sass/components/_overrides.scss */
+/* line 210, src/sass/components/_overrides.scss */
 .no-padding-bottom {
   padding-bottom: 0;
 }
 
-/* line 216, src/sass/components/_overrides.scss */
+/* line 214, src/sass/components/_overrides.scss */
 .padding-top {
   padding-top: 1.5625em;
 }
 
-/* line 220, src/sass/components/_overrides.scss */
+/* line 218, src/sass/components/_overrides.scss */
 .padding-top-small {
   padding-top: 0.5em;
 }
 
-/* line 224, src/sass/components/_overrides.scss */
+/* line 222, src/sass/components/_overrides.scss */
 .padding-top-large {
   padding-top: 2em;
 }
 
-/* line 228, src/sass/components/_overrides.scss */
+/* line 226, src/sass/components/_overrides.scss */
 .padding-top-xlarge {
   padding-top: 4em;
 }
 
-/* line 232, src/sass/components/_overrides.scss */
+/* line 230, src/sass/components/_overrides.scss */
 .padding-bottom {
   padding-bottom: 1.5625em;
 }
 
-/* line 236, src/sass/components/_overrides.scss */
+/* line 234, src/sass/components/_overrides.scss */
 .padding-bottom-small {
   padding-bottom: 0.5em;
 }
 
-/* line 240, src/sass/components/_overrides.scss */
+/* line 238, src/sass/components/_overrides.scss */
 .padding-bottom-large {
   padding-bottom: 2em;
 }
 
-/* line 244, src/sass/components/_overrides.scss */
+/* line 242, src/sass/components/_overrides.scss */
 .padding-bottom-xlarge {
   padding-bottom: 4em;
 }
@@ -2604,7 +2609,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-/* line 258, src/sass/components/_overrides.scss */
+/* line 256, src/sass/components/_overrides.scss */
 .screen-reader {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2622,7 +2627,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link https://www.drupal.org/node/897638
  */
-/* line 275, src/sass/components/_overrides.scss */
+/* line 273, src/sass/components/_overrides.scss */
 .screen-reader-focusable:active,
 .screen-reader-focusable:focus {
   clip: auto;
@@ -2639,7 +2644,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @affected IE 8/9/10
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
-/* line 291, src/sass/components/_overrides.scss */
+/* line 289, src/sass/components/_overrides.scss */
 [hidden] {
   display: none;
   visibility: hidden;
@@ -2650,7 +2655,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
  * @link https://github%com/h5bp/html5-boilerplate/blob/master/dist/css/main%css
  */
-/* line 301, src/sass/components/_overrides.scss */
+/* line 299, src/sass/components/_overrides.scss */
 .clearfix:before, .container:before,
 .row:before, .method .title:before,
 .clearfix:after,
@@ -2663,7 +2668,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   content: " ";
 }
 
-/* line 307, src/sass/components/_overrides.scss */
+/* line 305, src/sass/components/_overrides.scss */
 .clearfix:after, .container:after,
 .row:after, .method .title:after, .method a.clear-results:after, .method .clear-results.link-block-styled:after {
   clear: both;
