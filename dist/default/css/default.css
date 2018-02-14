@@ -466,6 +466,7 @@ figure {
 
 /* line 61, src/sass/components/_layout-default.scss */
 #footer {
+  background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
   margin-top: 2em;
   padding-top: 2em;

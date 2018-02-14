@@ -465,6 +465,7 @@ figure {
 
 /* line 59, src/sass/components/_layout-skinny-nav.scss */
 #footer {
+  background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
   margin-top: 2em;
   padding-top: 2em;
