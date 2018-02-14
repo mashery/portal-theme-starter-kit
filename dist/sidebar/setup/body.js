@@ -146,11 +146,6 @@ window.addEventListener('portalAfterRender', function () {
 		players: ['www.youtube.com', 'player.vimeo.com'] // players to support
 	});
 
-	// Accordion content
-	houdini.init({
-		selectorToggle: '.collapse-toggle'
-	});
-
 	// Get the latest blog posts
 	latestBlogPosts();
 
