@@ -1,14 +1,20 @@
 {
-	"name": "portal-themes",
-	"version": "2.0.0",
-	"description": "Future portal layout",
+	"name": "portal-theme",
+	"version": "1.0.0",
+	"description": "Portal theme for...",
 	"main": "./dist/js/main.js",
 	"author": {
 		"owner": "TIBCO",
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"
 	},
-	"license": "LicenseRef-All Rights Reserved",
+	"license": "MIT",
+	"blackbeard": {
+		"version": "2.1.0",
+		"author": "Chris Ferdinandi",
+		"owner": "TIBCO",
+		"theme": "Default"
+	},
 	"repository": {
 		"type": "git",
 		"url": "http://github.com/mashery/portal-themes"

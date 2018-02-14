@@ -1,4 +1,4 @@
-/*! portal-themes v2.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | LicenseRef-All Rights Reserved License | http://github.com/mashery/portal-themes */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.1.0 - Default Theme | MIT License | http://github.com/mashery/portal-themes */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -498,7 +498,9 @@ figure {
 
 /* line 93, src/sass/components/_layout-sidebar.scss */
 #footer {
-  background-color: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2em;
+  padding-top: 2em;
 }
 
 /**
