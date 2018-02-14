@@ -82,7 +82,7 @@ Once you've picked a theme, you need to do some quick setup.
 The *Portal Theme Starter Kit* comes with some starter layouts that you can modify as needed.
 
 0. Open the `layouts` directory in your chosen theme.
-0. In the API Control Center, go to `Manage > Content`, and click on the `File Manager` button.
+0. In the API Control Center, go to `Manage > Content`.
 0. Uncheck the `Use TinyMCE` checkbox.
 0. Under `Custom Pages`, click on the first item (the one in bold) and copy/paste the contents of either `homepage.md` or `homepage-with-video.md` into the content area. Then click `Save`.
 0. Under `Documentation`, click on the first item (the one in bold) and copy/paste the contents of either `documentation.md` or `documentation-better-docs.md` into the content area. Then click `Save`.

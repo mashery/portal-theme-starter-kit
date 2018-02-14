@@ -123,12 +123,11 @@ window.addEventListener('portalAfterRender', function () {
 			wideLayout: (document.documentElement.classList.contains('js-theme-sidebar') ? true : false),
 		});
 	}
-	window.addEventListener('portalBeforeRender', function destroyBetterDocs () {
-		// Destroy instantiation on Ajax page reload
+	// Destroy instantiation on Ajax page reload
+	window.addEventListener('portalBeforeRender', function () {
 		if ('destroy' in docs) {
 			docs.destroy();
 		}
-		window.removeEventListener('portalBeforeRender', destroyBetterDocs, false);
 	}, false);
 
 	// Conditional content
@@ -156,12 +155,16 @@ window.addEventListener('portalAfterRender', function () {
 	latestBlogPosts();
 
 	// Smooth scrolling to anchor links
-	var scroll = new SmoothScroll('.category-page #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-blogall #main-wrapper a[href*="#"], .category-blogsingle #main-wrapper a[href*="#"], #nav-docs a[href*="#"]', {
+	var scroll = {};
+	scroll = new SmoothScroll('.category-page #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-blogall #main-wrapper a[href*="#"], .category-blogsingle #main-wrapper a[href*="#"], #nav-docs a[href*="#"]', {
 		ignore: '.js-scroll-ignore'
 	});
-	window.addEventListener('portalBeforeRenderAjax', function removeSmoothScroll () {
-		scroll.destroy();
-		window.removeEventListener('portalBeforeRenderAjax', removeSmoothScroll, false);
+
+	// Destroy instantiation on Ajax page reload
+	window.addEventListener('portalBeforeRender', function () {
+		if ('destroy' in scroll) {
+			scroll.destroy();
+		}
 	}, false);
 
 	// Language translation
