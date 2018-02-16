@@ -539,6 +539,57 @@ You'll need to escape brackets contained in code by typing `&lt;` for `<` and `&
 ---
 
 
+## Syntax Highlighting
+
+Syntax highlighting is provided by [Prism by Lea Verou](http://prismjs.com/). It includes support for:
+
+* Bash
+* CSS
+* C-like languages
+* HTTP
+* Markup/HTML
+* Java
+* JavaScript
+* PHP
+* Python
+* Ruby
+* Sass/scss
+
+Add `class="lang-*"` to your `code` element, where `*` is the language to be highlighted.
+
+```html
+<pre><code class="lang-*">
+	/* Your code here...  */
+</code></pre>
+
+<!-- Example -->
+<pre><code class="lang-php">
+	// Your code here...
+</code></pre>
+```
+
+***Note:*** *The syntax highlighter tool in TinyMCE will automatically add the correct markup and classes and highlighting for you.*
+
+### Language Table
+
+| Language    | Class                         |
+|-------------|-------------------------------|
+| Bash        | `.lang-bash`                  |
+| CSS         | `.lang-css`                   |
+| C, C#, C++  | `.lang-clike`                 |
+| HTTP        | `.lang-http`                  |
+| Markup/HTML | `.lang-markup`/`.lang-html`   |
+| Java        | `.lang-java`                  |
+| JavaScript  | `.lang-javascript`/`.lang-js` |
+| PHP         | `.lang-php`                   |
+| Python      | `.lang-python`                |
+| Ruby        | `.lang-ruby`                  |
+| Sass        | `.lang-sass`                  |
+| scss        | `.lang-scss`                  |
+
+---
+
+
 ## Lines
 
 Add lines to your markup using the `hr` element.
@@ -1001,127 +1052,83 @@ Classes can be combined as needed.
 ---
 
 
-## Alignment, Spacing & Visibility
+## Navigation
 
-You can adjust text alignment, spacing, and visibility using a few simple CSS classes.
+Your theme includes an expand-and-collapse navigation menu on smaller screens.
 
-### Text Alignment
+### Getting Started
 
-| Class                | Alignment                        |
-|----------------------|----------------------------------|
-| `.text-left`         | Left                             |
-| `.text-center`       | Centered                         |
-| `.text-right`        | Right                            |
-| `.text-right-large`  | Right *(only on bigger screens)* |
+#### Markup
 
+*__Note:__ This is already done for you in your theme setup file.*
 
-### Floats
-
-| Class           | Float    |
-|-----------------|----------|
-| `.float-left`   | Left     |
-| `.float-center` | Centered |
-| `.float-right`  | Right    |
-| `.float-middle` | Middle   |
-| `.float-bottom` | Bottom   |
-
-The `.float-middle` and `.float-bottom` classes should be applied to block level elements, and require a parent `div` with a `.float-*-wrap` class.
+Turn any button or link into a toggle for your navigation menu by adding the `[data-nav-toggle]` attribute, and give it a value that matches the selector of the area(s) you're trying to expand.
 
 ```html
-<div class="float-middle-wrap">
-	<div class="float-middle">
-		.float-middle
+<nav class="nav-wrap">
+	<a class="logo" href="#">My Brand</a>
+	<a class="nav-toggle" data-nav-toggle=".nav-collapse" href="#">Menu</a>
+	<div class="nav-menu nav-collapse" id="nav-primary-menu">
+		<ul class="nav">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
 	</div>
-</div>
-
-<div class="float-bottom-wrap">
-	<div class="float-bottom">
-		.float-bottom
-	</div>
-</div>
+</nav>
 ```
 
-Clear floats by wrapping floated content in a `div` with the `.clearfix` class.
+#### JavaScript
 
-```html
-<div class="clearfix">
-	<button class="float-right">Floated to the Right</button>
-	<button>Not floated</button>
-</div>
+The script will not run until initialized in a `portalAfterRender` event. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
+
+```js
+// Expand-and-collapse nav on small viewports
+astro.init();
 ```
 
-### Margins
+### Global Settings
 
-| Class                  | Margin             |
-|------------------------|--------------------|
-| `.no-margin`           | all: `0`           |
-| `.no-margin-top`       | top: `0`           |
-| `.no-margin-bottom`    | bottom: `0`        |
-| `.margin-top`          | top: `1.5625em`    |
-| `.margin-bottom`       | bottom: `1.5625em` |
-| `.margin-bottom-small` | bottom: `0.5em`    |
-| `.margin-bottom-large` | bottom: `2em`      |
-| `.margin-left`         | left:   `1.5625em` |
-| `.margin-left-small`   | left:   `0.5em`    |
-| `.margin-right`        | right:  `1.5625em` |
-| `.margin-right-small`  | right:  `0.5em`    |
+You can pass options and callbacks into Astro through the `init()` function:
 
-
-### Padding
-
-| Class                   | padding            |
-|-------------------------|--------------------|
-| `.no-padding`           | all: `0`           |
-| `.no-padding-top`       | top: `0`           |
-| `.no-padding-bottom`    | bottom: `0`        |
-| `.padding-top`          | top: `1.5625em`    |
-| `.padding-top-small`    | top: `0.5em`       |
-| `.padding-top-large`    | top: `2em`         |
-| `.padding-bottom`       | bottom: `1.5625em` |
-| `.padding-bottom-small` | bottom: `0.5em`    |
-| `.padding-bottom-large` | bottom: `2em`      |
-| `.padding-left`         | left: `1.5625em`   |
-| `.padding-right`        | right: `1.5625em`  |
-
-
-### Visibility
-
-Hide content using the `[hidden]` attribute.
-
-```html
-<div hidden>This is removed from the markup.</div>
+```javascript
+astro.init({
+	selector: '[data-nav-toggle]', // Navigation toggle selector
+	toggleActiveClass: 'active', // Class added to active dropdown toggles on small screens
+	navActiveClass: 'active', // Class added to active dropdown content areas on small screens
+	initClass: 'js-astro', // Class added to `<html>` element when initiated
+	callback: function ( toggle, navID ) {} // Function that's run after a dropdown is toggled
+});
 ```
 
-If you have text that you don't want displayed on screen, but that should still be in the markup for screen readers (for example, a search form label), simply apply the `.screen-reader` class.</p>
+*__Note:__ If you change the `selector`, you still need to include the `[data-nav-toggle]` attribute in order to pass in the selector for the navigation menu.*
 
-```html
-<form>
-	<label class="screen-reader">Search this site</label>
-	<input type="text" placeholder="Search this site...">
-	<input type="submit">
-</form>
+### Use Astro events in your own scripts
+
+You can also call Astro's navigation toggle event in your own scripts.
+
+#### toggleNav()
+Expand or collapse a navigation menu.
+
+```javascript
+astro.toggleNav(
+	toggle, // Node that toggles the dropdown action. ex. document.querySelector('#toggle')
+	navID, // ID of the navigation content wrapper. ex. '#nav-menu'
+	options, // Classes and callbacks. Same options as those passed into the init() function.
+	event // Optional, if a DOM event was triggered.
+);
 ```
 
-For visually hidden content that should become visible on focus (such as a [skip nav link](http://webaim.org/techniques/skipnav/) for sighted users navigating by keyboard), also add the `.screen-reader-focusable` class.
+**Example**
 
-```html
-<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+```javascript
+astro.toggleNav( null, '#nav-menu' );
 ```
 
-### Visibility based on logged-in status
+#### destroy()
+Destroy the current `astro.init()`. This is called automatically during the init function to remove any existing initializations.
 
-The Mashery Portal provides high levels of custom access for pages and documentation based on whether or not a user is logged in, is a member of a particular role or group, and so on. However, these access levels apply to the entire page.
-
-You can selectively hide or show pieces content within a page or documentation only for logged-in users using the `.hide-logged-in` and `.hide-logged-out` classes.
-
-```html
-<div class="hide-logged-in">
-	Logged out users will see this. Logged in users will NOT.
-</div>
-
-<div class="hide-logged-out">
-	Logged out users will NOT see this. Logged in users will.
-</div>
+```javascript
+astro.destroy();
 ```
 
 ---
@@ -1176,57 +1183,6 @@ fluidvids.init({
 	players: ['www.youtube.com', 'player.vimeo.com'] // players to support
 });
 ```
-
----
-
-
-## Syntax Highlighting
-
-Syntax highlighting is provided by [Prism by Lea Verou](http://prismjs.com/). It includes support for:
-
-* Bash
-* CSS
-* C-like languages
-* HTTP
-* Markup/HTML
-* Java
-* JavaScript
-* PHP
-* Python
-* Ruby
-* Sass/scss
-
-Add `class="lang-*"` to your `code` element, where `*` is the language to be highlighted.
-
-```html
-<pre><code class="lang-*">
-	/* Your code here...  */
-</code></pre>
-
-<!-- Example -->
-<pre><code class="lang-php">
-	// Your code here...
-</code></pre>
-```
-
-***Note:*** *The syntax highlighter tool in TinyMCE will automatically add the correct markup and classes and highlighting for you.*
-
-### Language Table
-
-| Language    | Class                         |
-|-------------|-------------------------------|
-| Bash        | `.lang-bash`                  |
-| CSS         | `.lang-css`                   |
-| C, C#, C++  | `.lang-clike`                 |
-| HTTP        | `.lang-http`                  |
-| Markup/HTML | `.lang-markup`/`.lang-html`   |
-| Java        | `.lang-java`                  |
-| JavaScript  | `.lang-javascript`/`.lang-js` |
-| PHP         | `.lang-php`                   |
-| Python      | `.lang-python`                |
-| Ruby        | `.lang-ruby`                  |
-| Sass        | `.lang-sass`                  |
-| scss        | `.lang-scss`                  |
 
 ---
 
@@ -1434,12 +1390,12 @@ If you have multiple fixed headers, pass in the last one in the markup.
 <nav data-scroll-header>
 	...
 </nav>
-...
-<script>
-	var scroll = new SmoothScroll('.some-selector',{
-		header: '[data-scroll-header]'
-	});
-</script>
+```
+
+```js
+var scroll = new SmoothScroll('.some-selector',{
+	header: '[data-scroll-header]'
+});
 ```
 
 ---
@@ -1649,6 +1605,614 @@ var docs = new BetterDocs('.content', {
 });
 docs.destroy();
 ```
+
+---
+
+## Display the Latest Blog Posts
+
+You can add a list of your latest blog posts to any page in your Portal.
+
+### Demo
+
+<div id="latest-blog-posts">
+	<div class="placeholder placeholder-sentence"></div>
+	<div class="placeholder placeholder-sentence"></div>
+	<div class="placeholder placeholder-sentence"></div>
+</div>
+
+### Getting Started
+
+#### Markup
+
+Add a div with the `#latest-blog-posts` ID.
+
+```html
+<div id="latest-blog-posts"></div>
+```
+
+For additional style, you can add "loading" placeholders that will disappear after the content is loaded by creating `div` elements with the `.placeholder` and `.placeholder-sentence` classes.
+
+```html
+<div id="latest-blog-posts">
+	<div class="placeholder placeholder-sentence"></div>
+	<div class="placeholder placeholder-sentence"></div>
+	<div class="placeholder placeholder-sentence"></div>
+</div>
+```
+
+#### JavaScript
+
+The script will not run until initialized in a `portalAfterRender` event. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
+
+```js
+// Get the latest blog posts
+latestBlogPosts();
+```
+
+### Global Settings
+
+You can pass options into Latest Blog Posts when initializing.
+
+```javascript
+latestBlogPosts({
+	selector: '#latest-blog-posts', // The selector for the div to render the posts into
+	listClass: 'latest-blog-posts-list', // The class added to the latest posts list (used for styling)
+	count: 5, // The number of posts to display
+	excerptLength: 250, // The length of the blog post excerpt in characters
+	listType: 'ul', // The list type (`ul` or `ol`)
+
+	// The template for each post
+	// Must pass in `post` as an argument and return a string
+	// post.author - the post author
+	// post.authorUrl - the URL of the author's profile
+	// post.excerpt - the excerpt content
+	// post.published - the date the post was published
+	// post.title - the post title
+	// post.url - the post URL
+	template: function (post) {
+		var template =
+			'<li>' +
+				'<strong><a href="' + post.url + '">' + post.title + '</a></strong><br>' +
+				'<span class="text-muted">By ' + post.author + ' on ' + post.published + '</span><br>' +
+				post.excerpt + '...' +
+			'</li>';
+		return template;
+	}
+})l
+```
+
+---
+
+## Language Translation
+
+You can add multi-language support to your Mashery developer portal.
+
+### Demo
+
+<ul class="list-inline">
+	<li><a class="js-scroll-ignore active" data-translate="en" href="#">EN</a></li>
+	<li><a class="js-scroll-ignore" data-translate="fr" href="#">FR</a></li>
+	<li><a class="js-scroll-ignore" data-translate="sp" href="#">SP</a></li>
+</ul>
+
+<div class="translate translate-en active">
+	<p>Hello, world!</p>
+</div>
+
+<div class="translate translate-fr">
+	<p>Bonjour le monde!</p>
+</div>
+
+<div class="translate translate-sp">
+	<p>¡Hola Mundo!</p>
+</div>
+
+### Getting Started
+
+#### 1. Add language toggles
+
+Turn any link or button into a language toggle by adding the `[data-translate]` data attribute. The value of this attribute should equal the language it toggles. You can use any naming convention for your languages that you'd like (ex. `en` or `english` for *English*, `fr` or `french` for *French*, and so on).
+
+```html
+<a data-translate="en" role="button" href="#">EN</a>
+<a data-translate="fr" role="button" href="#">FR</a>
+<a data-translate="sp" role="button" href="#">SP</a>
+
+<!-- OR... -->
+
+<button data-translate="english">English</button>
+<button data-translate="french">French</button>
+<button data-translate="spanish">Spanish</button>
+```
+
+*__Note:__ For proper accessibility for visitors using screen readers and other assistive technology, add `role="button"` if using links.*
+
+#### 2. Add language blocks to your content
+
+Within your editable content areas (like *Custom Pages*, *Documentation*, and *Blog Posts*), add pre-translated blocks of text by adding the `.translate` and  `.translate-*` classes to a `div` element. The `*` should match one of the `[data-translate]` values in your language toggles.
+
+These language blocks are dynamically shown or hidden based on the visitor's selected language. Make a language block visible by default by adding the `.active` class. Language blocks can contain any content you want, including additional markup.
+
+```html
+<div class="translate translate-en active">
+	<p>Hello, world!</p>
+</div>
+
+<div class="translate translate-fr">
+	<p>Bonjour le monde!</p>
+</div>
+
+<div class="translate translate-sp">
+	<p>¡Hola Mundo!</p>
+</div>
+
+<!-- OR... -->
+
+<div class="translate translate-english active">
+	<p>Hello, world!</p>
+</div>
+
+<div class="translate translate-french">
+	<p>Bonjour le monde!</p>
+</div>
+
+<div class="translate translate-spanish">
+	<p>¡Hola Mundo!</p>
+</div>
+```
+
+#### 3. Create a dictionary of translation definitions
+
+For areas where you cannot customize markup (such as header navigation, form labels, and documentation navigation), you will need to create a "dictionary" of words to look for and translate.
+
+This is an array of objects. Each object contains a collection of key/value pairs, where the *key* is your language code/name (the one used in your `[data-translate]` toggles) and the *value* is the word or phrase in that language. These are *case sensitive*.
+
+Whatever language you list first will be your default language unless you specify one in the [options and settings](#options-and-settings).
+
+```javascript
+var dictionary = [{
+	en: 'Documentation',
+	fr: 'Documentation',
+	sp: 'Documentación'
+},
+{
+	en: 'Interactive API',
+	fr: 'API interactive',
+	sp: 'API interactiva'
+}];
+```
+
+You also need to provide a list of selectors for the content areas that you want to translate this way. Separate each selector with a comma, and be as restrictive as possible.
+
+```javascript
+// Translate the primary navigation, user navigation, and documentation navigation
+var contentSelectors = '#nav-primary-list, #nav-user-list, #nav-docs ul';
+```
+
+*__Note:__ If you only want to use pre-translated language blocks, that's fine. You can skip this step.*
+
+#### 4. Initialize your translations
+
+Initialize your translations in a `portalAfterRender` event.
+
+```js
+window.addEventListener('portalAfterRender', function () {
+
+	var dictionary = [{
+		en: 'Documentation',
+		fr: 'Documentation',
+		sp: 'Documentación'
+	},
+	{
+		en: 'Interactive API',
+		fr: 'API interactive',
+		sp: 'API interactiva'
+	}];
+
+	// Translate the primary navigation, user navigation, and documentation navigation
+	var contentSelectors = '#nav-primary-list, #nav-user-list, #nav-docs ul';
+
+	var translate = new Translate({
+		contentSelector: contentSelectors,
+		dictionary: dictionary
+	});
+
+}, false);
+```
+
+### Global Settings
+
+You can pass options and callbacks into Smooth Scroll when initializing.
+
+```javascript
+var translate = new Translate({
+	default: null, // The default language [optional]
+	activeClass: 'active', // The class to add to active language blocks and toggles
+	langBlockSelector: '.translate', // The selector for language blocks
+	langBlockPrefix: '.translate-', // The selector prefix for language-specific language blocks
+	contentSelectors: null, // The selectors for targeted content translation
+	initClass: 'js-translate', // The class to add to the document when the script initializes
+	dictionary: [], // Your disctionary of translation
+});
+```
+
+### Use Translate events in your own scripts
+
+You can also call Translate's methods in your own scripts.
+
+#### updateOptions()
+Update your options and settings.
+
+```javascript
+var translate = new Translate();
+translate.updateOptions(options);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.updateOptions({
+	dictionary: [{
+		en: 'Hello',
+		fr: 'Bonjour',
+		sp: 'Hola'
+	}]
+});
+```
+
+#### saveLang()
+Save the chosen language into local storage.
+
+```javascript
+var translate = new Translate();
+translate.saveLang(lang);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.saveLang('fr');
+```
+
+#### getSavedLang()
+Get the saved language from local storage.
+
+```javascript
+var translate = new Translate();
+translate.getSavedLang();
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+var lang = translate.getSavedLang();
+
+// Returns "fr"
+console.log(lang);
+```
+
+#### removeSavedLang()
+Remove the saved language from local storage.
+
+```javascript
+var translate = new Translate();
+translate.removeSavedLang();
+```
+
+#### setCurrentLang()
+Set the current language. Use this if you programmatically translate content.
+
+```javascript
+var translate = new Translate();
+translate.setCurrentLang(lang);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.setCurrentLang('sp');
+```
+
+#### toggleLangBlock()
+Show any content blocks for the current language (and hide all others).
+
+
+```javascript
+var translate = new Translate();
+translate.toggleLangBlock(lang);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.toggleLangBlock('fr');
+```
+
+#### translateContent()
+Translate targeted content into the new language.
+
+```javascript
+var translate = new Translate();
+translate.translateContent(content, lang);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.translateContent('#nav-primary-list', 'fr');
+```
+
+#### activateToggle()
+Activate the toggle for the currently selected language.
+
+```javascript
+var translate = new Translate();
+translate.activateToggle(lang, toggle);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.activateToggle('fr', document.querySelector('[data-translate="fre"]'));
+```
+
+#### run()
+Run a translation.
+
+```javascript
+var translate = new Translate();
+translate.run(lang, toggle);
+```
+
+**Example**
+
+```javascript
+var translate = new Translate();
+translate.run('fr', document.querySelector('[data-translate="fre"]'));
+```
+
+#### destroy()
+Destroy the current `Translate()` instantiation.
+
+```javascript
+var translate = new Translate();
+translate.destroy();
+```
+
+---
+
+## GitHub-Hosted Documentation
+
+You can now host your documentation on GitHub&mdash;taking advantage of its markdown support and version control features&mdash;and display it dynamically on your Mashery Portal.
+
+This approach uses Blackbeard's [event hooks](https://developer.mashery.com/docs/read/your_portal/layout_and_design/Event_Hooks) and [custom JavaScript variables](https://developer.mashery.com/docs/read/your_portal/layout_and_design/CSS_and_JavaScript_Hooks#custom-javascript-variables) with the [GitHub Content API](https://developer.github.com/v3/repos/contents/).
+
+### Getting Started
+
+#### 1. Define your GitHub options and details
+
+There are only two required options: `user` and `repo`. These should point to the GitHub username and repository, respectively, of the project to pull content from.
+
+Exclude any other options from the list below to use the default.
+
+```js
+var githubDocsOptions = {
+	selector: '.content', // The selector for the container to render the content in
+	user: null, // The GitHub username for the repository
+	repo: null, // The GitHub repository to get content from
+	root: '', // The root directory to use in the project
+	runScripts: false, // If true, run any in-content scripts after loading the content
+	loading: '<p>Loading...</p>', // Text to display while loading content from GitHub
+	failMessage: '<p>Unable to load content. Visit <a target="_blank" href="https://github.com/mashery/blackbeard/tree/master/docs/' + mashery.globals.github + '">https://github.com/mashery/blackbeard/tree/master/docs/' + mashery.globals.github + '</a> to view the documentation.</p>' // Text to display if the GitHub API returns an error
+};
+```
+
+#### 2. Initialize GitHub Docs
+
+Initialize GitHub Docs in a `portalAfterRender` event.
+
+```js
+window.addEventListener('portalAfterRender', function () {
+	githubDocs(githubDocsOptions);
+}, false);
+```
+
+#### 3. Point to your content
+
+In the API Control Center under `Manage > Content`, click on the page you'd like to render from GitHub. Uncheck "Use TinyMCE", and add an inline script with a [global JavaScript variable](https://developer.mashery.com/docs/read/your_portal/layout_and_design/CSS_and_JavaScript_Hooks#custom-javascript-variables) named `github`.
+
+It should be a string that points to the content path in your project (within the `root` directory if you specified one).
+
+```html
+<script>
+	mashery.globals.github = 'path/to/your/content.md';
+</script>
+```
+
+### An Example
+
+Here's an example from this Portal.
+
+**Setup**
+
+```js
+var githubDocsOptions = {
+	user: 'mashery',
+	repo: 'portal-theme-starter-kit',
+	root: 'docs/' // The root directory for all of this documentation
+};
+
+window.addEventListener('portalAfterRender', function () {
+	githubDocs(githubDocsOptions);
+}, false);
+```
+
+**On The Page**
+
+```html
+<script>
+	// Points to https://github.com/mashery/portal-theme-starter-kit/blob/master/docs/1-quick-start.md
+	// The /docs in the URL is automatically added because it's set as the root directory for the project
+	mashery.globals.github = '1-quickstart.md';
+</script>
+```
+
+### Event Hooks
+
+This plugin emits two custom events.
+
+- `portalAfterGitHubRender` runs after content is rendered.
+- `portalAfterGitHubError` runs if the GitHub Content API returns with an error.
+
+You can hook into these to run additional scripts if desired.
+
+### Potential Issues
+
+#### No Search Integration
+
+A known issue with this approach: content is not cached on our server and therefore not searchable via the built-in Portal search functionality.
+
+You might try to get around this by including a brief description or some metadata in the body of your post in the Portal content editor. This content will be wiped out once the API data loads, but provides the internal search engine content to crawl and cache.
+
+#### GitHub API Limits
+
+The GitHub Content API limits the number of transactions, and once exceeded, returns an error.
+
+To prevent excessive API calls, GitHub Docs caches each piece of documentation locally for the current browser session with `sessionStorage`. That said, on a high-traffic site, it's still possible to exceed your limit and receive a content error. Users will instead be directed to visit the content on GitHub directly.
+
+
+---
+
+
+## Utility Classes
+
+You can adjust text alignment, spacing, and visibility using a few simple CSS utility classes.
+
+### Text Alignment
+
+| Class                | Alignment                        |
+|----------------------|----------------------------------|
+| `.text-left`         | Left                             |
+| `.text-center`       | Centered                         |
+| `.text-right`        | Right                            |
+| `.text-right-large`  | Right *(only on bigger screens)* |
+
+
+### Floats
+
+| Class           | Float    |
+|-----------------|----------|
+| `.float-left`   | Left     |
+| `.float-center` | Centered |
+| `.float-right`  | Right    |
+| `.float-middle` | Middle   |
+| `.float-bottom` | Bottom   |
+
+The `.float-middle` and `.float-bottom` classes should be applied to block level elements, and require a parent `div` with a `.float-*-wrap` class.
+
+```html
+<div class="float-middle-wrap">
+	<div class="float-middle">
+		.float-middle
+	</div>
+</div>
+
+<div class="float-bottom-wrap">
+	<div class="float-bottom">
+		.float-bottom
+	</div>
+</div>
+```
+
+Clear floats by wrapping floated content in a `div` with the `.clearfix` class.
+
+```html
+<div class="clearfix">
+	<button class="float-right">Floated to the Right</button>
+	<button>Not floated</button>
+</div>
+```
+
+### Margins
+
+| Class                  | Margin             |
+|------------------------|--------------------|
+| `.no-margin`           | all: `0`           |
+| `.no-margin-top`       | top: `0`           |
+| `.no-margin-bottom`    | bottom: `0`        |
+| `.margin-top`          | top: `1.5625em`    |
+| `.margin-bottom`       | bottom: `1.5625em` |
+| `.margin-bottom-small` | bottom: `0.5em`    |
+| `.margin-bottom-large` | bottom: `2em`      |
+| `.margin-left`         | left:   `1.5625em` |
+| `.margin-left-small`   | left:   `0.5em`    |
+| `.margin-right`        | right:  `1.5625em` |
+| `.margin-right-small`  | right:  `0.5em`    |
+
+
+### Padding
+
+| Class                   | padding            |
+|-------------------------|--------------------|
+| `.no-padding`           | all: `0`           |
+| `.no-padding-top`       | top: `0`           |
+| `.no-padding-bottom`    | bottom: `0`        |
+| `.padding-top`          | top: `1.5625em`    |
+| `.padding-top-small`    | top: `0.5em`       |
+| `.padding-top-large`    | top: `2em`         |
+| `.padding-bottom`       | bottom: `1.5625em` |
+| `.padding-bottom-small` | bottom: `0.5em`    |
+| `.padding-bottom-large` | bottom: `2em`      |
+| `.padding-left`         | left: `1.5625em`   |
+| `.padding-right`        | right: `1.5625em`  |
+
+
+### Visibility
+
+Hide content using the `[hidden]` attribute.
+
+```html
+<div hidden>This is removed from the markup.</div>
+```
+
+If you have text that you don't want displayed on screen, but that should still be in the markup for screen readers (for example, a search form label), simply apply the `.screen-reader` class.</p>
+
+```html
+<form>
+	<label class="screen-reader">Search this site</label>
+	<input type="text" placeholder="Search this site...">
+	<input type="submit">
+</form>
+```
+
+For visually hidden content that should become visible on focus (such as a [skip nav link](http://webaim.org/techniques/skipnav/) for sighted users navigating by keyboard), also add the `.screen-reader-focusable` class.
+
+```html
+<a class="screen-reader screen-reader-focusable" href="#main">Skip to content</a>
+```
+
+### Visibility based on logged-in status
+
+The Mashery Portal provides high levels of custom access for pages and documentation based on whether or not a user is logged in, is a member of a particular role or group, and so on. However, these access levels apply to the entire page.
+
+You can selectively hide or show pieces content within a page or documentation only for logged-in users using the `.hide-logged-in` and `.hide-logged-out` classes.
+
+```html
+<div class="hide-logged-in">
+	Logged out users will see this. Logged in users will NOT.
+</div>
+
+<div class="hide-logged-out">
+	Logged out users will NOT see this. Logged in users will.
+</div>
+```
 </div>
 </div>
 </div>
@@ -1657,9 +2221,6 @@ docs.destroy();
 	var renderPortalComponentsTOC = function () {
 
 		'use strict';
-
-		// Feature detection
-		if ( !document.querySelector ) return;
 
 		// Variables
 		var subnav = document.querySelector('#demo-subnav');
@@ -1687,7 +2248,11 @@ docs.destroy();
 	};
 
 	// Create table of contents
-	renderPortalComponentsTOC();
 	window.addEventListener('portalAfterRender', renderPortalComponentsTOC, false);
+
+	// Init Translate Demo
+	window.addEventListener('portalAfterRender', function () {
+		new Translate();
+	}, false);
 
 </script>
