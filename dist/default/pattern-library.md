@@ -943,21 +943,21 @@ Add the `.table-responsive` class for tables that reformat on smaller viewports.
 
 ```html
 <table class="table-responsive">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Super Hero</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td data-label="First Name">Peter</td>
-            <td data-label="Last Name">Parker</td>
-            <td data-label="Super Hero">Spiderman</td>
-        </tr>
-        ...
-    </tbody>
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Super Hero</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td data-label="First Name">Peter</td>
+			<td data-label="Last Name">Parker</td>
+			<td data-label="Super Hero">Spiderman</td>
+		</tr>
+		...
+	</tbody>
 </table>
 ```
 
@@ -994,7 +994,7 @@ Classes can be combined as needed.
 
 ```html
 <table class="table-striped table-condensed table-responsive">
-    ...
+	...
 </table>
 ```
 
@@ -1654,8 +1654,7 @@ docs.destroy();
 </div>
 
 <script>
-	// Create table of contents
-	window.addEventListener('portalAfterRender', function createPatternLibraryTOC (event) {
+	var renderPortalComponentsTOC = function () {
 
 		'use strict';
 
@@ -1685,5 +1684,10 @@ docs.destroy();
 		// Add subnav
 		subnav.innerHTML = '<h3>Contents</h3><ul>' + subnavContent + '</ul>';
 
-	}, false);
+	};
+
+	// Create table of contents
+	renderPortalComponentsTOC();
+	window.addEventListener('portalAfterRender', renderPortalComponentsTOC, false);
+
 </script>

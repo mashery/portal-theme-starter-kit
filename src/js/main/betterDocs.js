@@ -240,7 +240,7 @@
 
 				// Create an ID if the heading is missing one
 				if (!heading.id || heading.id.length < 1) {
-					heading.id = createID(headings[i]);
+					heading.id = createID(heading);
 				}
 
 				// Get difference between last and current
