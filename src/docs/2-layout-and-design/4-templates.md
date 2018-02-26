@@ -421,7 +421,7 @@ portalOptions.templates.docs =
 
 // Footer 1
 // The first of two footer content sections.
-portalOptions.templates.footer1: '<div class="footer-1 container" id="footer-1"><hr></div>';
+portalOptions.templates.footer1: '<div class="footer-1 container" id="footer-1"></div>';
 
 
 // Footer 2
