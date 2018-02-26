@@ -421,7 +421,7 @@ portalOptions.templates.docs =
 
 // Footer 1
 // The first of two footer content sections.
-portalOptions.templates.footer1: '<div class="footer-1 container" id="footer-1"></div>';
+portalOptions.templates.footer1 = '<div class="footer-1 container" id="footer-1"></div>';
 
 
 // Footer 2
@@ -435,7 +435,7 @@ portalOptions.templates.footer2 =
 // Forum: All Topics
 // The main forum page where all topics are listed.
 // @todo Create this layout
-forumAll: '<div class="main container" id="main"><p>The forum content needs to get created.</p></div>', -->
+forumAll = '<div class="main container" id="main"><p>The forum content needs to get created.</p></div>', -->
 
 
 // 404
