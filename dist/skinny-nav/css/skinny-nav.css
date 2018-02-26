@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.2.0 - Default Theme | MIT License | http://github.com/mashery/portal-themes */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.2.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -683,7 +683,7 @@ h4,
 hr {
   border: 0;
   border-top: 1px solid #e5e5e5;
-  border-bottom: 0 solid #ffffff;
+  border-bottom: 0 solid transparent;
   box-sizing: content-box;
   margin: 2em auto;
   overflow: visible;

@@ -219,7 +219,7 @@ gulp.task('build:styles', ['clean:dist'], function() {
 		}))
 		.pipe(gulp.dest(paths.output))
 		.pipe(rename({ suffix: '.min' + fileVersion }))
-		.pipe(minify())
+		.pipe(minify({discardUnused: false}))
 		// .pipe(header(banner.min, { package : package }))
 		.pipe(gulp.dest(paths.output));
 });

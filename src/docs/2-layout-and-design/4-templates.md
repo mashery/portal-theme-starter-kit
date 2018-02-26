@@ -89,7 +89,7 @@ Default values are shown below.
 
 ```js
 // Base layout
-The markup structure that all of the content will get loaded into.
+// The markup structure that all of the content will get loaded into.
 // {{layout.navUser}} - The wrapper for the user navigation.
 // {{layout.navPrimary}} - The wrapper for the primary navigation.
 // {{layout.main}} - The wrapper for the main content area.
@@ -109,7 +109,7 @@ portalOptions.templates.layout =
 
 
 // My Apps
-The page displaying a users registered applications.
+// The page displaying a users registered applications.
 // {{content.noApps}} - The content to display when the user has no applications.
 portalOptions.templates.accountApps = function () {
 	var template = 	'<h1>{{content.heading}}</h1><ul id="nav-account">{{content.navItemsAccount}}</ul>';
@@ -147,7 +147,7 @@ portalOptions.templates.accountApps = function () {
 
 
 // My Account: Email
-The page where users can change their Mashery email address.
+// The page where users can change their Mashery email address.
 portalOptions.templates.accountEmail =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -158,7 +158,7 @@ portalOptions.templates.accountEmail =
 
 
 // My Account: Email Success
-The page confirming email change was successful
+// The page confirming email change was successful
 portalOptions.templates.accountEmailSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -169,7 +169,7 @@ portalOptions.templates.accountEmailSuccess =
 
 
 // My Keys
-The page displaying a users API keys.
+// The page displaying a users API keys.
 // {{content.noPlanKeys}} - The message to display when a plan has no keys.
 // {{content.noKeys}} - The message to display when a user has no keys.
 portalOptions.templates.accountKeys = function () {
@@ -212,7 +212,7 @@ portalOptions.templates.accountKeys = function () {
 
 
 // My Account
-The page where users can manage their Mashery Account details.
+// The page where users can manage their Mashery Account details.
 // {{content.subheading}} - The heading to display above the account details form.
 portalOptions.templates.accountManage =
 	'<div class="main container container-small" id="main">' +
@@ -225,7 +225,7 @@ portalOptions.templates.accountManage =
 
 
 // My Account: Password
-The page where users can change their Mashery password.
+// The page where users can change their Mashery password.
 portalOptions.templates.accountPassword =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -236,7 +236,7 @@ portalOptions.templates.accountPassword =
 
 
 // My Account: Password Success
-The page after users have successfully changed their password.
+// The page after users have successfully changed their password.
 portalOptions.templates.accountPasswordSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -247,7 +247,7 @@ portalOptions.templates.accountPasswordSuccess =
 
 
 // Add App APIs
-Add APIs to an application.
+// Add APIs to an application.
 // {{content.applicationLabel}} - The label before the application name.
 // {{content.createdLabel}} - The label before the date the application was created.
 // {{content.apiLabel}} - The label before the API name.
@@ -272,7 +272,7 @@ portalOptions.templates.appAddAPIs = function () {
 
 
 // App Delete
-Delete an application
+// Delete an application
 // {{content.applicationLabel}} - The label before the application name.
 // {{content.createdLabel}} - The label before the date the application was created.
 // {{content.apiLabel}} - The label before the API name.
@@ -298,7 +298,7 @@ portalOptions.templates.appDelete = function () {
 
 
 // Add App APIs: Success
-New API keys added to an app.
+// New API keys added to an app.
 portalOptions.templates.appAddAPIsSuccess =
 	'<div class="container container-small">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -307,7 +307,7 @@ portalOptions.templates.appAddAPIsSuccess =
 
 
 // Edit Application
-Layout with form to edit an application.
+// Layout with form to edit an application.
 portalOptions.templates.appEdit =
 	'<div class="container container-small">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -317,7 +317,7 @@ portalOptions.templates.appEdit =
 
 
 // App Registration
-The app registration page.
+// The app registration page.
 portalOptions.templates.appRegister =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -327,7 +327,7 @@ portalOptions.templates.appRegister =
 
 
 // App Registration Success
-The message that's displayed after an application is successfully registered.
+// The message that's displayed after an application is successfully registered.
 portalOptions.templates.appRegisterSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -336,7 +336,7 @@ portalOptions.templates.appRegisterSuccess =
 
 
 // Blog: All Posts
-The page where all blog posts are listed.
+// The page where all blog posts are listed.
 portalOptions.templates.blogAll = function () {
 	var template = '<h1>{{content.blogTitle}}</h1>';
 	var excerpt = document.createElement('div');
@@ -363,7 +363,7 @@ portalOptions.templates.blogAll = function () {
 
 
 // Blog: Single Post
-The layout for individual blog posts.
+// The layout for individual blog posts.
 portalOptions.templates.blogSingle = function () {
 	var template =
 		'<h1 class="margin-bottom-small">' + window.mashery.content.main.title + '</h1>' +
@@ -383,7 +383,7 @@ portalOptions.templates.blogSingle = function () {
 
 
 // Contact
-The contact page.
+// The contact page.
 portalOptions.templates.contact =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -393,7 +393,7 @@ portalOptions.templates.contact =
 
 
 // Contact Success
-The message displayed after a contact form is successfully submitted.
+// The message displayed after a contact form is successfully submitted.
 portalOptions.templates.contactSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -402,7 +402,7 @@ portalOptions.templates.contactSuccess =
 
 
 // Documentation
-The layout for API documentation. This page includes an automatically generated navigation menu.
+// The layout for API documentation. This page includes an automatically generated navigation menu.
 // {{content.subheading}} - The heading above the documentation sub-navigation.
 portalOptions.templates.docs =
 	'<div class="main container" id="main">' +
@@ -420,28 +420,27 @@ portalOptions.templates.docs =
 
 
 // Footer 1
-The first of two footer content sections.
+// The first of two footer content sections.
 portalOptions.templates.footer1: '<div class="footer-1 container" id="footer-1"><hr></div>';
 
 
 // Footer 2
-The second of two footer content sections.
+// The second of two footer content sections.
 portalOptions.templates.footer2 =
 	'<div class="footer-1 container" id="footer-2">' +
 		'<p>{{content.masheryMade}}</p>' +
 	'</div>';
 
 
-<!-- // Forum: All Topics
-The main forum page where all topics are listed.
-@todo Create this layout
-
+// Forum: All Topics
+// The main forum page where all topics are listed.
+// @todo Create this layout
 forumAll: '<div class="main container" id="main"><p>The forum content needs to get created.</p></div>', -->
 
 
 // 404
-The layout for 404 pages.
-portalOptions.templates.fourOhFour =
+// The layout for 404 pages.
+// portalOptions.templates.fourOhFour =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
 		'{{content.main}}' +
@@ -449,8 +448,8 @@ portalOptions.templates.fourOhFour =
 
 
 // IO Docs
-The IO Docs page.
-portalOptions.templates.ioDocs =
+// The IO Docs page.
+// portalOptions.templates.ioDocs =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
 		'{{content.main}}' +
@@ -459,7 +458,7 @@ portalOptions.templates.ioDocs =
 
 
 // Join
-The layout for existing Mashery users signing into an area for the first time. Mashery Terms of Use *must* be displayed on this page, and will be automatically injected if you omit them.
+// The layout for existing Mashery users signing into an area for the first time. Mashery Terms of Use *must* be displayed on this page, and will be automatically injected if you omit them.
 portalOptions.templates.join =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -470,7 +469,7 @@ portalOptions.templates.join =
 
 
 // Join: Success
-The page confirming that an existing Mashery user has joined a new area.
+// The page confirming that an existing Mashery user has joined a new area.
 portalOptions.templates.joinSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -479,7 +478,7 @@ portalOptions.templates.joinSuccess =
 
 
 // Key Activity
-Layout for the key activity report page.
+// Layout for the key activity report page.
 // {{content.applicationLabel}} - The label before the application name.
 // {{content.keyLabel}} - The label before the API key.
 // {{content.secretLabel}} - The label before the key secret.
@@ -510,7 +509,7 @@ portalOptions.templates.keyActivity = function () {
 
 
 // Key: Delete
-Layout for the delete key page.
+// Layout for the delete key page.
 // {{content.applicationLabel}} - The label before the application name.
 // {{content.keyLabel}} - The label before the API key.
 // {{content.secretLabel}} - The label before the key secret.
@@ -539,7 +538,7 @@ portalOptions.templates.keyDelete = function () {
 
 
 // Logout: Success
-The page shown after a user logs out.
+// The page shown after a user logs out.
 portalOptions.templates.logout =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -548,7 +547,7 @@ portalOptions.templates.logout =
 
 
 // Logout: Failed
-The page shown when a logout was unsuccessful.
+// The page shown when a logout was unsuccessful.
 portalOptions.templates.logoutFail =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -557,7 +556,7 @@ portalOptions.templates.logoutFail =
 
 
 // Lost Password Request
-The page where users can request their password be reset.
+// The page where users can request their password be reset.
 portalOptions.templates.lostPassword =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -567,7 +566,7 @@ portalOptions.templates.lostPassword =
 
 
 // Lost Password Reset
-The page shown after a password reset email is sent to the user.
+// The page shown after a password reset email is sent to the user.
 portalOptions.templates.lostPasswordReset =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -576,7 +575,7 @@ portalOptions.templates.lostPasswordReset =
 
 
 // Lost Username Request
-The page where users can request their username be reset.
+// The page where users can request their username be reset.
 portalOptions.templates.lostUsername =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -586,7 +585,7 @@ portalOptions.templates.lostUsername =
 
 
 // Lost Username Reset
-The page where users can reset their username.
+// The page where users can reset their username.
 portalOptions.templates.lostUsernameReset =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -595,7 +594,7 @@ portalOptions.templates.lostUsernameReset =
 
 
 // Remove Membership
-The page where users can remove their membership from this Portal.
+// The page where users can remove their membership from this Portal.
 // {{content.confirm}} - The button text to confirm you want to remove your membership from this Portal.
 // {{content.cancel}} - The button text to cancel removing your account.
 portalOptions.templates.memberRemove =
@@ -610,7 +609,7 @@ portalOptions.templates.memberRemove =
 
 
 // Remove Membership Success
-The page shown when user membership was successfully removed.
+// The page shown when user membership was successfully removed.
 portalOptions.templates.memberRemoveSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -619,7 +618,7 @@ portalOptions.templates.memberRemoveSuccess =
 
 
 // No Access
-Layout for when the user does not have permission to view the page
+// Layout for when the user does not have permission to view the page
 portalOptions.templates.noAccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -628,7 +627,7 @@ portalOptions.templates.noAccess =
 
 
 // Custom Pages
-The layout for custom pages.
+// The layout for custom pages.
 portalOptions.templates.page =
 	'<div class="main container content" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -637,7 +636,7 @@ portalOptions.templates.page =
 
 
 // User Profiles
-The layout for user profile pages.
+// The layout for user profile pages.
 // {{content.headingUserInfo}} - The heading above the user's info.
 // {{content.userWebsite}} - The label before the user's website URL.
 // {{content.userBlog}} - The label before the user's blog URL.
@@ -667,7 +666,7 @@ portalOptions.templates.profile = function () {
 
 
 // Primary Navigation
-The primary navigation content for the Portal.
+// The primary navigation content for the Portal.
 // {{content.menuToggle}} - The label on the button to expand and collapse the navigation menu on smaller screens.
 portalOptions.templates.primaryNav =
 	'<div class="nav-primary nav-wrap nav-collapse" id="nav-primary">' +
@@ -685,7 +684,7 @@ portalOptions.templates.primaryNav =
 
 
 // Registration
-The registration page. Terms of Use *must* be included on this page, and will be automatically injected if you omit them.
+// The registration page. Terms of Use *must* be included on this page, and will be automatically injected if you omit them.
 // {{content.about}} - The "No Spam" message on the registration page.
 portalOptions.templates.register =
 	'<div class="main container" id="main">' +
@@ -704,7 +703,7 @@ portalOptions.templates.register =
 
 
 // Registration Email Sent
-The page confirming that the users registration email was sent.
+// The page confirming that the users registration email was sent.
 portalOptions.templates.registerSent =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -714,7 +713,7 @@ portalOptions.templates.registerSent =
 
 
 // Registration Email Resend
-The page requesting the registration email be resent.
+// The page requesting the registration email be resent.
 portalOptions.templates.registerResend =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -724,7 +723,7 @@ portalOptions.templates.registerResend =
 
 
 // Registration Email Resent
-The page confirming that the registration email was resent.
+// The page confirming that the registration email was resent.
 portalOptions.templates.registerResendSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -733,7 +732,7 @@ portalOptions.templates.registerResendSuccess =
 
 
 // Search
-The layout for search results.
+// The layout for search results.
 // {{content.headingNew}} - The heading to display if no search query is provided.
 // {{content.meta}} - Meta details about the search.
 // {{content.pagePrevious}} - The text for the link to go to the previous page of results.
@@ -782,7 +781,7 @@ portalOptions.templates.search = function () {
 
 
 // Secondary Navigation
-The secondary navigation for the Portal, often included in the footer.
+// The secondary navigation for the Portal, often included in the footer.
 portalOptions.templates.secondaryNav =
 	'<div class="nav-secondary container" id="nav-secondary">' +
 		'<ul id="nav-secondary-list">' +
@@ -792,7 +791,7 @@ portalOptions.templates.secondaryNav =
 
 
 // Secret Visibility
-Show key secrets for 30 days.
+// Show key secrets for 30 days.
 portalOptions.templates.showSecret =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -801,7 +800,7 @@ portalOptions.templates.showSecret =
 
 
 // Secret Visibility: Success
-Key secrets will be shown.
+// Key secrets will be shown.
 portalOptions.templates.showSecretSuccess =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -810,7 +809,7 @@ portalOptions.templates.showSecretSuccess =
 
 
 // Secret Visibility: Error
-Key secrets already shown.
+// Key secrets already shown.
 portalOptions.templates.showSecretError =
 	'<div class="main container container-small" id="main">' +
 		'<h1>{{content.heading}}</h1>' +
@@ -819,7 +818,7 @@ portalOptions.templates.showSecretError =
 
 
 // Sign In
-The sign in page.
+// The sign in page.
 portalOptions.templates.signin =
 	'<div class="main container" id="main">' +
 		'<div class="row">' +
@@ -836,7 +835,7 @@ portalOptions.templates.signin =
 
 
 // User Navigation
-The navigation menu for sign in, registration, account, and logout links.
+// The navigation menu for sign in, registration, account, and logout links.
 portalOptions.templates.userNav =
 	'<div class="nav-user container" id="nav-user">' +
 		'<ul class="nav-user-list list-inline text-small text-muted padding-top-small padding-bottom-small no-margin-bottom text-right" id="nav-user-list">' +

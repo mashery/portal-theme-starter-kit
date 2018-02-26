@@ -199,7 +199,7 @@ h4,
 hr {
 	border: 0;
 	border-top: calc-em(1px) solid $color-gray-light;
-	border-bottom: 0 solid $color-white;
+	border-bottom: 0 solid transparent;
 	box-sizing: content-box;
 	margin: calc-em(32px) auto;
 	overflow: visible;

@@ -9,6 +9,8 @@
 
 This page is living documentation for your Portal theme. If you would like to update your theme, [click here to download the source files](/files/portal-theme.zip).
 
+<mark markdown="1">*__Note:__ This page is only visible to site admins and other power users. Typical developer accounts will not have access to this page, nor will it show up in the navigation menu for them.*</mark>
+
 ## Brand Elements
 
 <style type="text/css">
