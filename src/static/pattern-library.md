@@ -46,6 +46,9 @@ This page is living documentation for your Portal theme. If you would like to up
 	<div class="float-left demo-color-box" style="background-color: #e5e5e5;">
 		#e5e5e5
 	</div>
+	<div class="float-left demo-color-box" style="background-color: #f7f7f7;">
+		#f7f7f7
+	</div>
 	<div class="float-left demo-color-box" style="background-color: #ffffff;">
 		#ffffff
 	</div>
@@ -262,6 +265,7 @@ Your theme uses relative sizing (ems and % instead of pixels) for everything.
 
 ### Text Basics
 
+<div>
 Default text<br>
 <span class="text-muted">Muted text</span><br>
 <span class="text-small">Small text</span><br>
@@ -272,6 +276,7 @@ Default text<br>
 <a href="#">Hyperlinks</a><br>
 <a class="link-no-underline" href="#">Hyperlinks with no underline</a><br>
 <strong>Bold</strong> and <em>italics</em>
+</div>
 
 ```html
 Default text
@@ -560,14 +565,14 @@ Syntax highlighting is provided by [Prism by Lea Verou](http://prismjs.com/). It
 Add `class="lang-*"` to your `code` element, where `*` is the language to be highlighted.
 
 ```html
-<pre><code class="lang-*">
-	/* Your code here...  */
-</code></pre>
+	<pre><code class="lang-*">
+		/* Your code here...  */
+	</code></pre>
 
-<!-- Example -->
-<pre><code class="lang-php">
-	// Your code here...
-</code></pre>
+	<!-- Example -->
+	<pre><code class="lang-php">
+		// Your code here...
+	</code></pre>
 ```
 
 ***Note:*** *The syntax highlighter tool in TinyMCE will automatically add the correct markup and classes and highlighting for you.*
@@ -663,6 +668,7 @@ Create a `div` with the `.bg-hero-video-text` class and add your hero content to
 
 Button styles can be applied `a`, `button`, and `input type="submit"` elements using the `.btn` class. Use `.active` and `.disabled` classes to change the appearance of buttons.
 
+<div>
 <button class="btn">Button</button>
 <button class="btn btn-secondary">Button Secondary</button>
 <button class="btn btn-large">Button Large</button>
@@ -674,6 +680,7 @@ Button styles can be applied `a`, `button`, and `input type="submit"` elements u
 <button class="btn btn-secondary active">Secondary Active</button>
 <button class="btn disabled">Disabled</button>
 <button class="btn btn-secondary disabled">Secondary Disabled</button>
+</div>
 
 ```html
 <button class="btn">Button</button>
@@ -1176,7 +1183,7 @@ Your theme comes bundled with [fluidvids.js](https://github.com/toddmotto/fluidv
 
 <p><iframe width="560" height="315" src="//www.youtube.com/embed/aQ_isEq-pT8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 
-The script will not run until initialized. This is done for you already in the *Body JavaScript* section of *Portal Setup* in the Dashboard.
+The script will not run until initialized in a `portalAfterRender` event. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
 
 ```javascript
 // Responsive iFrame Videos
@@ -1184,6 +1191,19 @@ fluidvids.init({
 	selector: ['iframe', 'object'],
 	players: ['www.youtube.com', 'player.vimeo.com'] // players to support
 });
+```
+
+---
+
+
+## Sticky Footer
+
+If there's not a lot of content on a page, the footer may not be tall enough to fill the rest of the page, resulting in a gap at the bottom of the page. The `stickyFooter.js` plugin pushes the footer down to the bottom of the page even on pages without much content.
+
+The script will not run until initialized in a `portalAfterRender` event. Pass in a unique selector for the footer as an argument. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
+
+```javascript
+stickyFooter('#footer');
 ```
 
 ---
@@ -2251,6 +2271,7 @@ You can selectively hide or show pieces content within a page or documentation o
 
 	// Create table of contents
 	window.addEventListener('portalAfterRender', renderPortalComponentsTOC, false);
+	renderPortalComponentsTOC();
 
 	// Init Translate Demo
 	window.addEventListener('portalAfterRender', function () {

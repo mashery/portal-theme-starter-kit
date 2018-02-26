@@ -80,4 +80,7 @@ window.addEventListener('portalAfterRender', function () {
 		var translate = new Translate();
 	}, false);
 
+	// Sticky footer
+	stickyFooter('#footer');
+
 }, false);
