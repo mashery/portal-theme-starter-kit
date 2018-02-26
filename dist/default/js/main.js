@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.3.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.5.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /*!
  * Astro v10.2.0: Mobile-first navigation patterns
  * (c) 2016 Chris Ferdinandi
@@ -817,6 +817,47 @@ var latestBlogPosts = function (options) {
 	}));
 
 };
+/**
+ * prismForTinyMCE.js
+ * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
+ * @description  Adds class="lang-*" to TinyMCE-generated code snippets
+ * @version  2.0.0
+ * @author  Chris Ferdinandi
+ */
+window.addEventListener('portalAfterRender', (function () {
+
+	'use strict';
+
+	// Get all code snippets
+	var codes = document.querySelectorAll('pre');
+
+	var getLangClass = function (lang) {
+
+		var langClass = '';
+
+		if ( lang === 'bash' ) { langClass = 'lang-bash'; }
+		if ( lang === 'csharp' ) { langClass = 'lang-clike'; }
+		if ( lang === 'cpp' ) { langClass = 'lang-clike'; }
+		if ( lang === 'css' ) { langClass = 'lang-css'; }
+		if ( lang === 'java' ) { langClass = 'lang-java'; }
+		if ( lang === 'jscript' ) { langClass = 'lang-javascript'; }
+		if ( lang === 'php' ) { langClass = 'lang-php'; }
+		if ( lang === 'python' ) { langClass = 'lang-python'; }
+		if ( lang === 'ruby' ) { langClass = 'lang-ruby'; }
+		if ( lang === 'xml' ) { langClass = 'lang-markup'; }
+
+		return langClass;
+
+	};
+
+	codes.forEach((function (code) {
+		var lang = /brush: (.*?);/.exec( code.className );
+		if (!lang || Object.prototype.toString.call(lang) !== '[object Array]' || lang.length < 2) return;
+		var langClass = getLangClass(lang[1]);
+		code.classList.add(langClass);
+	}));
+
+}), false);
 /*!
  * smooth-scroll v12.1.5: Animate scrolling to anchor links
  * (c) 2017 Chris Ferdinandi
@@ -1470,6 +1511,57 @@ var stickyFooter = function (selector) {
 	window.addEventListener('resize', resizeDebounce, false);
 
 };
+/**
+ * tablesForTinyMCE.js
+ * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
+ * @description Add table headers that are missing from the GUI generated tables
+ * @version  2.0.0
+ * @author Chris Ferdinandi
+ *
+ */
+window.addEventListener('portalAfterRender', (function () {
+
+
+	'use strict';
+
+	// Variables
+	var tables = document.querySelectorAll('table');
+
+
+	/**
+	 * Get the closest matching element up the DOM tree.
+	 * @param  {Element} elem     Starting element
+	 * @param  {String}  selector Selector to match against (class, ID, data attribute, or tag)
+	 * @return {Boolean|Element}  Returns null if not match found
+	 */
+	var getTbody = function ( elem ) {
+		for ( ; elem && elem !== document && elem.nodeType === 1; elem = elem.parentNode ) {
+			if ( elem.tagName.toLowerCase() === 'tbody' ) {
+				return elem;
+			}
+		}
+		return null;
+	};
+
+	// Add headers
+	tables.forEach((function (table) {
+
+		// Check if a table head already exists
+		var thead = table.querySelector('thead');
+		if (thead) return;
+
+		// Get the first table row and conver it to a thead
+		var row = table.querySelector('tr');
+		var tbody = getTbody(row);
+		if (!row || !tbody) return;
+		thead = document.createElement('thead');
+		thead.innerHTML = '<tr>' + row.innerHTML + '</tr>';
+		tbody.parentNode.insertBefore(thead, tbody);
+		row.parentNode.removeChild(row);
+
+	}));
+
+}), false);
 /*!
  * translate.js v1.0.0
  * Provide multi-language portal suport

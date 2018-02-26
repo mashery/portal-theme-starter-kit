@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.3.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.5.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -1437,22 +1437,24 @@ td {
 }
 
 /* line 20, src/sass/components/_tables.scss */
-th {
-  border-bottom: 0.125em solid #e5e5e5;
-  font-weight: bold;
-  vertical-align: bottom;
-}
-
-/* line 27, src/sass/components/_tables.scss */
 td {
   border-top: 1px solid #e5e5e5;
   vertical-align: top;
 }
 
+/* line 25, src/sass/components/_tables.scss */
+thead td,
+th {
+  border-top: none;
+  border-bottom: 0.125em solid #e5e5e5;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
 /**
  * Adds zebra striping
  */
-/* line 35, src/sass/components/_tables.scss */
+/* line 37, src/sass/components/_tables.scss */
 .table-striped tbody tr:nth-child(odd) {
   background-color: #f7f7f7;
 }
@@ -1460,7 +1462,7 @@ td {
 /**
  * Reduces padding on condensed tables
  */
-/* line 43, src/sass/components/_tables.scss */
+/* line 45, src/sass/components/_tables.scss */
 .table-condensed th,
 .table-condensed td {
   padding: 0.25em;
@@ -1472,24 +1474,24 @@ td {
  * @link https://techblog.livingsocial.com/blog/2015/04/06/responsive-tables-in-pure-css/
  */
 @media (max-width: 40em) {
-  /* line 57, src/sass/components/_tables.scss */
+  /* line 59, src/sass/components/_tables.scss */
   .table-responsive thead {
     display: none;
     visibility: hidden;
   }
-  /* line 62, src/sass/components/_tables.scss */
+  /* line 64, src/sass/components/_tables.scss */
   .table-responsive tr {
     border-top: 1px solid #ededed;
     display: block;
     padding: 0.5em;
   }
-  /* line 68, src/sass/components/_tables.scss */
+  /* line 70, src/sass/components/_tables.scss */
   .table-responsive td {
     border: 0;
     display: block;
     padding: 0.25em;
   }
-  /* line 73, src/sass/components/_tables.scss */
+  /* line 75, src/sass/components/_tables.scss */
   .table-responsive td:before {
     content: attr(data-label);
     display: block;
