@@ -34,7 +34,7 @@ We've built 3 starter themes to help you get up-and-running more quickly.
 
 <a class="btn btn-large" href="https://github.com/mashery/portal-theme-starter-kit/archive/master.zip">Download the Starter Kit</a>
 
-<mark markdown="1">*__Note:__* Your existing Portal theme will not work with Blackbeard. The markup structure and JavaScript environment is different. Attempting to use an old theme with Blackbeard will cause errors that will break your Portal.</mark>
+<mark markdown="1">*__Note:__ Your existing Portal theme will not work with Blackbeard. The markup structure and JavaScript environment is different. Attempting to use an old theme with Blackbeard will cause errors that will break your Portal.*</mark>
 
 <h3 class="h4">Theme Demos</h3>
 
