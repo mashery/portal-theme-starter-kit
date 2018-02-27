@@ -2,17 +2,23 @@
  * tablesForTinyMCE.js
  * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
  * @description Add table headers that are missing from the GUI generated tables
- * @version  2.0.0
+ * @version  2.1.0
  * @author Chris Ferdinandi
  *
  */
-window.addEventListener('portalAfterRender', function () {
+window.addEventListener('portalBeforeRender', function () {
 
 
 	'use strict';
 
+	// Make sure content exists
+	if (!window.mashery.content.main) return;
+
+
 	// Variables
-	var tables = document.querySelectorAll('table');
+	var content = document.createElement('div');
+	content.innerHTML = window.mashery.content.main;
+	var tables = content.querySelectorAll('table');
 
 
 	/**
@@ -47,5 +53,8 @@ window.addEventListener('portalAfterRender', function () {
 		row.parentNode.removeChild(row);
 
 	});
+
+	// Update content
+	window.mashery.content.main = content.innerHTML;
 
 }, false);

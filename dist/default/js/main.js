@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.5.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.6.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /*!
  * Astro v10.2.0: Mobile-first navigation patterns
  * (c) 2016 Chris Ferdinandi
@@ -821,16 +821,27 @@ var latestBlogPosts = function (options) {
  * prismForTinyMCE.js
  * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
  * @description  Adds class="lang-*" to TinyMCE-generated code snippets
- * @version  2.0.0
+ * @version  2.1.0
  * @author  Chris Ferdinandi
  */
-window.addEventListener('portalAfterRender', (function () {
+window.addEventListener('portalBeforeRender', (function () {
 
 	'use strict';
 
-	// Get all code snippets
-	var codes = document.querySelectorAll('pre');
+	// Make sure content exists
+	if (!window.mashery.content.main) return;
 
+
+	// Get all code snippets
+	var content = document.createElement('div');
+	content.innerHTML = window.mashery.content.main;
+	var codes = content.querySelectorAll('pre[class*="brush:"]');
+
+	/**
+	 * Get the language class to add
+	 * @param  {String} lang The existing language class
+	 * @return {String}      The new language class
+	 */
 	var getLangClass = function (lang) {
 
 		var langClass = '';
@@ -850,12 +861,16 @@ window.addEventListener('portalAfterRender', (function () {
 
 	};
 
+	// Convert the class on each TinyMCE generated code snippet
 	codes.forEach((function (code) {
 		var lang = /brush: (.*?);/.exec( code.className );
 		if (!lang || Object.prototype.toString.call(lang) !== '[object Array]' || lang.length < 2) return;
 		var langClass = getLangClass(lang[1]);
 		code.classList.add(langClass);
 	}));
+
+	// Update content
+	window.mashery.content.main = content.innerHTML;
 
 }), false);
 /*!
@@ -1515,17 +1530,23 @@ var stickyFooter = function (selector) {
  * tablesForTinyMCE.js
  * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
  * @description Add table headers that are missing from the GUI generated tables
- * @version  2.0.0
+ * @version  2.1.0
  * @author Chris Ferdinandi
  *
  */
-window.addEventListener('portalAfterRender', (function () {
+window.addEventListener('portalBeforeRender', (function () {
 
 
 	'use strict';
 
+	// Make sure content exists
+	if (!window.mashery.content.main) return;
+
+
 	// Variables
-	var tables = document.querySelectorAll('table');
+	var content = document.createElement('div');
+	content.innerHTML = window.mashery.content.main;
+	var tables = content.querySelectorAll('table');
 
 
 	/**
@@ -1560,6 +1581,9 @@ window.addEventListener('portalAfterRender', (function () {
 		row.parentNode.removeChild(row);
 
 	}));
+
+	// Update content
+	window.mashery.content.main = content.innerHTML;
 
 }), false);
 /*!
