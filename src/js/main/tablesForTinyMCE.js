@@ -12,7 +12,7 @@ window.addEventListener('portalBeforeRender', function () {
 	'use strict';
 
 	// Make sure content exists
-	if (!window.mashery.content.main) return;
+	if (!window.mashery.content.main || typeof window.mashery.content.main !== 'string') return;
 
 
 	// Variables

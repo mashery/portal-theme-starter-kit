@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.6.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.6.1 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /*!
  * Astro v10.2.0: Mobile-first navigation patterns
  * (c) 2016 Chris Ferdinandi
@@ -829,7 +829,7 @@ window.addEventListener('portalBeforeRender', (function () {
 	'use strict';
 
 	// Make sure content exists
-	if (!window.mashery.content.main) return;
+	if (!window.mashery.content.main || typeof window.mashery.content.main !== 'string') return;
 
 
 	// Get all code snippets
@@ -1540,7 +1540,7 @@ window.addEventListener('portalBeforeRender', (function () {
 	'use strict';
 
 	// Make sure content exists
-	if (!window.mashery.content.main) return;
+	if (!window.mashery.content.main || typeof window.mashery.content.main !== 'string') return;
 
 
 	// Variables
