@@ -58,6 +58,9 @@ get a listing of products from the catalog
 | Name | Description | Type | Required |
 |------|-------------|------|-----------|
 | {productId} | The product ID | String | No
+| {productId} | The product ID | String | No
+| {productId} | The product ID | String | No
+| {productId} | The product ID | String | No
 
 ### Response
 

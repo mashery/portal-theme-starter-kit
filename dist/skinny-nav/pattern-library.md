@@ -1021,6 +1021,14 @@ Add the `.table-responsive` class for tables that reformat on smaller viewports.
 </table>
 ```
 
+#### Automatically make all tables responsive
+
+You can automatically make all tables on a page responsive by running `responsiveTables.init()` in a `portalAfterRender` event.
+
+```js
+responsiveTables.init();
+```
+
 ### Combining Classes
 
 Classes can be combined as needed.
@@ -1142,6 +1150,31 @@ astro.destroy();
 
 ---
 
+## Docs Expand-and-Collapse Navigation
+
+If you have lots of nested documentation content, you may want to have nav items hidden behind an expand-and-collapse menu.
+
+To activate this feature, run `docsNavCollapse()` inside a `portalAfterRender` event.
+
+```js
+docsNavCollapse();
+```
+
+### Options & Settings
+
+You can customize this feature by passing in an `options` object to the `docsNavCollapse()` function.
+
+```js
+docsNavCollapse({
+	selector: '#nav-docs li > ul', // The selector to find the navigation items
+	selectorClass: 'docs-expand-toggle', // The class that's added to the expand-and-collapse links
+	initClass: 'js-docs-expand', // The class that's added to the HTML element when the script initializes
+	show: '+ <span class="screen-reader">Show Nav Items</span>', // The icon to show hidden content
+	hide: '— <span class="screen-reader">Hide Nav Items</span>' // The icon to hide visible content
+});
+```
+
+---
 
 ## Image Styling
 

@@ -172,5 +172,10 @@ window.addEventListener('portalAfterRender', function () {
 
 	// Sticky footer
 	stickyFooter('#footer');
+	if (mashery.contentType === 'ioDocs') {
+		window.setTimeout(function () {
+			stickyFooter('#footer');
+		}, 300);
+	}
 
 }, false);

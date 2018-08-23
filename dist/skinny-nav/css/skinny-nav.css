@@ -463,7 +463,40 @@ figure {
   color: #808080;
 }
 
-/* line 59, src/sass/components/_layout-skinny-nav.scss */
+/* line 58, src/sass/components/_layout-skinny-nav.scss */
+.js-docs-expand #nav-docs li > ul {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 63, src/sass/components/_layout-skinny-nav.scss */
+#nav-docs li.is-shown > ul,
+#nav-docs li.active > ul {
+  display: block;
+  visibility: visible;
+}
+
+/* line 70, src/sass/components/_layout-skinny-nav.scss */
+.docs-expand-toggle {
+  float: right;
+}
+
+/* line 74, src/sass/components/_layout-skinny-nav.scss */
+.docs-expand-show,
+.js-docs-expand .is-shown .docs-expand-show,
+.docs-expand-hide {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 81, src/sass/components/_layout-skinny-nav.scss */
+.js-docs-expand .docs-expand-show,
+.is-shown .docs-expand-hide {
+  display: inline-block;
+  visibility: visible;
+}
+
+/* line 87, src/sass/components/_layout-skinny-nav.scss */
 #footer {
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
@@ -599,7 +632,8 @@ dt {
  * For semantic reasons, should only be used on unordered lists.
  */
 /* line 128, src/sass/components/_typography.scss */
-.list-unstyled {
+.list-unstyled, form ul.failure,
+form ul.error {
   margin-left: 0;
   list-style: none;
 }
@@ -1343,6 +1377,21 @@ button:-moz-focusring,
 #main-wrapper #search-button:focus svg,
 #main-wrapper #search-button:hover svg {
   fill: #5a5a5a;
+}
+
+/**
+ * Errors
+ */
+/* line 318, src/sass/components/_forms.scss */
+form dd p#status,
+form .failure li,
+form .error li {
+  background-color: #e7cfd0;
+  border: 1px solid #d5abad;
+  border-radius: 1px;
+  color: #43070a;
+  margin-bottom: 1.5625em;
+  padding: 0.25em 0.5em;
 }
 
 /**
@@ -2651,7 +2700,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
 /* line 289, src/sass/components/_overrides.scss */
-[hidden] {
+[hidden], ul.success {
   display: none;
   visibility: hidden;
 }
