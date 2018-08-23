@@ -300,3 +300,28 @@ button:-moz-focusring,
 		}
 	}
 }
+
+
+/**
+ * Errors
+ */
+
+ul.success {
+	@extend [hidden];
+}
+
+form ul.failure,
+form ul.error {
+	@extend .list-unstyled;
+}
+
+form dd p#status,
+form .failure li,
+form .error li {
+	background-color: mix( white, $color-danger, 80% );
+	border: calc-em(1px) solid mix( white, $color-danger, 65% );
+	border-radius: calc-em(1px);
+	color: darken( $color-danger, 15% );
+	margin-bottom: $spacing;
+	padding: calc-em(4px) calc-em(8px);
+}

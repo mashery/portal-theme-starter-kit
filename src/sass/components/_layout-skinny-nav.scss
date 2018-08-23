@@ -54,6 +54,34 @@
 	.current-page > a {
 		color: $color-gray-dark;
 	}
+
+	.js-docs-expand & li > ul {
+		display: none;
+		visibility: hidden;
+	}
+
+	li.is-shown > ul,
+	li.active > ul {
+		display: block;
+		visibility: visible;
+	}
+}
+
+.docs-expand-toggle {
+	float: right;
+}
+
+.docs-expand-show,
+.js-docs-expand .is-shown .docs-expand-show,
+.docs-expand-hide {
+	display: none;
+	visibility: hidden;
+}
+
+.js-docs-expand .docs-expand-show,
+.is-shown .docs-expand-hide {
+	display: inline-block;
+	visibility: visible;
 }
 
 #footer {
