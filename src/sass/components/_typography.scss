@@ -9,6 +9,7 @@ body {
 	font-family: $font-primary;
 	font-size: $font-size;
 	line-height: 1.5;
+	overflow-x: hidden;
 
 	@media (min-width: $bp-medium) {
 		line-height: 1.5625;
