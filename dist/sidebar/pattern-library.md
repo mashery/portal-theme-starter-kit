@@ -1,6 +1,7 @@
 <script>
-	mashery.globals.pageFullWidth = true;
+	mashery.globals.noHeading = true;
 </script>
+<div class="full-width" markdown="1">
 <div class="container" markdown="1">
 <div class="row" markdown="1">
 <div class="grid-third" id="demo-subnav"></div>
@@ -251,6 +252,37 @@ Create grids that vary in size based on screen width using the `.grid-dynamic` c
 	<div class="grid-dynamic"><img src="kitten.jpg"></div>
 	<div class="grid-dynamic"><img src="kitten.jpg"></div>
 </div>
+```
+
+
+### Full Width Layouts
+
+Make any piece of content go full width (run from one edge of the viewport to the other) by adding the `.full-width` class.
+
+```html
+<div class="bg-muted bg-hero full-width">
+	<h1>This entire section will run edge-to-edge.</h1>
+	<p>Useful for hero sections with full-bleed images.</p>
+</div>
+
+<p>This content will have the normal amount of padding on the left and right.</p>
+
+<img class="full-width" src="/path/to/image.jpg">
+
+<p>The image above will also run edge-to-edge.</p>
+```
+
+
+### Hiding Headings
+
+You can hide the automatically generated heading on a page by setting `mashery.globals.noHeading` to `true` inline on that page.
+
+```html
+<script>
+	mashery.globals.noHeading = true;
+</script>
+
+The rest of your content...
 ```
 
 ---
@@ -2268,6 +2300,7 @@ You can selectively hide or show pieces content within a page or documentation o
 	Logged out users will NOT see this. Logged in users will.
 </div>
 ```
+</div>
 </div>
 </div>
 </div>
