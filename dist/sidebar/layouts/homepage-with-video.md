@@ -1,8 +1,8 @@
 <script>
-	mashery.globals.pageFullWidth = true;
+	mashery.globals.noHeading = true;
 </script>
 
-<div class="bg-dark bg-hero bg-hero-video padding-top-xlarge padding-bottom-xlarge">
+<div class="bg-dark bg-hero bg-hero-video padding-top-xlarge padding-bottom-xlarge full-width">
 	<div class="bg-hero-video-player">
 		<!-- Background Video -->
 		<!-- Alternate video: https://player.vimeo.com/video/199767988?title=0&portrait=0&byline=0&autoplay=1&loop=1 -->
@@ -25,7 +25,7 @@
 	</div>
 </div>
 
-<div class="container padding-top-xlarge padding-bottom text-center" id="get-started">
+<div class="padding-top-xlarge padding-bottom text-center" id="get-started">
 	<div class="row">
 		<div class="grid-dynamic margin-bottom">
 			<a class="link-block" href="/member/register">
@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-<div class="bg-primary bg-hero padding-top padding-bottom" style="background-image: url(https://developer.mashery.com/files/explore.jpg);">
+<div class="bg-primary bg-hero padding-top padding-bottom full-width" style="background-image: url(https://developer.mashery.com/files/explore.jpg);">
 	<article class="container">
 		<div class="row">
 			<div class="grid-half">
@@ -91,10 +91,8 @@
 	</article>
 </div>
 
-<div class="padding-top">
-	<div class="container text-center">
-		<h2 class="h1">Ready to join?</h2>
-		<p class="text-large"><a href="/member/register">Sign up now</a> to join our API program.</p>
-		<p><a class="btn btn-large" href="/member/register">Join Now</a></p>
-	</div>
+<div class="padding-top text-center">
+	<h2 class="h1">Ready to join?</h2>
+	<p class="text-large"><a href="/member/register">Sign up now</a> to join our API program.</p>
+	<p><a class="btn btn-large" href="/member/register">Join Now</a></p>
 </div>

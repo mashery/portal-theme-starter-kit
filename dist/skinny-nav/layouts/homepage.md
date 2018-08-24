@@ -1,8 +1,8 @@
 <script>
-	mashery.globals.pageFullWidth = true;
+	mashery.globals.noHeading = true;
 </script>
 
-<div class="bg-dark bg-hero padding-top-xlarge padding-bottom-xlarge text-center" style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.unsplash.com/photo-1429734956993-8a9b0555e122?ixlib=rb-0.3.5&s=4f32d5f78f80f15d4fe6071c47b2f12c&auto=format&fit=crop&w=2879&q=80);">
+<div class="bg-dark bg-hero padding-top-xlarge padding-bottom-xlarge text-center full-width" style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.unsplash.com/photo-1429734956993-8a9b0555e122?ixlib=rb-0.3.5&s=4f32d5f78f80f15d4fe6071c47b2f12c&auto=format&fit=crop&w=2879&q=80);">
 	<h1 class="text-hero no-margin-bottom">Welcome to our developer program!</h1>
 	<p class="text-large">Discover the world of our APIs.</p>
 	<p>
@@ -17,7 +17,7 @@
 	</p>
 </div>
 
-<div class="container padding-top-xlarge padding-bottom text-center" id="get-started">
+<div class="padding-top-xlarge padding-bottom text-center" id="get-started">
 	<div class="row">
 		<div class="grid-dynamic margin-bottom">
 			<a class="link-block" href="/member/register">
@@ -50,7 +50,7 @@
 	</div>
 </div>
 
-<div class="bg-primary bg-hero padding-top padding-bottom" style="background-image: url(https://developer.mashery.com/files/explore.jpg);">
+<div class="bg-primary bg-hero padding-top padding-bottom full-width" style="background-image: url(https://developer.mashery.com/files/explore.jpg);">
 	<article class="container">
 		<div class="row">
 			<div class="grid-half">
@@ -83,10 +83,8 @@
 	</article>
 </div>
 
-<div class="padding-top">
-	<div class="container text-center">
-		<h2 class="h1">Ready to join?</h2>
-		<p class="text-large"><a href="/member/register">Sign up now</a> to join our API program.</p>
-		<p><a class="btn btn-large" href="/member/register">Join Now</a></p>
-	</div>
+<div class="padding-top text-center">
+	<h2 class="h1">Ready to join?</h2>
+	<p class="text-large"><a href="/member/register">Sign up now</a> to join our API program.</p>
+	<p><a class="btn btn-large" href="/member/register">Join Now</a></p>
 </div>
