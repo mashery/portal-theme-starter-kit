@@ -1,0 +1,12 @@
+/**
+ * @section Swagger
+ * Styling specific to Swagger pages
+ */
+
+.swagger-ui {
+
+	.topbar {
+		@extend [hidden];
+	}
+
+}

@@ -1970,6 +1970,10 @@ pre.error {
 }
 
 /**
+ * @section Swagger
+ * Styling specific to Swagger pages
+ */
+/**
  * @section Mashtips
  * Styling for .mashtip elements
  */
@@ -2715,7 +2719,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
 /* line 304, src/sass/components/_overrides.scss */
-[hidden], ul.success {
+[hidden], ul.success, .swagger-ui .topbar {
   display: none;
   visibility: hidden;
 }
