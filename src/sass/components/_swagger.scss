@@ -90,34 +90,34 @@
 		margin-right: calc-em(8px);
 		padding: calc-em(4px) calc-em(8px);
 		text-align: center;
+	}
 
-		.opblock-get & {
-			background-color: $color-get;
-		}
+	.opblock-get .opblock-summary-method {
+		background-color: $color-get;
+	}
 
-		.opblock-post & {
-			background-color: $color-post;
-		}
+	.opblock-post .opblock-summary-method {
+		background-color: $color-post;
+	}
 
-		.opblock-put & {
-			background-color: $color-put;
-		}
+	.opblock-put .opblock-summary-method {
+		background-color: $color-put;
+	}
 
-		.opblock-delete & {
-			background-color: $color-delete;
-		}
+	.opblock-delete .opblock-summary-method {
+		background-color: $color-delete;
+	}
 
-		.opblock-patch & {
-			background-color: $color-patch;
-		}
+	.opblock-patch .opblock-summary-method {
+		background-color: $color-patch;
+	}
 
-		.opblock-options & {
-			background-color: $color-options;
-		}
+	.opblock-options .opblock-summary-method {
+		background-color: $color-options;
+	}
 
-		.opblock-head & {
-			background-color: $color-head;
-		}
+	.opblock-head .opblock-summary-method {
+		background-color: $color-head;
 	}
 
 	.opblock-summary-path a {

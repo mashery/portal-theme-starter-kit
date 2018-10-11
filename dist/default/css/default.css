@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.4 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.5 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2060,38 +2060,38 @@ pre.error {
   text-align: center;
 }
 
-/* line 94, src/sass/components/_swagger.scss */
-.opblock-get .swagger-ui .opblock-summary-method {
+/* line 95, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-get .opblock-summary-method {
   background-color: #0088cc;
 }
 
-/* line 98, src/sass/components/_swagger.scss */
-.opblock-post .swagger-ui .opblock-summary-method {
+/* line 99, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-post .opblock-summary-method {
   background-color: #377f31;
 }
 
-/* line 102, src/sass/components/_swagger.scss */
-.opblock-put .swagger-ui .opblock-summary-method {
+/* line 103, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-put .opblock-summary-method {
   background-color: #dba909;
 }
 
-/* line 106, src/sass/components/_swagger.scss */
-.opblock-delete .swagger-ui .opblock-summary-method {
+/* line 107, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-delete .opblock-summary-method {
   background-color: #880e14;
 }
 
-/* line 110, src/sass/components/_swagger.scss */
-.opblock-patch .swagger-ui .opblock-summary-method {
+/* line 111, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-patch .opblock-summary-method {
   background-color: #860d8e;
 }
 
-/* line 114, src/sass/components/_swagger.scss */
-.opblock-options .swagger-ui .opblock-summary-method {
+/* line 115, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-options .opblock-summary-method {
   background-color: #cc7100;
 }
 
-/* line 118, src/sass/components/_swagger.scss */
-.opblock-head .swagger-ui .opblock-summary-method {
+/* line 119, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-head .opblock-summary-method {
   background-color: #00557f;
 }
 
