@@ -10,7 +10,7 @@
 	},
 	"license": "MIT",
 	"blackbeard": {
-		"version": "2.7.9",
+		"version": "2.7.11",
 		"author": "Chris Ferdinandi",
 		"owner": "TIBCO",
 		"theme": "Default"

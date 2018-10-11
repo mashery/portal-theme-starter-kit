@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.9 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.11 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2032,73 +2032,73 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   visibility: hidden;
 }
 
-/* line 25, src/sass/components/_swagger.scss */
+/* line 29, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag > a, .swagger-ui .opblock-tag > .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 31, src/sass/components/_swagger.scss */
+/* line 35, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag small {
   font-size: 1em;
   text-transform: none;
 }
 
-/* line 37, src/sass/components/_swagger.scss */
+/* line 41, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag .expand-operation {
   display: none !important;
   visibility: hidden !important;
 }
 
-/* line 44, src/sass/components/_swagger.scss */
+/* line 48, src/sass/components/_swagger.scss */
 .swagger-ui .opblock {
   margin-bottom: 1.5625em;
   padding: 0.75em;
 }
 
-/* line 49, src/sass/components/_swagger.scss */
+/* line 53, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get {
   background-color: #e6f3fa;
   border: 1px solid #bfe1f2;
 }
 
-/* line 54, src/sass/components/_swagger.scss */
+/* line 58, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post {
   background-color: #ebf2ea;
   border: 1px solid #cddfcc;
 }
 
-/* line 59, src/sass/components/_swagger.scss */
+/* line 63, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put {
   background-color: #fbf6e6;
   border: 1px solid #f6eac2;
 }
 
-/* line 64, src/sass/components/_swagger.scss */
+/* line 68, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete {
   background-color: #f3e7e8;
   border: 1px solid #e1c3c4;
 }
 
-/* line 69, src/sass/components/_swagger.scss */
+/* line 73, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch {
   background-color: #f3e7f4;
   border: 1px solid #e1c3e3;
 }
 
-/* line 74, src/sass/components/_swagger.scss */
+/* line 78, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options {
   background-color: #faf1e6;
   border: 1px solid #f2dcbf;
 }
 
-/* line 79, src/sass/components/_swagger.scss */
+/* line 83, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head {
   background-color: #e6eef2;
   border: 1px solid #bfd5df;
 }
 
-/* line 84, src/sass/components/_swagger.scss */
+/* line 88, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-method {
   border-radius: 0.3125em;
   color: #ffffff;
@@ -2110,83 +2110,91 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   text-align: center;
 }
 
-/* line 95, src/sass/components/_swagger.scss */
+/* line 99, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get .opblock-summary-method {
   background-color: #0088cc;
 }
 
-/* line 99, src/sass/components/_swagger.scss */
+/* line 103, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post .opblock-summary-method {
   background-color: #377f31;
 }
 
-/* line 103, src/sass/components/_swagger.scss */
+/* line 107, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put .opblock-summary-method {
   background-color: #dba909;
 }
 
-/* line 107, src/sass/components/_swagger.scss */
+/* line 111, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete .opblock-summary-method {
   background-color: #880e14;
 }
 
-/* line 111, src/sass/components/_swagger.scss */
+/* line 115, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch .opblock-summary-method {
   background-color: #860d8e;
 }
 
-/* line 115, src/sass/components/_swagger.scss */
+/* line 119, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options .opblock-summary-method {
   background-color: #cc7100;
 }
 
-/* line 119, src/sass/components/_swagger.scss */
+/* line 123, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head .opblock-summary-method {
   background-color: #00557f;
 }
 
-/* line 123, src/sass/components/_swagger.scss */
+/* line 127, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a, .swagger-ui .opblock-summary-path .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 127, src/sass/components/_swagger.scss */
+/* line 131, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a:active, .swagger-ui .opblock-summary-path .link-block-styled:active, .swagger-ui .opblock-summary-path a:hover, .swagger-ui .opblock-summary-path .link-block-styled:hover, .swagger-ui .opblock-summary-path .link-block:hover .link-block-styled, .link-block:hover .swagger-ui .opblock-summary-path .link-block-styled {
   text-decoration: underline;
 }
 
-/* line 149, src/sass/components/_swagger.scss */
+/* line 153, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .inner-object {
   margin-bottom: 0;
 }
 
-/* line 154, src/sass/components/_swagger.scss */
+/* line 158, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 157, src/sass/components/_swagger.scss */
+/* line 161, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table td {
   border-top: none;
 }
 
-/* line 161, src/sass/components/_swagger.scss */
+/* line 165, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table thead td,
 .swagger-ui .model-box table th {
   border-bottom: none;
 }
 
-/* line 166, src/sass/components/_swagger.scss */
+/* line 170, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table th,
 .swagger-ui .model-box table td {
   padding: 0;
 }
 
-/* line 172, src/sass/components/_swagger.scss */
+/* line 176, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
+}
+
+/* line 182, src/sass/components/_swagger.scss */
+.swagger-ui .authorization__btn {
+  background-color: transparent !important;
+  border: none !important;
+  float: right;
+  margin-top: -3.5em;
 }
 
 /**
@@ -2912,7 +2920,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  */
 /* line 304, src/sass/components/_overrides.scss */
 [hidden], ul.success, .swagger-ui .topbar,
-.swagger-ui .info .url, .swagger-ui .models h4 svg {
+.swagger-ui .info .url, .swagger-ui .scheme-container .close-modal, .swagger-ui .models h4 svg {
   display: none;
   visibility: hidden;
 }

@@ -18,6 +18,10 @@
 			display: none;
 			visibility: hidden;
 		}
+
+		.close-modal {
+			@extend [hidden];
+		}
 	}
 
 	.opblock-tag {
@@ -173,6 +177,13 @@
 			margin-bottom: $spacing;
 		}
 
+	}
+
+	.authorization__btn {
+		background-color: transparent !important;
+		border: none !important;
+		float: right;
+		margin-top: calc-em(-56px);
 	}
 
 }
