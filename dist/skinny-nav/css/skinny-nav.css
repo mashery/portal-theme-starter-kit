@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.13 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.14 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2214,7 +2214,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 1.25em;
+  padding: 0 1.25em;
   border-bottom: 1px solid #e5e5e5;
   -webkit-box-align: center;
       -ms-flex-align: center;
