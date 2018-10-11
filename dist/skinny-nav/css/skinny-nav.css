@@ -2005,43 +2005,43 @@ pre.error {
 }
 
 /* line 48, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-get {
+.swagger-ui .opblock-get {
   background-color: #e6f3fa;
   border: 1px solid #bfe1f2;
 }
 
 /* line 53, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-post {
+.swagger-ui .opblock-post {
   background-color: #ebf2ea;
   border: 1px solid #cddfcc;
 }
 
 /* line 58, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-put {
+.swagger-ui .opblock-put {
   background-color: #fbf6e6;
   border: 1px solid #f6eac2;
 }
 
 /* line 63, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-delete {
+.swagger-ui .opblock-delete {
   background-color: #f3e7e8;
   border: 1px solid #e1c3c4;
 }
 
 /* line 68, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-patch {
+.swagger-ui .opblock-patch {
   background-color: #f3e7f4;
   border: 1px solid #e1c3e3;
 }
 
 /* line 73, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-options {
+.swagger-ui .opblock-options {
   background-color: #faf1e6;
   border: 1px solid #f2dcbf;
 }
 
 /* line 78, src/sass/components/_swagger.scss */
-.swagger-ui .opblock .opblock-head {
+.swagger-ui .opblock-head {
   background-color: #e6eef2;
   border: 1px solid #bfd5df;
 }

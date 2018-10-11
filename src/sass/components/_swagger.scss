@@ -42,44 +42,42 @@
 	}
 
 	.opblock {
-
 		margin-bottom: $spacing;
+	}
 
-		.opblock-get {
-			background-color: mix(white, $color-get, 90%);
-			border: calc-em(1px) solid mix(white, $color-get, 75%);
-		}
+	.opblock-get {
+		background-color: mix(white, $color-get, 90%);
+		border: calc-em(1px) solid mix(white, $color-get, 75%);
+	}
 
-		.opblock-post {
-			background-color: mix(white, $color-post, 90%);
-			border: calc-em(1px) solid mix(white, $color-post, 75%);
-		}
+	.opblock-post {
+		background-color: mix(white, $color-post, 90%);
+		border: calc-em(1px) solid mix(white, $color-post, 75%);
+	}
 
-		.opblock-put {
-			background-color: mix(white, $color-put, 90%);
-			border: calc-em(1px) solid mix(white, $color-put, 75%);
-		}
+	.opblock-put {
+		background-color: mix(white, $color-put, 90%);
+		border: calc-em(1px) solid mix(white, $color-put, 75%);
+	}
 
-		.opblock-delete {
-			background-color: mix(white, $color-delete, 90%);
-			border: calc-em(1px) solid mix(white, $color-delete, 75%);
-		}
+	.opblock-delete {
+		background-color: mix(white, $color-delete, 90%);
+		border: calc-em(1px) solid mix(white, $color-delete, 75%);
+	}
 
-		.opblock-patch {
-			background-color: mix(white, $color-patch, 90%);
-			border: calc-em(1px) solid mix(white, $color-patch, 75%);
-		}
+	.opblock-patch {
+		background-color: mix(white, $color-patch, 90%);
+		border: calc-em(1px) solid mix(white, $color-patch, 75%);
+	}
 
-		.opblock-options {
-			background-color: mix(white, $color-options, 90%);
-			border: calc-em(1px) solid mix(white, $color-options, 75%);
-		}
+	.opblock-options {
+		background-color: mix(white, $color-options, 90%);
+		border: calc-em(1px) solid mix(white, $color-options, 75%);
+	}
 
-		.opblock-head {
-			background-color: mix(white, $color-head, 90%);
-			border: calc-em(1px) solid mix(white, $color-head, 75%);
-		}
-
+	.opblock-head {
+		background-color: mix(white, $color-head, 90%);
+		border: calc-em(1px) solid mix(white, $color-head, 75%);
 	}
 
 }
