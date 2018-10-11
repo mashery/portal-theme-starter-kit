@@ -146,6 +146,11 @@
 			@extend pre;
 		}
 
+		.brace-open,
+		.inner-object {
+			margin-bottom: 0;
+		}
+
 		table {
 			margin-bottom: 0;
 

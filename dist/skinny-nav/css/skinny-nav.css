@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.8 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.9 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2124,22 +2124,28 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 }
 
 /* line 149, src/sass/components/_swagger.scss */
+.swagger-ui .model-box .brace-open,
+.swagger-ui .model-box .inner-object {
+  margin-bottom: 0;
+}
+
+/* line 154, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 152, src/sass/components/_swagger.scss */
+/* line 157, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table td {
   border-top: none;
 }
 
-/* line 156, src/sass/components/_swagger.scss */
+/* line 161, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table thead td,
 .swagger-ui .model-box table th {
   border-bottom: none;
 }
 
-/* line 162, src/sass/components/_swagger.scss */
+/* line 167, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
