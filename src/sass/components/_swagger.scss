@@ -5,8 +5,29 @@
 
 .swagger-ui {
 
-	.topbar {
+	.topbar,
+	.info .url {
 		@extend [hidden];
+	}
+
+	.scheme-container {
+		@extend .credentials;
+		@extend .margin-top;
+	}
+
+	.opblock-tag {
+
+		& > a {
+			@extend .h3;
+			color: $color-black;
+			text-decoration: none;
+		}
+
+		.expand-operation {
+			display: none;
+			visibility: hidden;
+		}
+
 	}
 
 }

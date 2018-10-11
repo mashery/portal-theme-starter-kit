@@ -695,7 +695,9 @@ h2,
 h3,
 .h3,
 .apiDescriptionList h4,
-.method h4 {
+.method h4,
+.swagger-ui .opblock-tag > a,
+.swagger-ui .opblock-tag > .link-block-styled {
   font-size: 1.1875em;
 }
 
@@ -1615,7 +1617,7 @@ th {
  * Form for API Key
  */
 /* line 23, src/sass/components/_iodocs.scss */
-.credentials {
+.credentials, .swagger-ui .scheme-container {
   background-color: #f7f7f7;
   border: 1px solid #e5e5e5;
   border-radius: 1px;
@@ -1973,6 +1975,18 @@ pre.error {
  * @section Swagger
  * Styling specific to Swagger pages
  */
+/* line 20, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-tag > a, .swagger-ui .opblock-tag > .link-block-styled {
+  color: #272727;
+  text-decoration: none;
+}
+
+/* line 26, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-tag .expand-operation {
+  display: none;
+  visibility: hidden;
+}
+
 /**
  * @section Mashtips
  * Styling for .mashtip elements
@@ -2603,7 +2617,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 }
 
 /* line 200, src/sass/components/_overrides.scss */
-.margin-top {
+.margin-top, .swagger-ui .scheme-container {
   margin-top: 1.5625em;
 }
 
@@ -2719,7 +2733,8 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
 /* line 304, src/sass/components/_overrides.scss */
-[hidden], ul.success, .swagger-ui .topbar {
+[hidden], ul.success, .swagger-ui .topbar,
+.swagger-ui .info .url {
   display: none;
   visibility: hidden;
 }
