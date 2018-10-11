@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.2 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.3 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -1691,7 +1691,7 @@ pre.error {
 }
 
 /* line 109, src/sass/components/_iodocs.scss */
-.method .title .http-method {
+.method .title .http-method, .method .title .swagger-ui .opblock-summary-method, .swagger-ui .method .title .opblock-summary-method {
   border-radius: 0.3125em;
   color: #ffffff;
   display: inline-block;
@@ -1798,7 +1798,7 @@ pre.error {
 }
 
 /* line 178, src/sass/components/_iodocs.scss */
-.category-iodocs .get .http-method {
+.category-iodocs .get .http-method, .category-iodocs .get .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .get .opblock-summary-method {
   background-color: #0088cc;
 }
 
@@ -1820,7 +1820,7 @@ pre.error {
 }
 
 /* line 195, src/sass/components/_iodocs.scss */
-.category-iodocs .post .http-method {
+.category-iodocs .post .http-method, .category-iodocs .post .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .post .opblock-summary-method {
   background-color: #377f31;
 }
 
@@ -1842,7 +1842,7 @@ pre.error {
 }
 
 /* line 212, src/sass/components/_iodocs.scss */
-.category-iodocs .put .http-method {
+.category-iodocs .put .http-method, .category-iodocs .put .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .put .opblock-summary-method {
   background-color: #dba909;
 }
 
@@ -1864,7 +1864,7 @@ pre.error {
 }
 
 /* line 229, src/sass/components/_iodocs.scss */
-.category-iodocs .delete .http-method {
+.category-iodocs .delete .http-method, .category-iodocs .delete .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .delete .opblock-summary-method {
   background-color: #880e14;
 }
 
@@ -1886,7 +1886,7 @@ pre.error {
 }
 
 /* line 246, src/sass/components/_iodocs.scss */
-.category-iodocs .patch .http-method {
+.category-iodocs .patch .http-method, .category-iodocs .patch .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .patch .opblock-summary-method {
   background-color: #860d8e;
 }
 
@@ -1908,7 +1908,7 @@ pre.error {
 }
 
 /* line 263, src/sass/components/_iodocs.scss */
-.category-iodocs .method.options .http-method {
+.category-iodocs .method.options .http-method, .category-iodocs .method.options .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .method.options .opblock-summary-method {
   background-color: #cc7100;
 }
 
@@ -1930,7 +1930,7 @@ pre.error {
 }
 
 /* line 280, src/sass/components/_iodocs.scss */
-.category-iodocs .head .http-method {
+.category-iodocs .head .http-method, .category-iodocs .head .swagger-ui .opblock-summary-method, .swagger-ui .category-iodocs .head .opblock-summary-method {
   background-color: #00557f;
 }
 
@@ -2003,48 +2003,84 @@ pre.error {
 /* line 44, src/sass/components/_swagger.scss */
 .swagger-ui .opblock {
   margin-bottom: 1.5625em;
+  padding: 0.75em;
 }
 
-/* line 48, src/sass/components/_swagger.scss */
+/* line 49, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get {
   background-color: #e6f3fa;
   border: 1px solid #bfe1f2;
 }
 
-/* line 53, src/sass/components/_swagger.scss */
+/* line 54, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post {
   background-color: #ebf2ea;
   border: 1px solid #cddfcc;
 }
 
-/* line 58, src/sass/components/_swagger.scss */
+/* line 59, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put {
   background-color: #fbf6e6;
   border: 1px solid #f6eac2;
 }
 
-/* line 63, src/sass/components/_swagger.scss */
+/* line 64, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete {
   background-color: #f3e7e8;
   border: 1px solid #e1c3c4;
 }
 
-/* line 68, src/sass/components/_swagger.scss */
+/* line 69, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch {
   background-color: #f3e7f4;
   border: 1px solid #e1c3e3;
 }
 
-/* line 73, src/sass/components/_swagger.scss */
+/* line 74, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options {
   background-color: #faf1e6;
   border: 1px solid #f2dcbf;
 }
 
-/* line 78, src/sass/components/_swagger.scss */
+/* line 79, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head {
   background-color: #e6eef2;
   border: 1px solid #bfd5df;
+}
+
+/* line 87, src/sass/components/_swagger.scss */
+.opblock-get .swagger-ui .opblock-summary-method {
+  background-color: #0088cc;
+}
+
+/* line 91, src/sass/components/_swagger.scss */
+.opblock-post .swagger-ui .opblock-summary-method {
+  background-color: #377f31;
+}
+
+/* line 95, src/sass/components/_swagger.scss */
+.opblock-put .swagger-ui .opblock-summary-method {
+  background-color: #dba909;
+}
+
+/* line 99, src/sass/components/_swagger.scss */
+.opblock-delete .swagger-ui .opblock-summary-method {
+  background-color: #880e14;
+}
+
+/* line 103, src/sass/components/_swagger.scss */
+.opblock-patch .swagger-ui .opblock-summary-method {
+  background-color: #860d8e;
+}
+
+/* line 107, src/sass/components/_swagger.scss */
+.opblock-options .swagger-ui .opblock-summary-method {
+  background-color: #cc7100;
+}
+
+/* line 111, src/sass/components/_swagger.scss */
+.opblock-head .swagger-ui .opblock-summary-method {
+  background-color: #00557f;
 }
 
 /**

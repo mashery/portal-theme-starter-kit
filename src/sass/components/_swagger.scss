@@ -43,6 +43,7 @@
 
 	.opblock {
 		margin-bottom: $spacing;
+		padding: calc-em(12px);
 	}
 
 	.opblock-get {
@@ -78,6 +79,38 @@
 	.opblock-head {
 		background-color: mix(white, $color-head, 90%);
 		border: calc-em(1px) solid mix(white, $color-head, 75%);
+	}
+
+	.opblock-summary-method {
+		@extend .http-method ;
+
+		.opblock-get & {
+			background-color: $color-get;
+		}
+
+		.opblock-post & {
+			background-color: $color-post;
+		}
+
+		.opblock-put & {
+			background-color: $color-put;
+		}
+
+		.opblock-delete & {
+			background-color: $color-delete;
+		}
+
+		.opblock-patch & {
+			background-color: $color-patch;
+		}
+
+		.opblock-options & {
+			background-color: $color-options;
+		}
+
+		.opblock-head & {
+			background-color: $color-head;
+		}
 	}
 
 }
