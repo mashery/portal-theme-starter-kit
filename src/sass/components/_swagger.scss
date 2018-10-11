@@ -218,12 +218,12 @@
 		.modal-ux-content {
 			overflow-y: auto;
 			max-height: calc-em(540px);
-			padding: calc-em(20px);
+			padding: calc-em(21px);
 		}
 
 		.modal-ux-header {
 			display: flex;
-			padding: calc-em(12px) 0;
+			padding: calc-em(20px);
 			border-bottom: calc-em(1px) solid $color-gray-light;
 			align-items: center;
 		}

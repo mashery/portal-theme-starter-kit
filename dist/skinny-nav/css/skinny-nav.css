@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.12 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.13 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2206,7 +2206,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 .swagger-ui .dialog-ux .modal-ux-content {
   overflow-y: auto;
   max-height: 33.75em;
-  padding: 1.25em;
+  padding: 1.3125em;
 }
 
 /* line 224, src/sass/components/_swagger.scss */
@@ -2214,7 +2214,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0.75em 0;
+  padding: 1.25em;
   border-bottom: 1px solid #e5e5e5;
   -webkit-box-align: center;
       -ms-flex-align: center;
