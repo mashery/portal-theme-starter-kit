@@ -139,13 +139,25 @@
 	}
 
 	.model-box {
+
 		table {
 			margin-bottom: 0;
+		}
+
+		.brace-open {
+			margin-left: calc-em(5px);
 		}
 
 		.brace-close {
 			margin-bottom: $spacing;
 		}
+
+		table,
+		.brace-open,
+		.brace-close {
+			@extend pre;
+		}
+
 	}
 
 }
