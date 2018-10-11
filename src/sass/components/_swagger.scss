@@ -140,22 +140,27 @@
 
 	.model-box {
 
-		table {
-			margin-bottom: 0;
+		.inner-object,
+		.brace-open,
+		.brace-close {
+			@extend pre;
 		}
 
-		.brace-open {
-			margin-left: calc-em(5px);
+		table {
+			margin-bottom: 0;
+
+			td {
+				border-top: none;
+			}
+
+			thead td,
+			th {
+				border-bottom: none;
+			}
 		}
 
 		.brace-close {
 			margin-bottom: $spacing;
-		}
-
-		table,
-		.brace-open,
-		.brace-close {
-			@extend pre;
 		}
 
 	}

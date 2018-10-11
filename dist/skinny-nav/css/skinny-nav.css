@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.7 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.8 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -849,7 +849,7 @@ q:after {
 code,
 kbd,
 pre,
-.swagger-ui .model-box table,
+.swagger-ui .model-box .inner-object,
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .brace-close,
 samp {
@@ -867,7 +867,7 @@ code {
 }
 
 /* line 22, src/sass/components/_code.scss */
-pre, .swagger-ui .model-box table,
+pre, .swagger-ui .model-box .inner-object,
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .brace-close {
   background-color: #f4f4f4;
@@ -884,7 +884,7 @@ pre, .swagger-ui .model-box table,
 }
 
 /* line 33, src/sass/components/_code.scss */
-pre code, .swagger-ui .model-box table code,
+pre code, .swagger-ui .model-box .inner-object code,
 .swagger-ui .model-box .brace-open code,
 .swagger-ui .model-box .brace-close code {
   background-color: transparent;
@@ -898,7 +898,7 @@ pre code, .swagger-ui .model-box table code,
  * Overflow code samples with horizontal scrolling instead of wrapping
  */
 /* line 45, src/sass/components/_code.scss */
-.code-overflow pre, .code-overflow .swagger-ui .model-box table, .swagger-ui .model-box .code-overflow table, .code-overflow
+.code-overflow pre, .code-overflow .swagger-ui .model-box .inner-object, .swagger-ui .model-box .code-overflow .inner-object, .code-overflow
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .code-overflow .brace-open, .code-overflow
 .swagger-ui .model-box .brace-close,
@@ -1642,7 +1642,7 @@ th {
  * Error styling
  */
 /* line 37, src/sass/components/_iodocs.scss */
-pre.error, .swagger-ui .model-box table.error,
+pre.error, .swagger-ui .model-box .error.inner-object,
 .swagger-ui .model-box .error.brace-open,
 .swagger-ui .model-box .error.brace-close {
   background-color: #e7cfd0;
@@ -1980,7 +1980,7 @@ pre.error, .swagger-ui .model-box table.error,
 }
 
 /* line 310, src/sass/components/_iodocs.scss */
-.category-iodocs #main-wrapper pre.response, .category-iodocs #main-wrapper .swagger-ui .model-box table.response, .swagger-ui .model-box .category-iodocs #main-wrapper table.response, .category-iodocs #main-wrapper
+.category-iodocs #main-wrapper pre.response, .category-iodocs #main-wrapper .swagger-ui .model-box .response.inner-object, .swagger-ui .model-box .category-iodocs #main-wrapper .response.inner-object, .category-iodocs #main-wrapper
 .swagger-ui .model-box .response.brace-open,
 .swagger-ui .model-box .category-iodocs #main-wrapper .response.brace-open, .category-iodocs #main-wrapper
 .swagger-ui .model-box .response.brace-close,
@@ -2123,17 +2123,23 @@ pre.error, .swagger-ui .model-box table.error,
   text-decoration: underline;
 }
 
-/* line 143, src/sass/components/_swagger.scss */
+/* line 149, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 147, src/sass/components/_swagger.scss */
-.swagger-ui .model-box .brace-open {
-  margin-left: 0.3125em;
+/* line 152, src/sass/components/_swagger.scss */
+.swagger-ui .model-box table td {
+  border-top: none;
 }
 
-/* line 151, src/sass/components/_swagger.scss */
+/* line 156, src/sass/components/_swagger.scss */
+.swagger-ui .model-box table thead td,
+.swagger-ui .model-box table th {
+  border-bottom: none;
+}
+
+/* line 162, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
@@ -2396,8 +2402,8 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
   .better-docs-wide-content .better-docs-nav,
   .better-docs-wide-content blockquote,
   .better-docs-wide-content pre,
-  .better-docs-wide-content .swagger-ui .model-box table, .swagger-ui .model-box
-  .better-docs-wide-content table,
+  .better-docs-wide-content .swagger-ui .model-box .inner-object, .swagger-ui .model-box
+  .better-docs-wide-content .inner-object,
   .better-docs-wide-content
   .swagger-ui .model-box .brace-open,
   .swagger-ui .model-box
@@ -2991,7 +2997,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 	 * Avoid page breaks inside the content
 	 */
   /* line 69, src/sass/components/_print.scss */
-  pre, .swagger-ui .model-box table,
+  pre, .swagger-ui .model-box .inner-object,
   .swagger-ui .model-box .brace-open,
   .swagger-ui .model-box .brace-close,
   blockquote {
