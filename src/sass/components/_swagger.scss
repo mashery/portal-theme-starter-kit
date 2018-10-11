@@ -14,13 +14,10 @@
 		@extend .credentials;
 		@extend .margin-top;
 
-		.btn svg {
+		.btn svg,
+		.close-modal {
 			display: none;
 			visibility: hidden;
-		}
-
-		.close-modal {
-			@extend [hidden];
 		}
 	}
 
@@ -184,6 +181,59 @@
 		border: none !important;
 		float: right;
 		margin-top: calc-em(-56px);
+	}
+
+	.dialog-ux {
+		position: fixed;
+		z-index: 9999;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		.backdrop-ux {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0, .8);
+		}
+
+		.modal-ux {
+			position: absolute;
+			z-index: 9999;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			min-width: calc-em(300px);
+			max-width: calc-em(650px);
+			transform: translate(-50%, -50%);
+			border: calc-em(1px) solid $color-gray-light;
+			border-radius: calc-em(4px);
+			background: $color-white;
+			box-shadow: 0 calc-em(10px) calc-em(30px) 0 rgba(0, 0, 0, .2);
+		}
+
+		.modal-ux-content {
+			overflow-y: auto;
+			max-height: calc-em(540px);
+			padding: calc-em(20px);
+		}
+
+		.modal-ux-header {
+			display: flex;
+			padding: calc-em(12px) 0;
+			border-bottom: calc-em(1px) solid $color-gray-light;
+			align-items: center;
+		}
+
+		// .modal-ux-header .close-modal {
+		// 	padding: 0 10px;
+		// 	border: none;
+		// 	background: none;
+		// 	appearance: none
+		// }
 	}
 
 }

@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.11 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.12 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -1994,78 +1994,79 @@ pre.error, .swagger-ui .model-box .error.inner-object,
  * Styling specific to Swagger pages
  */
 /* line 17, src/sass/components/_swagger.scss */
-.swagger-ui .scheme-container .btn svg, .swagger-ui .scheme-container [type="submit"] svg, .swagger-ui .scheme-container #main-wrapper button svg, #main-wrapper .swagger-ui .scheme-container button svg, .swagger-ui .scheme-container #search-button svg {
+.swagger-ui .scheme-container .btn svg, .swagger-ui .scheme-container [type="submit"] svg, .swagger-ui .scheme-container #main-wrapper button svg, #main-wrapper .swagger-ui .scheme-container button svg, .swagger-ui .scheme-container #search-button svg,
+.swagger-ui .scheme-container .close-modal {
   display: none;
   visibility: hidden;
 }
 
-/* line 29, src/sass/components/_swagger.scss */
+/* line 26, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag > a, .swagger-ui .opblock-tag > .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 35, src/sass/components/_swagger.scss */
+/* line 32, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag small {
   font-size: 1em;
   text-transform: none;
 }
 
-/* line 41, src/sass/components/_swagger.scss */
+/* line 38, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag .expand-operation {
   display: none !important;
   visibility: hidden !important;
 }
 
-/* line 48, src/sass/components/_swagger.scss */
+/* line 45, src/sass/components/_swagger.scss */
 .swagger-ui .opblock {
   margin-bottom: 1.5625em;
   padding: 0.75em;
 }
 
-/* line 53, src/sass/components/_swagger.scss */
+/* line 50, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get {
   background-color: #e6f3fa;
   border: 1px solid #bfe1f2;
 }
 
-/* line 58, src/sass/components/_swagger.scss */
+/* line 55, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post {
   background-color: #ebf2ea;
   border: 1px solid #cddfcc;
 }
 
-/* line 63, src/sass/components/_swagger.scss */
+/* line 60, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put {
   background-color: #fbf6e6;
   border: 1px solid #f6eac2;
 }
 
-/* line 68, src/sass/components/_swagger.scss */
+/* line 65, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete {
   background-color: #f3e7e8;
   border: 1px solid #e1c3c4;
 }
 
-/* line 73, src/sass/components/_swagger.scss */
+/* line 70, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch {
   background-color: #f3e7f4;
   border: 1px solid #e1c3e3;
 }
 
-/* line 78, src/sass/components/_swagger.scss */
+/* line 75, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options {
   background-color: #faf1e6;
   border: 1px solid #f2dcbf;
 }
 
-/* line 83, src/sass/components/_swagger.scss */
+/* line 80, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head {
   background-color: #e6eef2;
   border: 1px solid #bfd5df;
 }
 
-/* line 88, src/sass/components/_swagger.scss */
+/* line 85, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-method {
   border-radius: 0.3125em;
   color: #ffffff;
@@ -2077,91 +2078,147 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   text-align: center;
 }
 
-/* line 99, src/sass/components/_swagger.scss */
+/* line 96, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get .opblock-summary-method {
   background-color: #0088cc;
 }
 
-/* line 103, src/sass/components/_swagger.scss */
+/* line 100, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post .opblock-summary-method {
   background-color: #377f31;
 }
 
-/* line 107, src/sass/components/_swagger.scss */
+/* line 104, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put .opblock-summary-method {
   background-color: #dba909;
 }
 
-/* line 111, src/sass/components/_swagger.scss */
+/* line 108, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete .opblock-summary-method {
   background-color: #880e14;
 }
 
-/* line 115, src/sass/components/_swagger.scss */
+/* line 112, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch .opblock-summary-method {
   background-color: #860d8e;
 }
 
-/* line 119, src/sass/components/_swagger.scss */
+/* line 116, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options .opblock-summary-method {
   background-color: #cc7100;
 }
 
-/* line 123, src/sass/components/_swagger.scss */
+/* line 120, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head .opblock-summary-method {
   background-color: #00557f;
 }
 
-/* line 127, src/sass/components/_swagger.scss */
+/* line 124, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a, .swagger-ui .opblock-summary-path .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 131, src/sass/components/_swagger.scss */
+/* line 128, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a:active, .swagger-ui .opblock-summary-path .link-block-styled:active, .swagger-ui .opblock-summary-path a:hover, .swagger-ui .opblock-summary-path .link-block-styled:hover, .swagger-ui .opblock-summary-path .link-block:hover .link-block-styled, .link-block:hover .swagger-ui .opblock-summary-path .link-block-styled {
   text-decoration: underline;
 }
 
-/* line 153, src/sass/components/_swagger.scss */
+/* line 150, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .inner-object {
   margin-bottom: 0;
 }
 
-/* line 158, src/sass/components/_swagger.scss */
+/* line 155, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 161, src/sass/components/_swagger.scss */
+/* line 158, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table td {
   border-top: none;
 }
 
-/* line 165, src/sass/components/_swagger.scss */
+/* line 162, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table thead td,
 .swagger-ui .model-box table th {
   border-bottom: none;
 }
 
-/* line 170, src/sass/components/_swagger.scss */
+/* line 167, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table th,
 .swagger-ui .model-box table td {
   padding: 0;
 }
 
-/* line 176, src/sass/components/_swagger.scss */
+/* line 173, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
 
-/* line 182, src/sass/components/_swagger.scss */
+/* line 179, src/sass/components/_swagger.scss */
 .swagger-ui .authorization__btn {
   background-color: transparent !important;
   border: none !important;
   float: right;
   margin-top: -3.5em;
+}
+
+/* line 186, src/sass/components/_swagger.scss */
+.swagger-ui .dialog-ux {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* line 194, src/sass/components/_swagger.scss */
+.swagger-ui .dialog-ux .backdrop-ux {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* line 203, src/sass/components/_swagger.scss */
+.swagger-ui .dialog-ux .modal-ux {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  min-width: 18.75em;
+  max-width: 40.625em;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.25em;
+  background: #ffffff;
+  box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, 0.2);
+}
+
+/* line 218, src/sass/components/_swagger.scss */
+.swagger-ui .dialog-ux .modal-ux-content {
+  overflow-y: auto;
+  max-height: 33.75em;
+  padding: 1.25em;
+}
+
+/* line 224, src/sass/components/_swagger.scss */
+.swagger-ui .dialog-ux .modal-ux-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.75em 0;
+  border-bottom: 1px solid #e5e5e5;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /**
@@ -2921,7 +2978,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  */
 /* line 304, src/sass/components/_overrides.scss */
 [hidden], ul.success, .swagger-ui .topbar,
-.swagger-ui .info .url, .swagger-ui .scheme-container .close-modal, .swagger-ui .models h4 svg {
+.swagger-ui .info .url, .swagger-ui .models h4 svg {
   display: none;
   visibility: hidden;
 }
