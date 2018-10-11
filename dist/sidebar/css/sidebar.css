@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.0 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.1 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2008,16 +2008,75 @@ pre.error {
  * @section Swagger
  * Styling specific to Swagger pages
  */
-/* line 20, src/sass/components/_swagger.scss */
+/* line 17, src/sass/components/_swagger.scss */
+.swagger-ui .scheme-container .btn svg, .swagger-ui .scheme-container [type="submit"] svg, .swagger-ui .scheme-container #main-wrapper button svg, #main-wrapper .swagger-ui .scheme-container button svg, .swagger-ui .scheme-container #search-button svg {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 25, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag > a, .swagger-ui .opblock-tag > .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 26, src/sass/components/_swagger.scss */
+/* line 31, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-tag small {
+  font-size: 1em;
+  text-transform: none;
+}
+
+/* line 37, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-tag .expand-operation {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* line 44, src/sass/components/_swagger.scss */
+.swagger-ui .opblock {
+  margin-bottom: 1.5625em;
+}
+
+/* line 48, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-get {
+  background-color: #e6f3fa;
+  border: 1px solid #bfe1f2;
+}
+
+/* line 53, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-post {
+  background-color: #ebf2ea;
+  border: 1px solid #cddfcc;
+}
+
+/* line 58, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-put {
+  background-color: #fbf6e6;
+  border: 1px solid #f6eac2;
+}
+
+/* line 63, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-delete {
+  background-color: #f3e7e8;
+  border: 1px solid #e1c3c4;
+}
+
+/* line 68, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-patch {
+  background-color: #f3e7f4;
+  border: 1px solid #e1c3e3;
+}
+
+/* line 73, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-options {
+  background-color: #faf1e6;
+  border: 1px solid #f2dcbf;
+}
+
+/* line 78, src/sass/components/_swagger.scss */
+.swagger-ui .opblock .opblock-head {
+  background-color: #e6eef2;
+  border: 1px solid #bfd5df;
 }
 
 /**
@@ -2430,7 +2489,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 }
 
 /* line 23, src/sass/components/_overrides.scss */
-.bg-dark .text-muted, .bg-primary .text-muted {
+.bg-dark .text-muted, .bg-primary .text-muted, .bg-dark .swagger-ui .opblock-tag small, .swagger-ui .opblock-tag .bg-dark small, .bg-primary .swagger-ui .opblock-tag small, .swagger-ui .opblock-tag .bg-primary small {
   color: #e5e5e5;
 }
 
@@ -2526,7 +2585,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * Text colors
  */
 /* line 113, src/sass/components/_overrides.scss */
-.text-muted {
+.text-muted, .swagger-ui .opblock-tag small {
   color: #808080;
 }
 
