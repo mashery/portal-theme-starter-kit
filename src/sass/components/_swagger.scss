@@ -130,4 +130,22 @@
 		}
 	}
 
+	.models h4 {
+		@extend .h3;
+
+		svg {
+			@extend [hidden];
+		}
+	}
+
+	.model-box {
+		table {
+			margin-bottom: 0;
+		}
+
+		.brace-close {
+			margin-bottom: $spacing;
+		}
+	}
+
 }

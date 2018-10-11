@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.5 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.6 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /*!
  * Astro v10.2.0: Mobile-first navigation patterns
  * (c) 2016 Chris Ferdinandi
