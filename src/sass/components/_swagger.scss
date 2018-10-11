@@ -162,6 +162,11 @@
 			th {
 				border-bottom: none;
 			}
+
+			th,
+			td {
+				padding: 0;
+			}
 		}
 
 		.brace-close {

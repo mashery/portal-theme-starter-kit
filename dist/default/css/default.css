@@ -2146,7 +2146,13 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   border-bottom: none;
 }
 
-/* line 167, src/sass/components/_swagger.scss */
+/* line 166, src/sass/components/_swagger.scss */
+.swagger-ui .model-box table th,
+.swagger-ui .model-box table td {
+  padding: 0;
+}
+
+/* line 172, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
