@@ -1,4 +1,4 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.16 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.17 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -2843,7 +2843,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 @media (min-width: 60em) {
   /* line 167, src/sass/components/_overrides.scss */
   .js-theme-sidebar .full-width {
-    left: 50.5%;
+    left: 50%;
     margin-left: -37.5vw;
     margin-right: -37.5vw;
     max-width: 100vw;
