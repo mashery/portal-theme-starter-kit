@@ -2826,22 +2826,35 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   width: 100vw;
 }
 
+@media (min-width: 60em) {
+  /* line 167, src/sass/components/_overrides.scss */
+  .js-theme-sidebar .full-width {
+    left: 50.5%;
+    margin-left: -37.5vw;
+    margin-right: -37.5vw;
+    max-width: 100vw;
+    position: relative;
+    right: 17%;
+    width: 75vw;
+  }
+}
+
 /**
  * Floats
  */
-/* line 173, src/sass/components/_overrides.scss */
+/* line 185, src/sass/components/_overrides.scss */
 .float-left {
   float: left;
 }
 
-/* line 177, src/sass/components/_overrides.scss */
+/* line 189, src/sass/components/_overrides.scss */
 .float-center {
   float: none;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 183, src/sass/components/_overrides.scss */
+/* line 195, src/sass/components/_overrides.scss */
 .float-right {
   float: right;
 }
@@ -2849,32 +2862,32 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Margins
  */
-/* line 192, src/sass/components/_overrides.scss */
+/* line 204, src/sass/components/_overrides.scss */
 .no-margin-top {
   margin-top: 0;
 }
 
-/* line 196, src/sass/components/_overrides.scss */
+/* line 208, src/sass/components/_overrides.scss */
 .no-margin-bottom {
   margin-bottom: 0;
 }
 
-/* line 200, src/sass/components/_overrides.scss */
+/* line 212, src/sass/components/_overrides.scss */
 .margin-top, .swagger-ui .scheme-container {
   margin-top: 1.5625em;
 }
 
-/* line 204, src/sass/components/_overrides.scss */
+/* line 216, src/sass/components/_overrides.scss */
 .margin-bottom {
   margin-bottom: 1.5625em;
 }
 
-/* line 208, src/sass/components/_overrides.scss */
+/* line 220, src/sass/components/_overrides.scss */
 .margin-bottom-small {
   margin-bottom: 0.5em;
 }
 
-/* line 212, src/sass/components/_overrides.scss */
+/* line 224, src/sass/components/_overrides.scss */
 .margin-bottom-large {
   margin-bottom: 2em;
 }
@@ -2882,52 +2895,52 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 /**
  * Padding
  */
-/* line 221, src/sass/components/_overrides.scss */
+/* line 233, src/sass/components/_overrides.scss */
 .no-padding-top {
   padding-top: 0;
 }
 
-/* line 225, src/sass/components/_overrides.scss */
+/* line 237, src/sass/components/_overrides.scss */
 .no-padding-bottom {
   padding-bottom: 0;
 }
 
-/* line 229, src/sass/components/_overrides.scss */
+/* line 241, src/sass/components/_overrides.scss */
 .padding-top {
   padding-top: 1.5625em;
 }
 
-/* line 233, src/sass/components/_overrides.scss */
+/* line 245, src/sass/components/_overrides.scss */
 .padding-top-small {
   padding-top: 0.5em;
 }
 
-/* line 237, src/sass/components/_overrides.scss */
+/* line 249, src/sass/components/_overrides.scss */
 .padding-top-large {
   padding-top: 2em;
 }
 
-/* line 241, src/sass/components/_overrides.scss */
+/* line 253, src/sass/components/_overrides.scss */
 .padding-top-xlarge {
   padding-top: 4em;
 }
 
-/* line 245, src/sass/components/_overrides.scss */
+/* line 257, src/sass/components/_overrides.scss */
 .padding-bottom {
   padding-bottom: 1.5625em;
 }
 
-/* line 249, src/sass/components/_overrides.scss */
+/* line 261, src/sass/components/_overrides.scss */
 .padding-bottom-small {
   padding-bottom: 0.5em;
 }
 
-/* line 253, src/sass/components/_overrides.scss */
+/* line 265, src/sass/components/_overrides.scss */
 .padding-bottom-large {
   padding-bottom: 2em;
 }
 
-/* line 257, src/sass/components/_overrides.scss */
+/* line 269, src/sass/components/_overrides.scss */
 .padding-bottom-xlarge {
   padding-bottom: 4em;
 }
@@ -2940,7 +2953,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-/* line 271, src/sass/components/_overrides.scss */
+/* line 283, src/sass/components/_overrides.scss */
 .screen-reader {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2958,7 +2971,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @link https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css
  * @link https://www.drupal.org/node/897638
  */
-/* line 288, src/sass/components/_overrides.scss */
+/* line 300, src/sass/components/_overrides.scss */
 .screen-reader-focusable:active,
 .screen-reader-focusable:focus {
   clip: auto;
@@ -2975,7 +2988,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * @affected IE 8/9/10
  * @link http://juicystudio.com/article/screen-readers-display-none.php
  */
-/* line 304, src/sass/components/_overrides.scss */
+/* line 316, src/sass/components/_overrides.scss */
 [hidden], ul.success, .swagger-ui .topbar,
 .swagger-ui .info .url, .swagger-ui .models h4 svg {
   display: none;
@@ -2987,7 +3000,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
  * The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
  * @link https://github%com/h5bp/html5-boilerplate/blob/master/dist/css/main%css
  */
-/* line 314, src/sass/components/_overrides.scss */
+/* line 326, src/sass/components/_overrides.scss */
 .clearfix:before, .container:before,
 .row:before, .method .title:before,
 .clearfix:after,
@@ -3000,7 +3013,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   content: " ";
 }
 
-/* line 320, src/sass/components/_overrides.scss */
+/* line 332, src/sass/components/_overrides.scss */
 .clearfix:after, .container:after,
 .row:after, .method .title:after, .method a.clear-results:after, .method .clear-results.link-block-styled:after {
   clear: both;
