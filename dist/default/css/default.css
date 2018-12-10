@@ -1,4 +1,11 @@
-/*! portal-theme v1.0.0 | (c) 2018 TIBCO and Chris Ferdinandi | Portal Theme Starter Kit v2.7.17 - Default Theme | MIT License | http://github.com/mashery/portal-theme-starter-kit */
+/*!
+ * portal-theme v1.0.0
+ * Portal theme for...
+ * (c) 2018 Chris Ferdinandi
+ * MIT License
+ * http://github.com/mashery/portal-theme-starter-kit
+ */
+
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -58,7 +65,8 @@ summary {
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /**
@@ -74,6 +82,7 @@ html {
   overflow-y: scroll;
   /* 2 */
   -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
   /* 3 */
@@ -723,7 +732,8 @@ hr {
   border: 0;
   border-top: 1px solid #e5e5e5;
   border-bottom: 0 solid transparent;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   margin: 2em auto;
   overflow: visible;
 }
@@ -756,7 +766,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -775,6 +786,7 @@ dfn {
 mark,
 .highlight {
   background: #fbf89a;
+  background-image: -webkit-gradient(linear, left top, right top, from(#fbf89a), to(#fbf9c9));
   background-image: linear-gradient(to right, #fbf89a 0%, #fbf9c9 100%);
   color: #272727;
 }
@@ -868,7 +880,9 @@ code {
 }
 
 /* line 22, src/sass/components/_code.scss */
-pre, .swagger-ui .model-box .inner-object,
+
+pre,
+.swagger-ui .model-box .inner-object,
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .brace-close {
   background-color: #f4f4f4;
@@ -885,9 +899,7 @@ pre, .swagger-ui .model-box .inner-object,
 }
 
 /* line 33, src/sass/components/_code.scss */
-pre code, .swagger-ui .model-box .inner-object code,
-.swagger-ui .model-box .brace-open code,
-.swagger-ui .model-box .brace-close code {
+pre code, .swagger-ui .model-box .inner-object code, .swagger-ui .model-box .brace-open code, .swagger-ui .model-box .brace-close code {
   background-color: transparent;
   border: 0;
   color: inherit;
@@ -899,11 +911,9 @@ pre code, .swagger-ui .model-box .inner-object code,
  * Overflow code samples with horizontal scrolling instead of wrapping
  */
 /* line 45, src/sass/components/_code.scss */
-.code-overflow pre, .code-overflow .swagger-ui .model-box .inner-object, .swagger-ui .model-box .code-overflow .inner-object, .code-overflow
-.swagger-ui .model-box .brace-open,
-.swagger-ui .model-box .code-overflow .brace-open, .code-overflow
-.swagger-ui .model-box .brace-close,
-.swagger-ui .model-box .code-overflow .brace-close {
+.code-overflow pre, .code-overflow .swagger-ui .model-box .inner-object, .swagger-ui .model-box .code-overflow .inner-object,
+.code-overflow .swagger-ui .model-box .brace-open, .swagger-ui .model-box .code-overflow .brace-open,
+.code-overflow .swagger-ui .model-box .brace-close, .swagger-ui .model-box .code-overflow .brace-close {
   white-space: pre;
   word-break: normal;
 }
@@ -929,28 +939,44 @@ pre code, .swagger-ui .model-box .inner-object code,
   margin-bottom: 0.3125em;
   padding: 0.5em 0.6875em;
   text-decoration: none;
+  -webkit-transition: -webkit-transform 200ms ease-in;
   transition: -webkit-transform 200ms ease-in;
   transition: transform 200ms ease-in;
   transition: transform 200ms ease-in, -webkit-transform 200ms ease-in;
 }
 
 /* line 25, src/sass/components/_buttons.scss */
-.btn:hover, [type="submit"]:hover, #main-wrapper button:hover, #search-button:hover,
-a .btn:hover, .link-block-styled .btn:hover,
-a [type="submit"]:hover, .link-block-styled [type="submit"]:hover,
-a #main-wrapper button:hover, #main-wrapper
-a button:hover, .link-block-styled #main-wrapper button:hover, #main-wrapper .link-block-styled button:hover,
-a #search-button:hover, .link-block-styled #search-button:hover, .btn:focus, [type="submit"]:focus, #main-wrapper button:focus, #search-button:focus,
-a .btn:focus, .link-block-styled .btn:focus,
-a [type="submit"]:focus, .link-block-styled [type="submit"]:focus,
-a #main-wrapper button:focus, #main-wrapper
-a button:focus, .link-block-styled #main-wrapper button:focus, #main-wrapper .link-block-styled button:focus,
-a #search-button:focus, .link-block-styled #search-button:focus, .btn:active, [type="submit"]:active, #main-wrapper button:active, #search-button:active,
-a .btn:active, .link-block-styled .btn:active,
-a [type="submit"]:active, .link-block-styled [type="submit"]:active,
-a #main-wrapper button:active, #main-wrapper
-a button:active, .link-block-styled #main-wrapper button:active, #main-wrapper .link-block-styled button:active,
-a #search-button:active, .link-block-styled #search-button:active, .btn.active, .active[type="submit"], #main-wrapper button.active, .active#search-button {
+.btn:hover, :hover[type="submit"], #main-wrapper button:hover, #search-button:hover,
+a .btn:hover,
+.link-block-styled .btn:hover,
+a :hover[type="submit"],
+.link-block-styled :hover[type="submit"],
+a #main-wrapper button:hover,
+#main-wrapper a button:hover,
+.link-block-styled #main-wrapper button:hover,
+#main-wrapper .link-block-styled button:hover,
+a #search-button:hover,
+.link-block-styled #search-button:hover, .btn:focus, :focus[type="submit"], #main-wrapper button:focus, #search-button:focus,
+a .btn:focus,
+.link-block-styled .btn:focus,
+a :focus[type="submit"],
+.link-block-styled :focus[type="submit"],
+a #main-wrapper button:focus,
+#main-wrapper a button:focus,
+.link-block-styled #main-wrapper button:focus,
+#main-wrapper .link-block-styled button:focus,
+a #search-button:focus,
+.link-block-styled #search-button:focus, .btn:active, :active[type="submit"], #main-wrapper button:active, #search-button:active,
+a .btn:active,
+.link-block-styled .btn:active,
+a :active[type="submit"],
+.link-block-styled :active[type="submit"],
+a #main-wrapper button:active,
+#main-wrapper a button:active,
+.link-block-styled #main-wrapper button:active,
+#main-wrapper .link-block-styled button:active,
+a #search-button:active,
+.link-block-styled #search-button:active, .btn.active, .active[type="submit"], #main-wrapper button.active, .active#search-button {
   background-color: #005580;
   border-color: #005580;
   color: #ffffff;
@@ -958,7 +984,7 @@ a #search-button:active, .link-block-styled #search-button:active, .btn.active, 
 }
 
 /* line 38, src/sass/components/_buttons.scss */
-.btn:hover, [type="submit"]:hover, #main-wrapper button:hover, #search-button:hover {
+.btn:hover, :hover[type="submit"], #main-wrapper button:hover, #search-button:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -974,15 +1000,24 @@ a #search-button:active, .link-block-styled #search-button:active, .btn.active, 
 
 /* line 51, src/sass/components/_buttons.scss */
 .btn-secondary:hover, #main-wrapper button.btn-secondary:hover,
-a .btn-secondary:hover, .link-block-styled .btn-secondary:hover,
-a #main-wrapper button.btn-secondary:hover, #main-wrapper
-a button.btn-secondary:hover, .link-block-styled #main-wrapper button.btn-secondary:hover, #main-wrapper .link-block-styled button.btn-secondary:hover, .btn-secondary:focus, #main-wrapper button.btn-secondary:focus,
-a .btn-secondary:focus, .link-block-styled .btn-secondary:focus,
-a #main-wrapper button.btn-secondary:focus, #main-wrapper
-a button.btn-secondary:focus, .link-block-styled #main-wrapper button.btn-secondary:focus, #main-wrapper .link-block-styled button.btn-secondary:focus, .btn-secondary:active, #main-wrapper button.btn-secondary:active,
-a .btn-secondary:active, .link-block-styled .btn-secondary:active,
-a #main-wrapper button.btn-secondary:active, #main-wrapper
-a button.btn-secondary:active, .link-block-styled #main-wrapper button.btn-secondary:active, #main-wrapper .link-block-styled button.btn-secondary:active, .btn-secondary.active, #main-wrapper button.active.btn-secondary {
+a .btn-secondary:hover,
+.link-block-styled .btn-secondary:hover,
+a #main-wrapper button.btn-secondary:hover,
+#main-wrapper a button.btn-secondary:hover,
+.link-block-styled #main-wrapper button.btn-secondary:hover,
+#main-wrapper .link-block-styled button.btn-secondary:hover, .btn-secondary:focus, #main-wrapper button.btn-secondary:focus,
+a .btn-secondary:focus,
+.link-block-styled .btn-secondary:focus,
+a #main-wrapper button.btn-secondary:focus,
+#main-wrapper a button.btn-secondary:focus,
+.link-block-styled #main-wrapper button.btn-secondary:focus,
+#main-wrapper .link-block-styled button.btn-secondary:focus, .btn-secondary:active, #main-wrapper button.btn-secondary:active,
+a .btn-secondary:active,
+.link-block-styled .btn-secondary:active,
+a #main-wrapper button.btn-secondary:active,
+#main-wrapper a button.btn-secondary:active,
+.link-block-styled #main-wrapper button.btn-secondary:active,
+#main-wrapper .link-block-styled button.btn-secondary:active, .btn-secondary.active, #main-wrapper button.active.btn-secondary {
   background-color: #5a5a5a;
   border-color: #5a5a5a;
 }
@@ -991,12 +1026,9 @@ a button.btn-secondary:active, .link-block-styled #main-wrapper button.btn-secon
  * Active state
  */
 /* line 67, src/sass/components/_buttons.scss */
-.btn:active, [type="submit"]:active, #main-wrapper button:active, #search-button:active,
-.btn.active,
-.active[type="submit"],
-#main-wrapper button.active,
-.active#search-button {
-  box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
+.btn:active, :active[type="submit"], #main-wrapper button:active, #search-button:active, .btn.active, .active[type="submit"], #main-wrapper button.active, .active#search-button {
+  -webkit-box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
   outline: 0;
 }
 
@@ -1008,8 +1040,9 @@ a button.btn-secondary:active, .link-block-styled #main-wrapper button.btn-secon
 .btn[disabled],
 [disabled][type="submit"],
 #main-wrapper button[disabled],
-[disabled]#search-button {
-  box-shadow: none;
+#search-button[disabled] {
+  -webkit-box-shadow: none;
+          box-shadow: none;
   cursor: not-allowed;
   opacity: 0.5;
   pointer-events: none;
@@ -1063,7 +1096,7 @@ input[type="submit"] {
  * Remove right margin on last element and inputs
  */
 /* line 135, src/sass/components/_buttons.scss */
-.btn:last-child, [type="submit"]:last-child, #main-wrapper button:last-child, #search-button:last-child,
+.btn:last-child, :last-child[type="submit"], #main-wrapper button:last-child, #search-button:last-child,
 input.btn,
 input[type="submit"],
 input#search-button {
@@ -1213,7 +1246,8 @@ textarea {
 /* line 121, src/sass/components/_forms.scss */
 [type="color"] {
   border-radius: 0;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   max-width: 100%;
   padding: 1px 0.125em;
   width: 3em;
@@ -1223,7 +1257,8 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: rgba(82, 168, 236, 0.8);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0.5em rgba(82, 168, 236, 0.6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0.5em rgba(82, 168, 236, 0.6);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0.5em rgba(82, 168, 236, 0.6);
   outline: 0;
   outline: thin dotted \9;
 }
@@ -1981,11 +2016,9 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 }
 
 /* line 310, src/sass/components/_iodocs.scss */
-.category-iodocs #main-wrapper pre.response, .category-iodocs #main-wrapper .swagger-ui .model-box .response.inner-object, .swagger-ui .model-box .category-iodocs #main-wrapper .response.inner-object, .category-iodocs #main-wrapper
-.swagger-ui .model-box .response.brace-open,
-.swagger-ui .model-box .category-iodocs #main-wrapper .response.brace-open, .category-iodocs #main-wrapper
-.swagger-ui .model-box .response.brace-close,
-.swagger-ui .model-box .category-iodocs #main-wrapper .response.brace-close {
+.category-iodocs #main-wrapper pre.response, .category-iodocs #main-wrapper .swagger-ui .model-box .response.inner-object, .swagger-ui .model-box .category-iodocs #main-wrapper .response.inner-object,
+.category-iodocs #main-wrapper .swagger-ui .model-box .response.brace-open, .swagger-ui .model-box .category-iodocs #main-wrapper .response.brace-open,
+.category-iodocs #main-wrapper .swagger-ui .model-box .response.brace-close, .swagger-ui .model-box .category-iodocs #main-wrapper .response.brace-close {
   max-height: 32em;
   overflow-y: auto;
 }
@@ -2068,6 +2101,12 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 }
 
 /* line 85, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-deprecated {
+  background-color: #f7f7f7;
+  border: 1px solid #e5e5e5;
+}
+
+/* line 90, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-method {
   border-radius: 0.3125em;
   color: #ffffff;
@@ -2079,86 +2118,86 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   text-align: center;
 }
 
-/* line 96, src/sass/components/_swagger.scss */
+/* line 101, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-get .opblock-summary-method {
   background-color: #0088cc;
 }
 
-/* line 100, src/sass/components/_swagger.scss */
+/* line 105, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-post .opblock-summary-method {
   background-color: #377f31;
 }
 
-/* line 104, src/sass/components/_swagger.scss */
+/* line 109, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-put .opblock-summary-method {
   background-color: #dba909;
 }
 
-/* line 108, src/sass/components/_swagger.scss */
+/* line 113, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-delete .opblock-summary-method {
   background-color: #880e14;
 }
 
-/* line 112, src/sass/components/_swagger.scss */
+/* line 117, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-patch .opblock-summary-method {
   background-color: #860d8e;
 }
 
-/* line 116, src/sass/components/_swagger.scss */
+/* line 121, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-options .opblock-summary-method {
   background-color: #cc7100;
 }
 
-/* line 120, src/sass/components/_swagger.scss */
+/* line 125, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-head .opblock-summary-method {
   background-color: #00557f;
 }
 
-/* line 124, src/sass/components/_swagger.scss */
+/* line 129, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a, .swagger-ui .opblock-summary-path .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 128, src/sass/components/_swagger.scss */
+/* line 133, src/sass/components/_swagger.scss */
 .swagger-ui .opblock-summary-path a:active, .swagger-ui .opblock-summary-path .link-block-styled:active, .swagger-ui .opblock-summary-path a:hover, .swagger-ui .opblock-summary-path .link-block-styled:hover, .swagger-ui .opblock-summary-path .link-block:hover .link-block-styled, .link-block:hover .swagger-ui .opblock-summary-path .link-block-styled {
   text-decoration: underline;
 }
 
-/* line 150, src/sass/components/_swagger.scss */
+/* line 155, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .inner-object {
   margin-bottom: 0;
 }
 
-/* line 155, src/sass/components/_swagger.scss */
+/* line 160, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 158, src/sass/components/_swagger.scss */
+/* line 163, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table td {
   border-top: none;
 }
 
-/* line 162, src/sass/components/_swagger.scss */
+/* line 167, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table thead td,
 .swagger-ui .model-box table th {
   border-bottom: none;
 }
 
-/* line 167, src/sass/components/_swagger.scss */
+/* line 172, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table th,
 .swagger-ui .model-box table td {
   padding: 0;
 }
 
-/* line 173, src/sass/components/_swagger.scss */
+/* line 178, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
 
-/* line 179, src/sass/components/_swagger.scss */
+/* line 184, src/sass/components/_swagger.scss */
 .swagger-ui .authorization__btn {
   background-color: transparent !important;
   border: none !important;
@@ -2166,7 +2205,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   margin-top: -3.5em;
 }
 
-/* line 186, src/sass/components/_swagger.scss */
+/* line 191, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux {
   position: fixed;
   z-index: 9999;
@@ -2176,7 +2215,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   left: 0;
 }
 
-/* line 194, src/sass/components/_swagger.scss */
+/* line 199, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .backdrop-ux {
   position: fixed;
   top: 0;
@@ -2186,7 +2225,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 203, src/sass/components/_swagger.scss */
+/* line 208, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux {
   position: absolute;
   z-index: 9999;
@@ -2200,17 +2239,18 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   border: 1px solid #e5e5e5;
   border-radius: 0.25em;
   background: #ffffff;
-  box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, 0.2);
 }
 
-/* line 218, src/sass/components/_swagger.scss */
+/* line 223, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux-content {
   overflow-y: auto;
   max-height: 33.75em;
   padding: 1.3125em;
 }
 
-/* line 224, src/sass/components/_swagger.scss */
+/* line 229, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2492,16 +2532,12 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
   .better-docs-wide-content .better-docs-nav,
   .better-docs-wide-content blockquote,
   .better-docs-wide-content pre,
-  .better-docs-wide-content .swagger-ui .model-box .inner-object, .swagger-ui .model-box
-  .better-docs-wide-content .inner-object,
-  .better-docs-wide-content
-  .swagger-ui .model-box .brace-open,
-  .swagger-ui .model-box
-  .better-docs-wide-content .brace-open,
-  .better-docs-wide-content
-  .swagger-ui .model-box .brace-close,
-  .swagger-ui .model-box
-  .better-docs-wide-content .brace-close {
+  .better-docs-wide-content .swagger-ui .model-box .inner-object,
+  .swagger-ui .model-box .better-docs-wide-content .inner-object,
+  .better-docs-wide-content .swagger-ui .model-box .brace-open,
+  .swagger-ui .model-box .better-docs-wide-content .brace-open,
+  .better-docs-wide-content .swagger-ui .model-box .brace-close,
+  .swagger-ui .model-box .better-docs-wide-content .brace-close {
     clear: right;
     float: right;
     width: 47.2%;
@@ -2523,6 +2559,7 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
 @media (min-width: 60em) {
   /* line 92, src/sass/components/_betterDocs.scss */
   .complete.better-docs-wide-bg body {
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f7f7f7), color-stop(25%, #f7f7f7), color-stop(25%, transparent), color-stop(63%, transparent), color-stop(63%, #f7f7f7), to(#f7f7f7));
     background-image: linear-gradient(to right, #f7f7f7 0, #f7f7f7 25%, transparent 25%, transparent 63%, #f7f7f7 63%, #f7f7f7 100%);
   }
 }
@@ -2603,7 +2640,8 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
 /* line 16, src/sass/components/_images.scss */
 .img-photo {
   background-color: #ffffff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   padding: 0.25em;
 }
 
@@ -2660,7 +2698,7 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
 }
 
 /* line 41, src/sass/components/_translate.scss */
-a[data-translate].active, [data-translate].active.link-block-styled {
+a[data-translate].active, .link-block-styled[data-translate].active {
   color: #272727;
 }
 
@@ -2732,6 +2770,7 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 
 /* line 67, src/sass/components/_overrides.scss */
 .bg-hero-video-overlay {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0.6)));
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   height: 100%;
   position: absolute;
@@ -3028,8 +3067,13 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 }
 
 /* line 332, src/sass/components/_overrides.scss */
-.clearfix:after, .container:after,
-.row:after, .method .title:after, .method a.clear-results:after, .method .clear-results.link-block-styled:after {
+
+.clearfix:after,
+.container:after,
+.row:after,
+.method .title:after,
+.method a.clear-results:after,
+.method .clear-results.link-block-styled:after {
   clear: both;
 }
 
@@ -3047,7 +3091,8 @@ a[data-translate].active, [data-translate].active.link-block-styled {
   * {
     background: transparent !important;
     color: #000 !important;
-    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
     text-shadow: none !important;
   }
   /**
@@ -3069,14 +3114,14 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 	 * Show URL after links
 	 */
   /* line 38, src/sass/components/_print.scss */
-  a[href]:after, [href].link-block-styled:after {
+  a[href]:after, .link-block-styled[href]:after {
     content: " (" attr(href) ")";
   }
   /**
 	 * Don't show URL for internal links
 	 */
   /* line 45, src/sass/components/_print.scss */
-  a[href^="#"]:after, [href^="#"].link-block-styled:after {
+  a[href^="#"]:after, .link-block-styled[href^="#"]:after {
     content: "";
   }
   /**
@@ -3100,7 +3145,9 @@ a[data-translate].active, [data-translate].active.link-block-styled {
 	 * Avoid page breaks inside the content
 	 */
   /* line 69, src/sass/components/_print.scss */
-  pre, .swagger-ui .model-box .inner-object,
+  
+  pre,
+  .swagger-ui .model-box .inner-object,
   .swagger-ui .model-box .brace-open,
   .swagger-ui .model-box .brace-close,
   blockquote {
