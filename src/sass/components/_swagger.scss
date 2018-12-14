@@ -126,7 +126,12 @@
 		background-color: $color-head;
 	}
 
-	.opblock-summary-path a {
+	.opblock-deprecated .opblock-summary-method {
+		background-color: $color-gray-dark;
+	}
+
+	.opblock-summary-path a,
+	.opblock-summary-path__deprecated a {
 		color: $color-black;
 		text-decoration: none;
 

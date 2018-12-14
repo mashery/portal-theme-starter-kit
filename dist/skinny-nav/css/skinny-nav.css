@@ -2153,50 +2153,63 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 }
 
 /* line 129, src/sass/components/_swagger.scss */
-.swagger-ui .opblock-summary-path a, .swagger-ui .opblock-summary-path .link-block-styled {
+.swagger-ui .opblock-deprecated .opblock-summary-method {
+  background-color: #808080;
+}
+
+/* line 133, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-summary-path a, .swagger-ui .opblock-summary-path .link-block-styled,
+.swagger-ui .opblock-summary-path__deprecated a,
+.swagger-ui .opblock-summary-path__deprecated .link-block-styled {
   color: #272727;
   text-decoration: none;
 }
 
-/* line 133, src/sass/components/_swagger.scss */
-.swagger-ui .opblock-summary-path a:active, .swagger-ui .opblock-summary-path .link-block-styled:active, .swagger-ui .opblock-summary-path a:hover, .swagger-ui .opblock-summary-path .link-block-styled:hover, .swagger-ui .opblock-summary-path .link-block:hover .link-block-styled, .link-block:hover .swagger-ui .opblock-summary-path .link-block-styled {
+/* line 138, src/sass/components/_swagger.scss */
+.swagger-ui .opblock-summary-path a:active, .swagger-ui .opblock-summary-path .link-block-styled:active, .swagger-ui .opblock-summary-path a:hover, .swagger-ui .opblock-summary-path .link-block-styled:hover, .swagger-ui .opblock-summary-path .link-block:hover .link-block-styled, .link-block:hover .swagger-ui .opblock-summary-path .link-block-styled,
+.swagger-ui .opblock-summary-path__deprecated a:active,
+.swagger-ui .opblock-summary-path__deprecated .link-block-styled:active,
+.swagger-ui .opblock-summary-path__deprecated a:hover,
+.swagger-ui .opblock-summary-path__deprecated .link-block-styled:hover,
+.swagger-ui .opblock-summary-path__deprecated .link-block:hover .link-block-styled,
+.link-block:hover .swagger-ui .opblock-summary-path__deprecated .link-block-styled {
   text-decoration: underline;
 }
 
-/* line 155, src/sass/components/_swagger.scss */
+/* line 160, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-open,
 .swagger-ui .model-box .inner-object {
   margin-bottom: 0;
 }
 
-/* line 160, src/sass/components/_swagger.scss */
+/* line 165, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table {
   margin-bottom: 0;
 }
 
-/* line 163, src/sass/components/_swagger.scss */
+/* line 168, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table td {
   border-top: none;
 }
 
-/* line 167, src/sass/components/_swagger.scss */
+/* line 172, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table thead td,
 .swagger-ui .model-box table th {
   border-bottom: none;
 }
 
-/* line 172, src/sass/components/_swagger.scss */
+/* line 177, src/sass/components/_swagger.scss */
 .swagger-ui .model-box table th,
 .swagger-ui .model-box table td {
   padding: 0;
 }
 
-/* line 178, src/sass/components/_swagger.scss */
+/* line 183, src/sass/components/_swagger.scss */
 .swagger-ui .model-box .brace-close {
   margin-bottom: 1.5625em;
 }
 
-/* line 184, src/sass/components/_swagger.scss */
+/* line 189, src/sass/components/_swagger.scss */
 .swagger-ui .authorization__btn {
   background-color: transparent !important;
   border: none !important;
@@ -2204,7 +2217,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   margin-top: -3.5em;
 }
 
-/* line 191, src/sass/components/_swagger.scss */
+/* line 196, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux {
   position: fixed;
   z-index: 9999;
@@ -2214,7 +2227,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   left: 0;
 }
 
-/* line 199, src/sass/components/_swagger.scss */
+/* line 204, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .backdrop-ux {
   position: fixed;
   top: 0;
@@ -2224,7 +2237,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
   background: rgba(0, 0, 0, 0.8);
 }
 
-/* line 208, src/sass/components/_swagger.scss */
+/* line 213, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux {
   position: absolute;
   z-index: 9999;
@@ -2242,14 +2255,14 @@ pre.error, .swagger-ui .model-box .error.inner-object,
           box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, 0.2);
 }
 
-/* line 223, src/sass/components/_swagger.scss */
+/* line 228, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux-content {
   overflow-y: auto;
   max-height: 33.75em;
   padding: 1.3125em;
 }
 
-/* line 229, src/sass/components/_swagger.scss */
+/* line 234, src/sass/components/_swagger.scss */
 .swagger-ui .dialog-ux .modal-ux-header {
   display: -webkit-box;
   display: -ms-flexbox;
