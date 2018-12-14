@@ -82,6 +82,11 @@
 		border: calc-em(1px) solid mix(white, $color-head, 75%);
 	}
 
+	.opblock-deprecated {
+		background-color: $color-gray-lighter;
+		border: calc-em(1px) solid $color-gray-light;
+	}
+
 	.opblock-summary-method {
 		border-radius: calc-em(5px);
 		color: $color-white;
@@ -121,7 +126,12 @@
 		background-color: $color-head;
 	}
 
-	.opblock-summary-path a {
+	.opblock-deprecated .opblock-summary-method {
+		background-color: $color-gray-dark;
+	}
+
+	.opblock-summary-path a,
+	.opblock-summary-path__deprecated a {
 		color: $color-black;
 		text-decoration: none;
 
