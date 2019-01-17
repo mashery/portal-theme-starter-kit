@@ -22,7 +22,7 @@ You need to explicitly activate Blackbeard to use it. By default, your Portal wi
 0. Click the `Config` tab.
 0. Scroll down to `Enhanced Portal Configuration`.
 0. Check the box for `Enables the modernized portal experience.`.
-0. Update the `Portal Assets Domain` to `https://s3.amazonaws.com/developer.mashery`. In the future, we'll use a dedicated CDN.
+0. Update the `Portal Assets Domain` to `https://s3-us-west-1.amazonaws.com/mashery.assets`. In the future, we'll use a dedicated CDN.
 0. Scroll to the bottom and click `Save`.
 
 
