@@ -1002,70 +1002,11 @@ Add the `.table-condensed` class for more compact tables.
 </table>
 ```
 
-### Responsive Table
-
-Add the `.table-responsive` class for tables that reformat on smaller viewports. (You can automatically make all tables responsive&mdash;including adding the `data-label` attributes&mdash;using [responsive-tables.js](#automatic-responsive-tables).)
-
-<table class="table-responsive">
-	<thead>
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Super Hero</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-label="First Name">Peter</td>
-			<td data-label="Last Name">Parker</td>
-			<td data-label="Super Hero">Spiderman</td>
-		</tr>
-		<tr>
-			<td data-label="First Name">Bruce</td>
-			<td data-label="Last Name">Wayne</td>
-			<td data-label="Super Hero">Batman</td>
-		</tr>
-		<tr>
-			<td data-label="First Name">Clark</td>
-			<td data-label="Last Name">Kent</td>
-			<td data-label="Super Hero">Superman</td>
-		</tr>
-	</tbody>
-</table>
-
-```html
-<table class="table-responsive">
-	<thead>
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Super Hero</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td data-label="First Name">Peter</td>
-			<td data-label="Last Name">Parker</td>
-			<td data-label="Super Hero">Spiderman</td>
-		</tr>
-		...
-	</tbody>
-</table>
-```
-
-#### Automatically make all tables responsive
-
-You can automatically make all tables on a page responsive by running `responsiveTables.init()` in a `portalAfterRender` event.
-
-```js
-responsiveTables.init();
-```
-
 ### Combining Classes
 
 Classes can be combined as needed.
 
-<table class="table-striped table-condensed table-responsive">
+<table class="table-striped table-condensed">
 	<thead>
 		<tr>
 			<th>First Name</th>
@@ -1093,7 +1034,7 @@ Classes can be combined as needed.
 </table>
 
 ```html
-<table class="table-striped table-condensed table-responsive">
+<table class="table-striped table-condensed">
 	...
 </table>
 ```
@@ -1182,27 +1123,53 @@ astro.destroy();
 
 ---
 
+## Dropdown Menus
+
+You can add dropdown menus to your primary navigation menu with the `addDropdown()` function.
+
+The function accepts three arguments:
+
+1. The URL in your navigation to add the dropdown to,
+2. The items to add to it (as an array of data), and
+3. Optionally, text to use for link it's replacing (which gets added as an item in the dropdown menu).
+
+```js
+var dropdownData = [
+	{
+		title: 'Hello',
+		url: '#hello'
+	},
+	{
+		title: 'World',
+		url: '#world'
+	}
+];
+
+// The "/docs" link will be added as the first item in the dropdown, with the label "Overview"
+addDropdown('/docs', dropdownData, 'Overview');
+```
+
+Add this to the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
+
+---
+
 ## Docs Expand-and-Collapse Navigation
 
-If you have lots of nested documentation content, you may want to have nav items hidden behind an expand-and-collapse menu.
+If you have a nested documentation structure, you can add expand-and-collapse functionality to your docs navigation with `docsNavCollapse.js`.
 
-To activate this feature, run `docsNavCollapse()` inside a `portalAfterRender` event.
+The script will not run until initialized in a `portalAfterRender` event. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
 
 ```js
 docsNavCollapse();
 ```
 
-### Options & Settings
-
-You can customize this feature by passing in an `options` object to the `docsNavCollapse()` function.
+You can optionally pass in an object of options to configure the script's behavior.
 
 ```js
 docsNavCollapse({
-	selector: '#nav-docs li > ul', // The selector to find the navigation items
-	selectorClass: 'docs-expand-toggle', // The class that's added to the expand-and-collapse links
-	initClass: 'js-docs-expand', // The class that's added to the HTML element when the script initializes
-	show: '+ <span class="screen-reader">Show Nav Items</span>', // The icon to show hidden content
-	hide: '— <span class="screen-reader">Hide Nav Items</span>' // The icon to hide visible content
+	selector: '#nav-docs', // The selector for your docs nav section (only needed if you change it from the default)
+	className: 'docs-nav-dropdown', // The class to add to the dropdowns for styling purposes
+	overview: 'Overview' // The text to use for the link to the section homepage
 });
 ```
 
@@ -1269,220 +1236,6 @@ The script will not run until initialized in a `portalAfterRender` event. Pass i
 
 ```javascript
 stickyFooter('#footer');
-```
-
----
-
-
-## Smooth Scroll
-
-Animate scrolling to anchor links.
-
-[Click me!](#bazinga)
-
-.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.
-
-<p id="bazinga"><a href="#1@#%^-bottom">Bazinga!</a></p>
-
-
-.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.<br>.
-
-<p id="1@#%^-bottom"><a href="#">Scroll to the Top</a></p>
-
-### Getting Started
-
-#### Markup
-
-No special markup needed&mdash;just standard anchor links. Give the anchor location an ID just like you normally would.
-
-```html
-<a data-scroll href="#bazinga">Anchor Link</a>
-...
-<div id="bazinga">Bazinga!</div>
-```
-
-***Note:*** *Smooth Scroll does not work with `a name="anchor"` style anchors. It requires IDs.*
-
-#### JavaScript
-
-The script will not run until initialized in a `portalAfterRender` event. This is done for you already in the `Body JavaScript` section under `Portal > Portal Setup` in the API Control Center.
-
-You should also destroy the scroll event in a `portalBeforeRenderAjax` event to prevent
-
-```js
-// Smooth scrolling to anchor links
-var scroll = new SmoothScroll('.category-page #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-blogall #main-wrapper a[href*="#"], .category-blogsingle #main-wrapper a[href*="#"], #nav-docs a[href*="#"]', {
-	ignore: '.js-scroll-ignore'
-});
-```
-
-#### Self-Destruct
-
-To prevent Smooth Scroll from initializing on every Ajax page load, add a self-destruction listener in a `portalBeforeRender` event.
-
-```js
-// Destroy instantiation on Ajax page reload
-window.addEventListener('portalBeforeRender', function () {
-	if ('destroy' in scroll) {
-		scroll.destroy();
-	}
-}, false);
-```
-
-### Global Settings
-
-You can pass options and callbacks into Smooth Scroll when initializing. Learn more about the different easing patterns and what they do at [easings.net](http://easings.net/).
-
-```js
-var scroll = new SmoothScroll('a[href*="#"]', {
-	// Selectors
-	ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
-	header: null, // Selector for fixed headers (must be a valid CSS selector)
-
-	// Speed & Easing
-	speed: 500, // Integer. How fast to complete the scroll in milliseconds
-	offset: 0, // Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
-	easing: 'easeInOutCubic', // Easing pattern to use
-	customEasing: function (time) {
-
-		// Function. Custom easing pattern
-		// If this is set to anything other than null, will override the easing option above
-
-		// return <your formulate with time as a multiplier>
-
-		// Example: easeInOut Quad
-		return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time;
-
-	},
-
-	// Callback API
-	before: function (anchor, toggle) {}, // Callback to run before scroll
-	after: function (anchor, toggle) {} // Callback to run after scroll
-});
-```
-
-##### Easing Options
-
-Some common easing patterns are included by default, but you can also pass in your own custom easing pattern using the `customEasing` option noted above.
-
-**Linear**
-*Moves at the same speed from start to finish.*
-
-* `Linear`
-
-
-**Ease-In**
-*Gradually increases in speed.*
-
-* `easeInQuad`
-* `easeInCubic`
-* `easeInQuart`
-* `easeInQuint`
-
-
-**Ease-In-Out**
-*Gradually increases in speed, peaks, and then gradually slows down.*
-
-* `easeInOutQuad`
-* `easeInOutCubic`
-* `easeInOutQuart`
-* `easeInOutQuint`
-
-
-**Ease-Out**
-*Gradually decreases in speed.*
-
-* `easeOutQuad`
-* `easeOutCubic`
-* `easeOutQuart`
-* `easeOutQuint`
-
-Learn more about the different easing patterns and what they do at [easings.net](http://easings.net/).
-
-### Use Smooth Scroll events in your own scripts
-
-You can also call Smooth Scroll's methods in your own scripts.
-
-#### animateScroll()
-Animate scrolling to an anchor.
-
-```javascript
-var scroll = new SmoothScroll();
-scroll.animateScroll(
-	anchor, // Node to scroll to. ex. document.querySelector( '#bazinga' )
-	toggle, // Node that toggles the animation, OR an integer. ex. document.querySelector( '#toggle' )
-	options // Classes and callbacks. Same options as those passed into the init() function.
-);
-```
-
-**Example 1**
-
-```javascript
-var scroll = new SmoothScroll();
-var anchor = document.querySelector( '#bazinga' );
-scroll.animateScroll( anchor );
-```
-
-**Example 2**
-
-```javascript
-var scroll = new SmoothScroll();
-var anchor = document.querySelector( '#bazinga' );
-var toggle = document.querySelector('#toggle');
-var options = { speed: 1000, easing: 'easeOutCubic' };
-scroll.animateScroll( anchor, toggle, options );
-```
-
-**Example 3**
-
-```javascript
-// You can optionally pass in a y-position to scroll to as an integer
-var scroll = new SmoothScroll();
-scroll.animateScroll( 750 );
-```
-
-#### cancelScroll()
-Cancel a scroll-in-progress.
-
-```javascript
-var scroll = new SmoothScroll();
-scroll.cancelScroll();
-```
-
-***Note:*** *This does not handle focus management. The user will stop in place, and focus will remain on the anchor link that triggered the scroll.*
-
-#### init()
-Initialize Smooth Scroll. This is called automatically when you setup your `new SmoothScroll` object, but can be used to reinitialize your instance.
-
-```javascript
-var scroll = new SmoothScroll();
-scroll.init('.some-selector');
-```
-
-#### destroy()
-Destroy the current `smoothScroll.init()`. This is called automatically during the `init` function to remove any existing initializations.
-
-```javascript
-var scroll = new SmoothScroll();
-scroll.destroy();
-```
-
-### Fixed Headers
-
-If you're using a fixed header, Smooth Scroll will automatically offset scroll distances by the header height. Pass in a valid CSS selector for your fixed header as an option to the `init`.
-
-If you have multiple fixed headers, pass in the last one in the markup.
-
-```html
-<nav data-scroll-header>
-	...
-</nav>
-```
-
-```js
-var scroll = new SmoothScroll('.some-selector',{
-	header: '[data-scroll-header]'
-});
 ```
 
 ---
@@ -1770,413 +1523,6 @@ latestBlogPosts({
 
 ---
 
-## Language Translation
-
-You can add multi-language support to your Mashery developer portal.
-
-### Demo
-
-<ul class="list-inline">
-	<li><a class="js-scroll-ignore active" data-translate="en" href="#">EN</a></li>
-	<li><a class="js-scroll-ignore" data-translate="fr" href="#">FR</a></li>
-	<li><a class="js-scroll-ignore" data-translate="sp" href="#">SP</a></li>
-</ul>
-
-<div class="translate translate-en active">
-	<p>Hello, world!</p>
-</div>
-
-<div class="translate translate-fr">
-	<p>Bonjour le monde!</p>
-</div>
-
-<div class="translate translate-sp">
-	<p>¡Hola Mundo!</p>
-</div>
-
-### Getting Started
-
-#### 1. Add language toggles
-
-Turn any link or button into a language toggle by adding the `[data-translate]` data attribute. The value of this attribute should equal the language it toggles. You can use any naming convention for your languages that you'd like (ex. `en` or `english` for *English*, `fr` or `french` for *French*, and so on).
-
-```html
-<a data-translate="en" role="button" href="#">EN</a>
-<a data-translate="fr" role="button" href="#">FR</a>
-<a data-translate="sp" role="button" href="#">SP</a>
-
-<!-- OR... -->
-
-<button data-translate="english">English</button>
-<button data-translate="french">French</button>
-<button data-translate="spanish">Spanish</button>
-```
-
-*__Note:__ For proper accessibility for visitors using screen readers and other assistive technology, add `role="button"` if using links.*
-
-#### 2. Add language blocks to your content
-
-Within your editable content areas (like *Custom Pages*, *Documentation*, and *Blog Posts*), add pre-translated blocks of text by adding the `.translate` and  `.translate-*` classes to a `div` element. The `*` should match one of the `[data-translate]` values in your language toggles.
-
-These language blocks are dynamically shown or hidden based on the visitor's selected language. Make a language block visible by default by adding the `.active` class. Language blocks can contain any content you want, including additional markup.
-
-```html
-<div class="translate translate-en active">
-	<p>Hello, world!</p>
-</div>
-
-<div class="translate translate-fr">
-	<p>Bonjour le monde!</p>
-</div>
-
-<div class="translate translate-sp">
-	<p>¡Hola Mundo!</p>
-</div>
-
-<!-- OR... -->
-
-<div class="translate translate-english active">
-	<p>Hello, world!</p>
-</div>
-
-<div class="translate translate-french">
-	<p>Bonjour le monde!</p>
-</div>
-
-<div class="translate translate-spanish">
-	<p>¡Hola Mundo!</p>
-</div>
-```
-
-#### 3. Create a dictionary of translation definitions
-
-For areas where you cannot customize markup (such as header navigation, form labels, and documentation navigation), you will need to create a "dictionary" of words to look for and translate.
-
-This is an array of objects. Each object contains a collection of key/value pairs, where the *key* is your language code/name (the one used in your `[data-translate]` toggles) and the *value* is the word or phrase in that language. These are *case sensitive*.
-
-Whatever language you list first will be your default language unless you specify one in the [options and settings](#options-and-settings).
-
-```javascript
-var dictionary = [{
-	en: 'Documentation',
-	fr: 'Documentation',
-	sp: 'Documentación'
-},
-{
-	en: 'Interactive API',
-	fr: 'API interactive',
-	sp: 'API interactiva'
-}];
-```
-
-You also need to provide a list of selectors for the content areas that you want to translate this way. Separate each selector with a comma, and be as restrictive as possible.
-
-```javascript
-// Translate the primary navigation, user navigation, and documentation navigation
-var contentSelectors = '#nav-primary-list, #nav-user-list, #nav-docs ul';
-```
-
-*__Note:__ If you only want to use pre-translated language blocks, that's fine. You can skip this step.*
-
-#### 4. Initialize your translations
-
-Initialize your translations in a `portalAfterRender` event.
-
-```js
-window.addEventListener('portalAfterRender', function () {
-
-	var dictionary = [{
-		en: 'Documentation',
-		fr: 'Documentation',
-		sp: 'Documentación'
-	},
-	{
-		en: 'Interactive API',
-		fr: 'API interactive',
-		sp: 'API interactiva'
-	}];
-
-	// Translate the primary navigation, user navigation, and documentation navigation
-	var contentSelectors = '#nav-primary-list, #nav-user-list, #nav-docs ul';
-
-	var translate = new Translate({
-		contentSelector: contentSelectors,
-		dictionary: dictionary
-	});
-
-}, false);
-```
-
-### Global Settings
-
-You can pass options and callbacks into Smooth Scroll when initializing.
-
-```javascript
-var translate = new Translate({
-	default: null, // The default language [optional]
-	activeClass: 'active', // The class to add to active language blocks and toggles
-	langBlockSelector: '.translate', // The selector for language blocks
-	langBlockPrefix: '.translate-', // The selector prefix for language-specific language blocks
-	contentSelectors: null, // The selectors for targeted content translation
-	initClass: 'js-translate', // The class to add to the document when the script initializes
-	dictionary: [], // Your disctionary of translation
-});
-```
-
-### Use Translate events in your own scripts
-
-You can also call Translate's methods in your own scripts.
-
-#### updateOptions()
-Update your options and settings.
-
-```javascript
-var translate = new Translate();
-translate.updateOptions(options);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.updateOptions({
-	dictionary: [{
-		en: 'Hello',
-		fr: 'Bonjour',
-		sp: 'Hola'
-	}]
-});
-```
-
-#### saveLang()
-Save the chosen language into local storage.
-
-```javascript
-var translate = new Translate();
-translate.saveLang(lang);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.saveLang('fr');
-```
-
-#### getSavedLang()
-Get the saved language from local storage.
-
-```javascript
-var translate = new Translate();
-translate.getSavedLang();
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-var lang = translate.getSavedLang();
-
-// Returns "fr"
-console.log(lang);
-```
-
-#### removeSavedLang()
-Remove the saved language from local storage.
-
-```javascript
-var translate = new Translate();
-translate.removeSavedLang();
-```
-
-#### setCurrentLang()
-Set the current language. Use this if you programmatically translate content.
-
-```javascript
-var translate = new Translate();
-translate.setCurrentLang(lang);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.setCurrentLang('sp');
-```
-
-#### toggleLangBlock()
-Show any content blocks for the current language (and hide all others).
-
-
-```javascript
-var translate = new Translate();
-translate.toggleLangBlock(lang);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.toggleLangBlock('fr');
-```
-
-#### translateContent()
-Translate targeted content into the new language.
-
-```javascript
-var translate = new Translate();
-translate.translateContent(content, lang);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.translateContent('#nav-primary-list', 'fr');
-```
-
-#### activateToggle()
-Activate the toggle for the currently selected language.
-
-```javascript
-var translate = new Translate();
-translate.activateToggle(lang, toggle);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.activateToggle('fr', document.querySelector('[data-translate="fre"]'));
-```
-
-#### run()
-Run a translation.
-
-```javascript
-var translate = new Translate();
-translate.run(lang, toggle);
-```
-
-**Example**
-
-```javascript
-var translate = new Translate();
-translate.run('fr', document.querySelector('[data-translate="fre"]'));
-```
-
-#### destroy()
-Destroy the current `Translate()` instantiation.
-
-```javascript
-var translate = new Translate();
-translate.destroy();
-```
-
----
-
-## GitHub-Hosted Documentation
-
-You can now host your documentation on GitHub&mdash;taking advantage of its markdown support and version control features&mdash;and display it dynamically on your Mashery Portal.
-
-This approach uses Blackbeard's [event hooks](https://developer.mashery.com/docs/read/your_portal/layout_and_design/Event_Hooks) and [custom JavaScript variables](https://developer.mashery.com/docs/read/your_portal/layout_and_design/CSS_and_JavaScript_Hooks#custom-javascript-variables) with the [GitHub Content API](https://developer.github.com/v3/repos/contents/).
-
-### Getting Started
-
-#### 1. Define your GitHub options and details
-
-There are only two required options: `user` and `repo`. These should point to the GitHub username and repository, respectively, of the project to pull content from.
-
-Exclude any other options from the list below to use the default.
-
-```js
-var githubDocsOptions = {
-	selector: '.content', // The selector for the container to render the content in
-	user: null, // The GitHub username for the repository
-	repo: null, // The GitHub repository to get content from
-	root: '', // The root directory to use in the project
-	runScripts: false, // If true, run any in-content scripts after loading the content
-	loading: '<p>Loading...</p>', // Text to display while loading content from GitHub
-	failMessage: '<p>Unable to load content. Visit <a target="_blank" href="https://github.com/mashery/blackbeard/tree/master/docs/' + mashery.globals.github + '">https://github.com/mashery/blackbeard/tree/master/docs/' + mashery.globals.github + '</a> to view the documentation.</p>' // Text to display if the GitHub API returns an error
-};
-```
-
-#### 2. Initialize GitHub Docs
-
-Initialize GitHub Docs in a `portalAfterRender` event.
-
-```js
-window.addEventListener('portalAfterRender', function () {
-	githubDocs(githubDocsOptions);
-}, false);
-```
-
-#### 3. Point to your content
-
-In the API Control Center under `Manage > Content`, click on the page you'd like to render from GitHub. Uncheck "Use TinyMCE", and add an inline script with a [global JavaScript variable](https://developer.mashery.com/docs/read/your_portal/layout_and_design/CSS_and_JavaScript_Hooks#custom-javascript-variables) named `github`.
-
-It should be a string that points to the content path in your project (within the `root` directory if you specified one).
-
-```html
-<script>
-	mashery.globals.github = 'path/to/your/content.md';
-</script>
-```
-
-### An Example
-
-Here's an example from this Portal.
-
-**Setup**
-
-```js
-var githubDocsOptions = {
-	user: 'mashery',
-	repo: 'portal-theme-starter-kit',
-	root: 'docs/' // The root directory for all of this documentation
-};
-
-window.addEventListener('portalAfterRender', function () {
-	githubDocs(githubDocsOptions);
-}, false);
-```
-
-**On The Page**
-
-```html
-<script>
-	// Points to https://github.com/mashery/portal-theme-starter-kit/blob/master/docs/1-quick-start.md
-	// The /docs in the URL is automatically added because it's set as the root directory for the project
-	mashery.globals.github = '1-quickstart.md';
-</script>
-```
-
-### Event Hooks
-
-This plugin emits two custom events.
-
-- `portalAfterGitHubRender` runs after content is rendered.
-- `portalAfterGitHubError` runs if the GitHub Content API returns with an error.
-
-You can hook into these to run additional scripts if desired.
-
-### Potential Issues
-
-#### No Search Integration
-
-A known issue with this approach: content is not cached on our server and therefore not searchable via the built-in Portal search functionality.
-
-You might try to get around this by including a brief description or some metadata in the body of your post in the Portal content editor. This content will be wiped out once the API data loads, but provides the internal search engine content to crawl and cache.
-
-#### GitHub API Limits
-
-The GitHub Content API limits the number of transactions, and once exceeded, returns an error.
-
-To prevent excessive API calls, GitHub Docs caches each piece of documentation locally for the current browser session with `sessionStorage`. That said, on a high-traffic site, it's still possible to exceed your limit and receive a content error. Users will instead be directed to visit the content on GitHub directly.
-
-
----
-
 
 ## Utility Classes
 
@@ -2338,10 +1684,5 @@ You can selectively hide or show pieces content within a page or documentation o
 	// Create table of contents
 	window.addEventListener('portalAfterRender', renderPortalComponentsTOC, false);
 	renderPortalComponentsTOC();
-
-	// Init Translate Demo
-	window.addEventListener('portalAfterRender', function () {
-		new Translate();
-	}, false);
 
 </script>

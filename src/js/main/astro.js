@@ -23,7 +23,7 @@
 
 	var astro = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
-	var settings;
+	var settings, app;
 
 	// Default settings
 	var defaults = {
@@ -162,7 +162,7 @@
 	 */
 	astro.destroy = function () {
 		if ( !settings ) return;
-		document.documentElement.classList.remove( settings.initClass );
+		app.classList.remove( settings.initClass );
 		document.removeEventListener('click', eventHandler, false);
 		settings = null;
 	};
@@ -182,9 +182,10 @@
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
+		app = document.querySelector('#app');
 
 		// Listeners and methods
-		document.documentElement.classList.add( settings.initClass ); // Add class to HTML element to activate conditional CSS
+		app.classList.add( settings.initClass ); // Add class to HTML element to activate conditional CSS
 		document.addEventListener('click', eventHandler, false); // Listen for click events and run event handler
 
 	};

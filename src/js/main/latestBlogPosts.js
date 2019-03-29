@@ -40,22 +40,28 @@ var latestBlogPosts = function (options) {
 		responseType: 'document'
 	}).success(function (data) {
 		var list = '';
-		data.querySelectorAll('#main .section').forEach(function (post, index) {
-			if (index >= settings.count) return;
-			var title = post.querySelector('h2 a');
-			var author = post.querySelector('.user-reference a');
-			var excerpt = document.createElement('div');
-			excerpt.innerHTML = m$.convertMarkdown(post.querySelector('.section-body').innerHTML);
-			postData = {
-				author: author.innerHTML,
-				authorUrl: author.getAttribute('href'),
-				excerpt: excerpt.textContent.slice(0, parseInt(settings.excerptLength, 10)),
-				published: post.querySelector('.timestamp abbr').getAttribute('title'),
-				title: title.innerHTML,
-				url: title.getAttribute('href'),
-			};
-			list += settings.template(postData);
-		});
+		var posts = data.querySelectorAll('#main .section');
+		if (posts.length > 0) {
+			posts.forEach(function (post, index) {
+				if (index >= settings.count) return;
+				var title = post.querySelector('h2 a');
+				var author = post.querySelector('.user-reference a');
+				var excerpt = document.createElement('div');
+				excerpt.innerHTML = m$.convertMarkdown(post.querySelector('.section-body').innerHTML);
+				postData = {
+					author: author.innerHTML,
+					authorUrl: author.getAttribute('href'),
+					excerpt: excerpt.textContent.slice(0, parseInt(settings.excerptLength, 10)),
+					published: post.querySelector('.timestamp abbr').getAttribute('title'),
+					title: title.innerHTML,
+					url: title.getAttribute('href'),
+				};
+				list += settings.template(postData);
+			});
+		} else {
+			list = '<li><em>No blog posts yet.</em></li>';
+		}
+
 		latestPosts.innerHTML = '<' + settings.listType + ' class="' + settings.listClass + '">' + list + '</' + settings.listType + '>';
 	});
 
