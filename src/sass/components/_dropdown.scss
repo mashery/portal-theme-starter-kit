@@ -1,0 +1,88 @@
+/**
+ * @section Dropdown
+ * Styling for dropdown menus.
+ */
+
+.nav-dropdown > summary {
+	color: $color-primary;
+	cursor: pointer;
+}
+
+@media (min-width: $bp-large) {
+
+	/**
+	 * Dropdown menu
+	 */
+	.nav-dropdown {
+		display: inline-block;
+		position: relative;
+	}
+
+	// Style the expand/collapse icon
+	// .nav-dropdown > summary {
+	// 	list-style: none;
+	// }
+
+	// .nav-dropdown > summary::-webkit-details-marker {
+	// 	display: none;
+	// }
+
+
+	.nav-dropdown > ul {
+		background-color: $color-white;
+		border: 1px solid darken($color-gray-light, 7%);
+		list-style: none;
+		margin-left: 0;
+		min-width: 19em;
+		position: absolute;
+		padding: 0;
+		text-align: left;
+		top: 2.5em;
+		z-index: 999;
+	}
+
+	.nav-dropdown > ul:after,
+	.nav-dropdown > ul:before {
+		bottom: 100%;
+		left: 15%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.nav-dropdown > ul:after {
+		border-color: rgba($color-white, 0);
+		border-bottom-color: $color-white;
+		border-width: 11px;
+		margin-left: -11px;
+	}
+
+	.nav-dropdown > ul:before {
+		border-color: rgba(darken($color-gray-light, 7%), 0);
+		border-bottom-color: darken($color-gray-light, 7%);
+		border-width: 12px;
+		margin-left: -12px;
+	}
+
+	.nav-dropdown > ul > li > a {
+		display: inline-block;
+		padding: 0.125em 0.5em;
+		text-decoration: none;
+		width: 100%;
+
+		&:hover {
+			background-color: $color-primary;
+			color: $color-white;
+			text-decoration: none;
+		}
+	}
+
+	.nav-dropdown > ul > li:before {
+		content: "\200B"; /* 1 */
+		position: absolute; /* 2 */
+	}
+
+}

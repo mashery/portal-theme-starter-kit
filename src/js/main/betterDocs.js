@@ -179,7 +179,7 @@
 		//
 
 		var betterDocs = {}; // Object for public APIs
-		var settings, content;
+		var settings, content, app;
 
 
 		//
@@ -304,9 +304,9 @@
 			document.removeEventListener('click', clickHandler, false);
 
 			// Remove classes
-			document.documentElement.classList.remove(settings.initClass);
-			document.documentElement.classList.remove(settings.wideLayoutClass);
-			document.documentElement.classList.remove(settings.wideLayoutBgClass);
+			app.classList.remove(settings.initClass);
+			app.classList.remove(settings.wideLayoutClass);
+			app.classList.remove(settings.wideLayoutBgClass);
 			if (content) {
 				content.classList.remove(settings.initClass + settings.contentClassSuffix);
 				content.classList.remove(settings.wideLayoutClass + settings.contentClassSuffix);
@@ -345,17 +345,21 @@
 			content = document.querySelector(selector);
 			if (!content) return;
 
+			// The app
+			app = document.querySelector('#app');
+			if (!app) return;
+
 			// Add initialization class
-			document.documentElement.classList.add(settings.initClass);
+			app.classList.add(settings.initClass);
 			content.classList.add(settings.initClass + settings.contentClassSuffix);
 
 			// If wide layout, add wide class
 			if (settings.wideLayout) {
-				document.documentElement.classList.add(settings.wideLayoutClass);
+				app.classList.add(settings.wideLayoutClass);
 				content.classList.add(settings.wideLayoutClass + settings.contentClassSuffix);
 
 				if (settings.wideLayoutBg) {
-					document.documentElement.classList.add(settings.wideLayoutBgClass);
+					app.classList.add(settings.wideLayoutBgClass);
 				}
 			}
 
@@ -371,7 +375,9 @@
 			}
 
 			// Listen for click events
-			document.addEventListener('click', clickHandler, false);
+			var app = document.querySelector('#app');
+			if (!app) return;
+			app.addEventListener('click', clickHandler, false);
 
 			// Set a default language
 			if (settings.langDefault) {

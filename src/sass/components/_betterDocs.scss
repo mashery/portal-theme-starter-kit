@@ -89,7 +89,7 @@
 	}
 }
 
-.complete.better-docs-wide-bg body {
+.complete .better-docs-wide-bg {
 	@media (min-width: $bp-large) {
 		background-image: linear-gradient(to right, #f7f7f7 0, #f7f7f7 25%, transparent 25%, transparent 63%, #f7f7f7 63%, #f7f7f7 100%);
 	}

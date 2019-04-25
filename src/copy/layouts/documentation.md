@@ -12,7 +12,7 @@ Provides catalog management, order management, and daily specials functionality 
 
 Get details of daily special
 
-`GET: /v1/deal/` | [Try it](/io-docs?api=Acme+Commerce+API)
+`GET: /v1/deal/`
 
 ### Response
 
@@ -35,7 +35,7 @@ Get details of daily special
 
 Place a new order
 
-`GET: /v1/deal/` | [Try it](/io-docs?api=Acme+Commerce+API)
+`GET: /v1/deal/`
 
 ### Response
 
@@ -51,7 +51,7 @@ Place a new order
 
 get a listing of products from the catalog
 
-`GET: /v1/product/{productId}` | [Try it](/io-docs?api=Acme+Commerce+API)
+`GET: /v1/product/{productId}`
 
 ### Parameters
 

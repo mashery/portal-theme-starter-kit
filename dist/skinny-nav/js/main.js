@@ -1,10 +1,214 @@
 /*!
- * portal-theme v1.0.0
+ * portal-theme v1.1.0
  * Portal theme for...
- * (c) 2018 Chris Ferdinandi
+ * (c) 2019 Chris Ferdinandi
  * MIT License
  * http://github.com/mashery/portal-theme-starter-kit
  */
+
+/*
+Details Element Polyfill 2.3.1
+Copyright © 2019 Javan Makhmali
+ */
+(function() {
+  "use strict";
+  var element = document.createElement("details");
+  element.innerHTML = "<summary>a</summary>b";
+  element.setAttribute("style", "position: absolute; left: -9999px");
+  var support = {
+    open: "open" in element && elementExpands(),
+    toggle: "ontoggle" in element
+  };
+  function elementExpands() {
+    (document.body || document.documentElement).appendChild(element);
+    var closedHeight = element.offsetHeight;
+    element.open = true;
+    var openedHeight = element.offsetHeight;
+    element.parentNode.removeChild(element);
+    return closedHeight != openedHeight;
+  }
+  var styles = '\ndetails, summary {\n  display: block;\n}\ndetails:not([open]) > *:not(summary) {\n  display: none;\n}\nsummary::before {\n  content: "►";\n  padding-right: 0.3rem;\n  font-size: 0.6rem;\n  cursor: default;\n}\n[open] > summary::before {\n  content: "▼";\n}\n';
+  var _ref = [], forEach = _ref.forEach, slice = _ref.slice;
+  if (!support.open) {
+    polyfillStyles();
+    polyfillProperties();
+    polyfillToggle();
+    polyfillAccessibility();
+  }
+  if (support.open && !support.toggle) {
+    polyfillToggleEvent();
+  }
+  function polyfillStyles() {
+    document.head.insertAdjacentHTML("afterbegin", "<style>" + styles + "</style>");
+  }
+  function polyfillProperties() {
+    var prototype = document.createElement("details").constructor.prototype;
+    var setAttribute = prototype.setAttribute, removeAttribute = prototype.removeAttribute;
+    var open = Object.getOwnPropertyDescriptor(prototype, "open");
+    Object.defineProperties(prototype, {
+      open: {
+        get: function get() {
+          if (this.tagName == "DETAILS") {
+            return this.hasAttribute("open");
+          } else {
+            if (open && open.get) {
+              return open.get.call(this);
+            }
+          }
+        },
+        set: function set(value) {
+          if (this.tagName == "DETAILS") {
+            return value ? this.setAttribute("open", "") : this.removeAttribute("open");
+          } else {
+            if (open && open.set) {
+              return open.set.call(this, value);
+            }
+          }
+        }
+      },
+      setAttribute: {
+        value: function value(name, _value) {
+          var _this = this;
+          var call = function call() {
+            return setAttribute.call(_this, name, _value);
+          };
+          if (name == "open" && this.tagName == "DETAILS") {
+            var wasOpen = this.hasAttribute("open");
+            var result = call();
+            if (!wasOpen) {
+              var summary = this.querySelector("summary");
+              if (summary) summary.setAttribute("aria-expanded", true);
+              triggerToggle(this);
+            }
+            return result;
+          }
+          return call();
+        }
+      },
+      removeAttribute: {
+        value: function value(name) {
+          var _this2 = this;
+          var call = function call() {
+            return removeAttribute.call(_this2, name);
+          };
+          if (name == "open" && this.tagName == "DETAILS") {
+            var wasOpen = this.hasAttribute("open");
+            var result = call();
+            if (wasOpen) {
+              var summary = this.querySelector("summary");
+              if (summary) summary.setAttribute("aria-expanded", false);
+              triggerToggle(this);
+            }
+            return result;
+          }
+          return call();
+        }
+      }
+    });
+  }
+  function polyfillToggle() {
+    onTogglingTrigger((function(element) {
+      element.hasAttribute("open") ? element.removeAttribute("open") : element.setAttribute("open", "");
+    }));
+  }
+  function polyfillToggleEvent() {
+    if (window.MutationObserver) {
+      new MutationObserver(function(mutations) {
+        forEach.call(mutations, (function(mutation) {
+          var target = mutation.target, attributeName = mutation.attributeName;
+          if (target.tagName == "DETAILS" && attributeName == "open") {
+            triggerToggle(target);
+          }
+        }));
+      }).observe(document.documentElement, {
+        attributes: true,
+        subtree: true
+      });
+    } else {
+      onTogglingTrigger((function(element) {
+        var wasOpen = element.getAttribute("open");
+        setTimeout((function() {
+          var isOpen = element.getAttribute("open");
+          if (wasOpen != isOpen) {
+            triggerToggle(element);
+          }
+        }), 1);
+      }));
+    }
+  }
+  function polyfillAccessibility() {
+    setAccessibilityAttributes(document);
+    if (window.MutationObserver) {
+      new MutationObserver(function(mutations) {
+        forEach.call(mutations, (function(mutation) {
+          forEach.call(mutation.addedNodes, setAccessibilityAttributes);
+        }));
+      }).observe(document.documentElement, {
+        subtree: true,
+        childList: true
+      });
+    } else {
+      document.addEventListener("DOMNodeInserted", (function(event) {
+        setAccessibilityAttributes(event.target);
+      }));
+    }
+  }
+  function setAccessibilityAttributes(root) {
+    findElementsWithTagName(root, "SUMMARY").forEach((function(summary) {
+      var details = findClosestElementWithTagName(summary, "DETAILS");
+      summary.setAttribute("aria-expanded", details.hasAttribute("open"));
+      if (!summary.hasAttribute("tabindex")) summary.setAttribute("tabindex", "0");
+      if (!summary.hasAttribute("role")) summary.setAttribute("role", "button");
+    }));
+  }
+  function eventIsSignificant(event) {
+    return !(event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.target.isContentEditable);
+  }
+  function onTogglingTrigger(callback) {
+    addEventListener("click", (function(event) {
+      if (eventIsSignificant(event)) {
+        if (event.which <= 1) {
+          var element = findClosestElementWithTagName(event.target, "SUMMARY");
+          if (element && element.parentNode && element.parentNode.tagName == "DETAILS") {
+            callback(element.parentNode);
+          }
+        }
+      }
+    }), false);
+    addEventListener("keydown", (function(event) {
+      if (eventIsSignificant(event)) {
+        if (event.keyCode == 13 || event.keyCode == 32) {
+          var element = findClosestElementWithTagName(event.target, "SUMMARY");
+          if (element && element.parentNode && element.parentNode.tagName == "DETAILS") {
+            callback(element.parentNode);
+            event.preventDefault();
+          }
+        }
+      }
+    }), false);
+  }
+  function triggerToggle(element) {
+    var event = document.createEvent("Event");
+    event.initEvent("toggle", false, false);
+    element.dispatchEvent(event);
+  }
+  function findElementsWithTagName(root, tagName) {
+    return (root.tagName == tagName ? [ root ] : []).concat(typeof root.getElementsByTagName == "function" ? slice.call(root.getElementsByTagName(tagName)) : []);
+  }
+  function findClosestElementWithTagName(element, tagName) {
+    if (typeof element.closest == "function") {
+      return element.closest(tagName);
+    } else {
+      while (element) {
+        if (element.tagName == tagName) {
+          return element;
+        } else {
+          element = element.parentNode;
+        }
+      }
+    }
+  }
+})();
 
 /*!
  * Astro v10.2.0: Mobile-first navigation patterns
@@ -578,7 +782,9 @@
 			}
 
 			// Listen for click events
-			document.addEventListener('click', clickHandler, false);
+			var app = document.querySelector('#app');
+			if (!app) return;
+			app.addEventListener('click', clickHandler, false);
 
 			// Set a default language
 			if (settings.langDefault) {
@@ -612,24 +818,27 @@
 }));
 /**
  * docsNavCollapse.js
- * Copyright (c) 2018. TIBCO Software Inc. All Rights Reserved.
+ * Copyright (c) 2019. TIBCO Software Inc. All Rights Reserved.
  * @description Expand-and-collapse documentation navigation.
- * @version     1.0.0
+ * @version     2.0.0
  * @author      Chris Ferdinandi
  */
 var docsNavCollapse = function (options) {
 
 	'use strict';
 
-	var publicAPIs = {};
+	//
+	// Variables
+	//
+
+	// @todo make these part of the script, duh!
 	var defaults = {
-		selector: '#nav-docs li > ul',
-		selectorClass: 'docs-expand-toggle',
-		initClass: 'js-docs-expand',
-		show: '+ <span class="screen-reader">Show Nav Items</span>',
-		hide: '— <span class="screen-reader">Hide Nav Items</span>'
+		selector: '#nav-docs',
+		className: 'docs-nav-dropdown',
+		overview: 'Overview'
 	};
-	var settings, navItems;
+
+	var settings;
 
 
 	//
@@ -638,117 +847,97 @@ var docsNavCollapse = function (options) {
 
 	/**
 	 * Merge two or more objects together.
-	 * @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
 	 * @param   {Object}   objects  The objects to merge together
 	 * @returns {Object}            Merged values of defaults and options
 	 */
 	var extend = function () {
-
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-		    deep = arguments[0];
-		    i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
+		var merged = {};
+		Array.prototype.forEach.call(arguments, (function (obj) {
+			for (var key in obj) {
+				if (!obj.hasOwnProperty(key)) return;
+				merged[key] = obj[key];
 			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-
+		}));
+		return merged;
 	};
 
-	var clickHandler = function (event) {
-		if (!event.target.closest(settings.selectorClass)) return;
-		event.preventDefault();
-		var parent = event.target.closest('li');
-		if (!parent) return;
-		parent.classList.toggle('is-shown');
-	};
-
-	var setup = function () {
-		document.documentElement.classList.add(settings.initClass);
-		navItems.forEach((function (item) {
+	/**
+	 * Add the details element to the DOM
+	 * @param  {NodeList} navs The nav items to add the element to
+	 */
+	var makeDetails = function (navs) {
+		Array.prototype.forEach.call(navs, (function (nav) {
 
 			// Variables
-			var parent = item.closest('li');
-			if (!parent) return;
-			var link = parent.querySelector('a');
-			if (!link) return;
+			var li = nav.closest('li');
+			var link = li.querySelector('a');
+			var open = li.classList.contains('active') ? ' open' : '';
 
-			// Create expand/collapse toggle
-			var toggle = document.createElement('a');
-			toggle.innerHTML  =
-				'<span class="docs-expand-show">' + settings.show + '</span>' +
-				'<span class="docs-expand-hide">' + settings.hide + '</span>';
-			toggle.className = settings.selectorClass + ' js-scroll-ignore';
-			toggle.href = '#';
-			toggle.setAttribute('role', 'button');
+			// Add the element
+			li.innerHTML =
+				'<details class="' + settings.className + '"' + open + '>' +
+					'<summary>' + link.textContent + '</summary>' +
+					'<ul>' +
+						'<li class="' + li.className + '"><a href="' + link.href + '">' + settings.overview + '</a></li>' +
+						nav.innerHTML +
+					'</ul>' +
+				'</details>';
 
-			// Inject toggle
-			link.before(toggle);
+			// Recursively add to child elements
+			var navs = li.querySelectorAll('ul > li > ul');
+			makeDetails(navs);
 
 		}));
 	};
 
-	var destroy = function () {
-		if (!settings) return;
-		document.documentElement.classList.remove(settings.initClass);
-		document.removeEventListener('click', clickHandler, false);
-		settings = null;
-		navItems = null;
-	};
-
+	/**
+	 * Initialize the plugin
+	 */
 	var init = function () {
-
-		// Destroy previous inits
-		destroy();
-
-		// Merge defaults with options
 		settings = extend(defaults, options || {});
-
-		// Get the nav items
-		navItems = document.querySelectorAll(settings.selector);
-		if (navItems.length < 1) {
-			destroy();
-			return;
-		}
-
-		// Setup the DOM
-		setup();
-
-		// Setup event listener
-		document.addEventListener('click', clickHandler, false);
-
+		var navs = document.querySelectorAll(settings.selector + ' ul > li > ul');
+		if (navs.length < 1) return;
+		makeDetails(navs);
 	};
 
 
 	//
-	// Inits & Event Listeners
+	// Inits
 	//
 
 	init();
+
+};
+/*!
+ * addDropdown.js v1.0.0
+ * Add dropdown menus to the primary nav
+ * (c) 2019 TIBCO Software Inc.
+ * Written by Chris Ferdinandi
+ * All Rights Reserved
+ */
+var addDropdown = function (url, data, home) {
+
+	'use strict';
+
+	// Make sure there's data
+	if (!data || Object.prototype.toString.call(data) !== '[object Array]' || data.length < 1) return;
+
+	// Get the target element
+	var target = document.querySelector('#nav-primary-list a[href*="' + url + '"]');
+	if (!target) return;
+	var li = target.closest('li');
+	if (!li) return;
+
+	// Replace original link
+	var original = '';
+	if (home) {
+		original = '<li><a href="' + target.href + '">' + home + '</a></li>';
+	}
+
+	// Inject the new DOM
+	li.innerHTML = '<details class="nav-dropdown"><summary>' + target.textContent + '</summary><ul>' + original + data.map((function (item) {
+		return '<li><a href="' + item.url + '">' + item.title + '</a></li>';
+	})).join('') + '</ul></details>';
 
 };
 /*! fluidvids.js v2.4.1 | (c) 2014 @toddmotto | https://github.com/toddmotto/fluidvids */
@@ -826,83 +1015,6 @@ var docsNavCollapse = function (options) {
 
 }));
 
-/*!
- * githubDocs.js v1.0.1
- * Load documentation from GitHub
- * (c) 2017 TIBCO Software Inc.
- * Written by Chris Ferdinandi
- * All Rights Reserved
- */
-var githubDocs = function (options) {
-
-	'use strict';
-
-	// Sanity check
-	if (!window.mashery.globals.github) return;
-
-	// Variables
-	var defaults = {
-		selector: '.content',
-		user: null,
-		repo: null,
-		root: '',
-		runScripts: false,
-		loading: '<p>Loading...</p>',
-		failMessage: '<p>Unable to load content.</p>'
-	};
-	var settings = m$.extend(defaults, options || {});
-	if (!settings.user || !settings.repo) return;
-	var main = document.querySelector(settings.selector);
-	if (!main) return;
-
-	// Add loading text
-	main.innerHTML = settings.loading;
-
-	var renderDocs = function (content) {
-
-		// Convert markdown to HTML
-		main.innerHTML = m$.convertMarkdown(content);
-
-		// If inline scripts should be run, run them
-		if (settings.runScripts) {
-			main.querySelectorAll('script').forEach((function (script) {
-				var func = new Function(script.innerHTML);
-				func();
-			}));
-		}
-
-		// Fix the location
-		m$.fixLocation();
-
-		// Syntax highlight code
-		if ('Prism' in window) {
-			Prism.highlightAll();
-		}
-
-		m$.emitEvent('portalAfterGitHubRender');
-
-	};
-
-	// Get the docs
-	var docs = sessionStorage.getItem('portalGHDocs_' + window.mashery.contentId);
-	if (docs) {
-		renderDocs(docs);
-	} else {
-
-		atomic.ajax({
-			url: 'https://api.github.com/repos/' + settings.user + '/' + settings.repo + '/contents/' + settings.root + mashery.globals.github
-		}).success((function (data) {
-			var content = window.atob(data.content);
-			renderDocs(content);
-			sessionStorage.setItem('portalGHDocs_' + window.mashery.contentId, content);
-		})).error((function (data) {
-			main.innerHTML = settings.failMessage;
-			m$.emitEvent('portalAfterGitHubError');
-		}));
-
-	}
-
-};
 /*!
  * latestBlogPosts.js v1.0.0
  * Load the latest blog posts onto any page
@@ -1021,770 +1133,6 @@ window.addEventListener('portalBeforeRender', (function () {
 	window.mashery.content.main = content.innerHTML;
 
 }), false);
-/**
- * Responsive tables
- * Copyright (c) 2017. TIBCO Software Inc. All Rights Reserved.
- * @description Automatically make tables on documentation page responsive
- * @version     1.0.0
- * @author      Chris Ferdinandi
- */
-
-(function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define('responsiveTables', factory(root));
-	} else if (typeof exports === 'object') {
-		module.exports = factory(root);
-	} else {
-		root.responsiveTables = factory(root);
-	}
-})(window || this, (function (root) {
-
-	'use strict';
-
-	//
-	// Variables
-	//
-
-	var responsiveTables = {}; // Object for public APIs
-	var supports = !!document.querySelector; // Feature test
-	var settings, tables;
-
-	// Default settings
-	var defaults = {
-		selector: 'table',
-		responsiveClass: 'table-responsive',
-		initClass: 'js-responsive-tables',
-		callback: function () {},
-	};
-
-
-	//
-	// Methods
-	//
-
-	/**
-	 * Merge two or more objects. Returns a new object.
-	 * Set the first argument to `true` for a deep or recursive merge
-	 * @param {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	 * @param {Object}   objects  The objects to merge together
-	 * @returns {Object}          Merged values of defaults and options
-	 */
-	var extend = function () {
-
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-		var length = arguments.length;
-
-		// Check if a deep merge
-		if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-					// If deep merge and property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(true, extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-
-	};
-
-	/**
-	 * Add data-label attributes
-	 * @param {node} table The table to add data-label attributes to
-	 */
-	var addLabels = function (table) {
-
-		// Variables
-		var labels = table.querySelectorAll('th');
-		var rows = table.querySelectorAll('tr');
-
-		// Sanity check
-		if (labels.length === 0 || rows.length === 0) return;
-
-		// Loop through each row
-		for (var i = 0, len = rows.length; i < len; i++) {
-
-			// Get cells within the row
-			var cells = rows[i].querySelectorAll('td');
-
-			// For each cell, add a data-label
-			for (var n = 0, len2 = cells.length; n < len2; n++) {
-				if (!labels[n]) continue;
-				cells[n].setAttribute('data-label', labels[n].innerHTML);
-			}
-		}
-
-	};
-
-	/**
-	 * Add attributes to the tables
-	 * @param {NodeList} tables The tables
-	 */
-	var addAttributes = function (tables) {
-		for (var i = 0, len = tables.length; i < len; i++) {
-			tables[i].classList.add(settings.responsiveClass);
-			addLabels(tables[i]);
-		}
-	};
-
-
-	/**
-	 * Destroy the current initialization.
-	 * @public
-	 */
-	responsiveTables.destroy = function () {
-
-		// If plugin isn't already initialized, stop
-		if (!settings) return;
-
-		// Remove responsive class
-		for (var i = 0, len = tables.length; i < len; i++) {
-			tables[i].classList.remove(settings.responsiveClass);
-		}
-
-		// Reset variables
-		settings = null;
-		tables = null;
-
-	};
-
-	/**
-	 * Initialize Responsive Tables
-	 * @public
-	 * @param {Object} options User settings
-	 */
-	responsiveTables.init = function (options) {
-
-		// feature test
-		if (!supports) return;
-
-		// Destroy any existing inits
-		responsiveTables.destroy();
-
-		// Merge user options with defaults
-		settings = extend(true, defaults, options || {});
-
-		// Only run on documentation and custom pages
-		if (!document.body.classList.contains('page-docs') && !document.body.classList.contains('page-page')) return;
-
-		// Add class to HTML element to activate conditional CSS
-		document.documentElement.classList.add(settings.initClass);
-
-		// Get all responsive tables
-		tables = document.querySelectorAll(settings.selector);
-
-		// Make them responsive
-		addAttributes(tables);
-
-		// Run callback
-		settings.callback();
-
-	};
-
-
-	//
-	// Public APIs
-	//
-
-	return responsiveTables;
-
-}));
-/*!
- * smooth-scroll v12.1.5: Animate scrolling to anchor links
- * (c) 2017 Chris Ferdinandi
- * MIT License
- * http://github.com/cferdinandi/smooth-scroll
- */
-
-(function (root, factory) {
-	if ( typeof define === 'function' && define.amd ) {
-		define([], (function () {
-			return factory(root);
-		}));
-	} else if ( typeof exports === 'object' ) {
-		module.exports = factory(root);
-	} else {
-		root.SmoothScroll = factory(root);
-	}
-})(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (function (window) {
-
-	'use strict';
-
-	//
-	// Feature Test
-	//
-
-	var supports =
-		'querySelector' in document &&
-		'addEventListener' in window &&
-		'requestAnimationFrame' in window &&
-		'closest' in window.Element.prototype;
-
-
-	//
-	// Default settings
-	//
-
-	var defaults = {
-		// Selectors
-		ignore: '[data-scroll-ignore]',
-		header: null,
-
-		// Speed & Easing
-		speed: 500,
-		offset: 0,
-		easing: 'easeInOutCubic',
-		customEasing: null,
-
-		// Callback API
-		before: function () {},
-		after: function () {}
-	};
-
-
-	//
-	// Utility Methods
-	//
-
-	/**
-	 * Merge two or more objects. Returns a new object.
-	 * @param {Object}   objects  The objects to merge together
-	 * @returns {Object}          Merged values of defaults and options
-	 */
-	var extend = function () {
-
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-		var length = arguments.length;
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					extended[prop] = obj[prop];
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for ( ; i < length; i++ ) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-
-	};
-
-	/**
-	 * Get the height of an element.
-	 * @param  {Node} elem The element to get the height of
-	 * @return {Number}    The element's height in pixels
-	 */
-	var getHeight = function (elem) {
-		return parseInt(window.getComputedStyle(elem).height, 10);
-	};
-
-	/**
-	 * Escape special characters for use with querySelector
-	 * @param {String} id The anchor ID to escape
-	 * @author Mathias Bynens
-	 * @link https://github.com/mathiasbynens/CSS.escape
-	 */
-	var escapeCharacters = function (id) {
-
-		// Remove leading hash
-		if (id.charAt(0) === '#') {
-			id = id.substr(1);
-		}
-
-		var string = String(id);
-		var length = string.length;
-		var index = -1;
-		var codeUnit;
-		var result = '';
-		var firstCodeUnit = string.charCodeAt(0);
-		while (++index < length) {
-			codeUnit = string.charCodeAt(index);
-			// Note: there’s no need to special-case astral symbols, surrogate
-			// pairs, or lone surrogates.
-
-			// If the character is NULL (U+0000), then throw an
-			// `InvalidCharacterError` exception and terminate these steps.
-			if (codeUnit === 0x0000) {
-				throw new InvalidCharacterError(
-					'Invalid character: the input contains U+0000.'
-				);
-			}
-
-			if (
-				// If the character is in the range [\1-\1F] (U+0001 to U+001F) or is
-				// U+007F, […]
-				(codeUnit >= 0x0001 && codeUnit <= 0x001F) || codeUnit == 0x007F ||
-				// If the character is the first character and is in the range [0-9]
-				// (U+0030 to U+0039), […]
-				(index === 0 && codeUnit >= 0x0030 && codeUnit <= 0x0039) ||
-				// If the character is the second character and is in the range [0-9]
-				// (U+0030 to U+0039) and the first character is a `-` (U+002D), […]
-				(
-					index === 1 &&
-					codeUnit >= 0x0030 && codeUnit <= 0x0039 &&
-					firstCodeUnit === 0x002D
-				)
-			) {
-				// http://dev.w3.org/csswg/cssom/#escape-a-character-as-code-point
-				result += '\\' + codeUnit.toString(16) + ' ';
-				continue;
-			}
-
-			// If the character is not handled by one of the above rules and is
-			// greater than or equal to U+0080, is `-` (U+002D) or `_` (U+005F), or
-			// is in one of the ranges [0-9] (U+0030 to U+0039), [A-Z] (U+0041 to
-			// U+005A), or [a-z] (U+0061 to U+007A), […]
-			if (
-				codeUnit >= 0x0080 ||
-				codeUnit === 0x002D ||
-				codeUnit === 0x005F ||
-				codeUnit >= 0x0030 && codeUnit <= 0x0039 ||
-				codeUnit >= 0x0041 && codeUnit <= 0x005A ||
-				codeUnit >= 0x0061 && codeUnit <= 0x007A
-			) {
-				// the character itself
-				result += string.charAt(index);
-				continue;
-			}
-
-			// Otherwise, the escaped character.
-			// http://dev.w3.org/csswg/cssom/#escape-a-character
-			result += '\\' + string.charAt(index);
-
-		}
-
-		return '#' + result;
-
-	};
-
-	/**
-	 * Calculate the easing pattern
-	 * @link https://gist.github.com/gre/1650294
-	 * @param {String} type Easing pattern
-	 * @param {Number} time Time animation should take to complete
-	 * @returns {Number}
-	 */
-	var easingPattern = function (settings, time) {
-		var pattern;
-
-		// Default Easing Patterns
-		if (settings.easing === 'easeInQuad') pattern = time * time; // accelerating from zero velocity
-		if (settings.easing === 'easeOutQuad') pattern = time * (2 - time); // decelerating to zero velocity
-		if (settings.easing === 'easeInOutQuad') pattern = time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time; // acceleration until halfway, then deceleration
-		if (settings.easing === 'easeInCubic') pattern = time * time * time; // accelerating from zero velocity
-		if (settings.easing === 'easeOutCubic') pattern = (--time) * time * time + 1; // decelerating to zero velocity
-		if (settings.easing === 'easeInOutCubic') pattern = time < 0.5 ? 4 * time * time * time : (time - 1) * (2 * time - 2) * (2 * time - 2) + 1; // acceleration until halfway, then deceleration
-		if (settings.easing === 'easeInQuart') pattern = time * time * time * time; // accelerating from zero velocity
-		if (settings.easing === 'easeOutQuart') pattern = 1 - (--time) * time * time * time; // decelerating to zero velocity
-		if (settings.easing === 'easeInOutQuart') pattern = time < 0.5 ? 8 * time * time * time * time : 1 - 8 * (--time) * time * time * time; // acceleration until halfway, then deceleration
-		if (settings.easing === 'easeInQuint') pattern = time * time * time * time * time; // accelerating from zero velocity
-		if (settings.easing === 'easeOutQuint') pattern = 1 + (--time) * time * time * time * time; // decelerating to zero velocity
-		if (settings.easing === 'easeInOutQuint') pattern = time < 0.5 ? 16 * time * time * time * time * time : 1 + 16 * (--time) * time * time * time * time; // acceleration until halfway, then deceleration
-
-		// Custom Easing Patterns
-		if (!!settings.customEasing) pattern = settings.customEasing(time);
-
-		return pattern || time; // no easing, no acceleration
-	};
-
-	/**
-	 * Determine the document's height
-	 * @returns {Number}
-	 */
-	var getDocumentHeight = function () {
-		return Math.max(
-			document.body.scrollHeight, document.documentElement.scrollHeight,
-			document.body.offsetHeight, document.documentElement.offsetHeight,
-			document.body.clientHeight, document.documentElement.clientHeight
-		);
-	};
-
-	/**
-	 * Calculate how far to scroll
-	 * @param {Element} anchor The anchor element to scroll to
-	 * @param {Number} headerHeight Height of a fixed header, if any
-	 * @param {Number} offset Number of pixels by which to offset scroll
-	 * @returns {Number}
-	 */
-	var getEndLocation = function (anchor, headerHeight, offset) {
-		var location = 0;
-		if (anchor.offsetParent) {
-			do {
-				location += anchor.offsetTop;
-				anchor = anchor.offsetParent;
-			} while (anchor);
-		}
-		location = Math.max(location - headerHeight - offset, 0);
-		return location;
-	};
-
-	/**
-	 * Get the height of the fixed header
-	 * @param  {Node}   header The header
-	 * @return {Number}        The height of the header
-	 */
-	var getHeaderHeight = function (header) {
-		return !header ? 0 : (getHeight(header) + header.offsetTop);
-	};
-
-	/**
-	 * Bring the anchored element into focus
-	 * @param {Node}     anchor      The anchor element
-	 * @param {Number}   endLocation The end location to scroll to
-	 * @param {Boolean}  isNum       If true, scroll is to a position rather than an element
-	 */
-	var adjustFocus = function (anchor, endLocation, isNum) {
-
-		// Don't run if scrolling to a number on the page
-		if (isNum) return;
-
-		// Otherwise, bring anchor element into focus
-		anchor.focus();
-		if (document.activeElement.id !== anchor.id) {
-			anchor.setAttribute('tabindex', '-1');
-			anchor.focus();
-			anchor.style.outline = 'none';
-		}
-		window.scrollTo(0 , endLocation);
-
-	};
-
-	/**
-	 * Check to see if user prefers reduced motion
-	 * @param  {Object} settings Script settings
-	 */
-	var reduceMotion = function (settings) {
-		if ('matchMedia' in window && window.matchMedia('(prefers-reduced-motion)').matches) {
-			return true;
-		}
-		return false;
-	};
-
-
-	//
-	// SmoothScroll Constructor
-	//
-
-	var SmoothScroll = function (selector, options) {
-
-		//
-		// Variables
-		//
-
-		var smoothScroll = {}; // Object for public APIs
-		var settings, anchor, toggle, fixedHeader, headerHeight, eventTimeout, animationInterval;
-
-
-		//
-		// Methods
-		//
-
-		/**
-		 * Cancel a scroll-in-progress
-		 */
-		smoothScroll.cancelScroll = function () {
-			// clearInterval(animationInterval);
-			cancelAnimationFrame(animationInterval);
-		};
-
-		/**
-		 * Start/stop the scrolling animation
-		 * @param {Node|Number} anchor  The element or position to scroll to
-		 * @param {Element}     toggle  The element that toggled the scroll event
-		 * @param {Object}      options
-		 */
-		smoothScroll.animateScroll = function (anchor, toggle, options) {
-
-			// Local settings
-			var animateSettings = extend(settings || defaults, options || {}); // Merge user options with defaults
-
-			// Selectors and variables
-			var isNum = Object.prototype.toString.call(anchor) === '[object Number]' ? true : false;
-			var anchorElem = isNum || !anchor.tagName ? null : anchor;
-			if (!isNum && !anchorElem) return;
-			var startLocation = window.pageYOffset; // Current location on the page
-			if (animateSettings.header && !fixedHeader) {
-				// Get the fixed header if not already set
-				fixedHeader = document.querySelector( animateSettings.header );
-			}
-			if (!headerHeight) {
-				// Get the height of a fixed header if one exists and not already set
-				headerHeight = getHeaderHeight(fixedHeader);
-			}
-			var endLocation = isNum ? anchor : getEndLocation(anchorElem, headerHeight, parseInt((typeof animateSettings.offset === 'function' ? animateSettings.offset() : animateSettings.offset), 10)); // Location to scroll to
-			var distance = endLocation - startLocation; // distance to travel
-			var documentHeight = getDocumentHeight();
-			var timeLapsed = 0;
-			var start, percentage, position;
-
-			/**
-			 * Stop the scroll animation when it reaches its target (or the bottom/top of page)
-			 * @param {Number} position Current position on the page
-			 * @param {Number} endLocation Scroll to location
-			 * @param {Number} animationInterval How much to scroll on this loop
-			 */
-			var stopAnimateScroll = function (position, endLocation) {
-
-				// Get the current location
-				var currentLocation = window.pageYOffset;
-
-				// Check if the end location has been reached yet (or we've hit the end of the document)
-				if ( position == endLocation || currentLocation == endLocation || ((startLocation < endLocation && window.innerHeight + currentLocation) >= documentHeight )) {
-
-					// Clear the animation timer
-					smoothScroll.cancelScroll();
-
-					// Bring the anchored element into focus
-					adjustFocus(anchor, endLocation, isNum);
-
-					// Run callback after animation complete
-					animateSettings.after(anchor, toggle);
-
-					// Reset start
-					start = null;
-
-					return true;
-
-				}
-			};
-
-			/**
-			 * Loop scrolling animation
-			 */
-			var loopAnimateScroll = function (timestamp) {
-				if (!start) { start = timestamp; }
-				timeLapsed += timestamp - start;
-				percentage = (timeLapsed / parseInt(animateSettings.speed, 10));
-				percentage = (percentage > 1) ? 1 : percentage;
-				position = startLocation + (distance * easingPattern(animateSettings, percentage));
-				window.scrollTo(0, Math.floor(position));
-				if (!stopAnimateScroll(position, endLocation)) {
-					window.requestAnimationFrame(loopAnimateScroll);
-					start = timestamp;
-				}
-			};
-
-			/**
-			 * Reset position to fix weird iOS bug
-			 * @link https://github.com/cferdinandi/smooth-scroll/issues/45
-			 */
-			if (window.pageYOffset === 0) {
-				window.scrollTo( 0, 0 );
-			}
-
-			// Run callback before animation starts
-			animateSettings.before(anchor, toggle);
-
-			// Start scrolling animation
-			smoothScroll.cancelScroll();
-			window.requestAnimationFrame(loopAnimateScroll);
-
-
-		};
-
-		/**
-		 * Handle has change event
-		 */
-		var hashChangeHandler = function (event) {
-
-			// Only run if there's an anchor element to scroll to
-			if (!anchor) return;
-
-			// Reset the anchor element's ID
-			anchor.id = anchor.getAttribute('data-scroll-id');
-
-			// Scroll to the anchored content
-			smoothScroll.animateScroll(anchor, toggle);
-
-			// Reset anchor and toggle
-			anchor = null;
-			toggle = null;
-
-		};
-
-		/**
-		 * If smooth scroll element clicked, animate scroll
-		 */
-		var clickHandler = function (event) {
-
-			// Don't run if the user prefers reduced motion
-			if (reduceMotion(settings)) return;
-
-			// Don't run if right-click or command/control + click
-			if (event.button !== 0 || event.metaKey || event.ctrlKey) return;
-
-			// Check if a smooth scroll link was clicked
-			toggle = event.target.closest(selector);
-			if (!toggle || toggle.tagName.toLowerCase() !== 'a' || event.target.closest(settings.ignore)) return;
-
-			// Only run if link is an anchor and points to the current page
-			if (toggle.hostname !== window.location.hostname || toggle.pathname !== window.location.pathname || !/#/.test(toggle.href)) return;
-
-			// Get the sanitized hash
-			var hash;
-			try {
-				hash = escapeCharacters(decodeURIComponent(toggle.hash));
-			} catch(e) {
-				hash = escapeCharacters(toggle.hash);
-			}
-
-			// If the hash is empty, scroll to the top of the page
-			if (hash === '#') {
-
-				// Prevent default link behavior
-				event.preventDefault();
-
-				// Set the anchored element
-				anchor = document.body;
-
-				// Save or create the ID as a data attribute and remove it (prevents scroll jump)
-				var id = anchor.id ? anchor.id : 'smooth-scroll-top';
-				anchor.setAttribute('data-scroll-id', id);
-				anchor.id = '';
-
-				// If no hash change event will happen, fire manually
-				// Otherwise, update the hash
-				if (window.location.hash.substring(1) === id) {
-					hashChangeHandler();
-				} else {
-					window.location.hash = id;
-				}
-
-				return;
-
-			}
-
-			// Get the anchored element
-			anchor = document.querySelector(hash);
-
-			// If anchored element exists, save the ID as a data attribute and remove it (prevents scroll jump)
-			if (!anchor) return;
-			anchor.setAttribute('data-scroll-id', anchor.id);
-			anchor.id = '';
-
-			// If no hash change event will happen, fire manually
-			if (toggle.hash === window.location.hash) {
-				event.preventDefault();
-				hashChangeHandler();
-			}
-
-		};
-
-		/**
-		 * On window scroll and resize, only run events at a rate of 15fps for better performance
-		 */
-		var resizeThrottler = function (event) {
-			if (!eventTimeout) {
-				eventTimeout = setTimeout((function() {
-					eventTimeout = null; // Reset timeout
-					headerHeight = getHeaderHeight(fixedHeader); // Get the height of a fixed header if one exists
-				}), 66);
-			}
-		};
-
-		/**
-		 * Destroy the current initialization.
-		 */
-		smoothScroll.destroy = function () {
-
-			// If plugin isn't already initialized, stop
-			if (!settings) return;
-
-			// Remove event listeners
-			document.removeEventListener('click', clickHandler, false);
-			window.removeEventListener('resize', resizeThrottler, false);
-
-			// Cancel any scrolls-in-progress
-			smoothScroll.cancelScroll();
-
-			// Reset variables
-			settings = null;
-			anchor = null;
-			toggle = null;
-			fixedHeader = null;
-			headerHeight = null;
-			eventTimeout = null;
-			animationInterval = null;
-
-		};
-
-		/**
-		 * Initialize Smooth Scroll
-		 * @param {Object} options User settings
-		 */
-		smoothScroll.init = function (options) {
-
-			// feature test
-			if (!supports) return;
-
-			// Destroy any existing initializations
-			smoothScroll.destroy();
-
-			// Selectors and variables
-			settings = extend(defaults, options || {}); // Merge user options with defaults
-			fixedHeader = settings.header ? document.querySelector(settings.header) : null; // Get the fixed header
-			headerHeight = getHeaderHeight(fixedHeader);
-
-			// When a toggle is clicked, run the click handler
-			document.addEventListener('click', clickHandler, false);
-
-			// Listen for hash changes
-			window.addEventListener('hashchange', hashChangeHandler, false);
-
-			// If window is resized and there's a fixed header, recalculate its size
-			if (fixedHeader) {
-				window.addEventListener('resize', resizeThrottler, false);
-			}
-
-		};
-
-
-		//
-		// Initialize plugin
-		//
-
-		smoothScroll.init(options);
-
-
-		//
-		// Public APIs
-		//
-
-		return smoothScroll;
-
-	};
-
-	return SmoothScroll;
-
-}));
 /**
  * Remove any gap below the foote ron short pages
  * @param  {String} selector Selector for the footer
@@ -1921,399 +1269,3 @@ window.addEventListener('portalBeforeRender', (function () {
 	window.mashery.content.main = content.innerHTML;
 
 }), false);
-/*!
- * translate.js v1.0.0
- * Provide multi-language portal suport
- * (c) 2017 TIBCO Software Inc.
- * Written by Chris Ferdinandi
- * All Rights Reserved
- */
- (function (root, factory) {
- 	if ( typeof define === 'function' && define.amd ) {
- 		define([], (function () {
- 			return factory(root);
- 		}));
- 	} else if ( typeof exports === 'object' ) {
- 		module.exports = factory(root);
- 	} else {
- 		root.Translate = factory(root);
- 	}
- })(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (function (window) {
-
-	'use strict';
-
-	//
-	// Shared Variables
-	//
-
-	// The default values
-	var defaults = {
-		default: null, // The default language [optional]
-		activeClass: 'active', // The class to add to active language blocks and toggles
-		langBlockSelector: '.translate', // The selector for language blocks
-		langBlockPrefix: '.translate-', // The selector prefix for language-specific language blocks
-		contentSelectors: null, // The selectors for targeted content translation
-		initClass: 'js-translate', // The class to add to the document when the script initializes
-		dictionary: [], // Your disctionary of translation
-	};
-
-
-	//
-	// Shared Methods
-	//
-
-	/*!
-	 * Merge two or more objects together.
-	 * (c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com
-	 * @param   {Boolean}  deep     If true, do a deep (or recursive) merge [optional]
-	 * @param   {Object}   objects  The objects to merge together
-	 * @returns {Object}            Merged values of defaults and options
-	 */
-	var extend = function () {
-
-		// Variables
-		var extended = {};
-		var deep = false;
-		var i = 0;
-
-		// Check if a deep merge
-		if (Object.prototype.toString.call( arguments[0] ) === '[object Boolean]') {
-			deep = arguments[0];
-			i++;
-		}
-
-		// Merge the object into the extended object
-		var merge = function (obj) {
-			for (var prop in obj) {
-				if (obj.hasOwnProperty(prop)) {
-					// If property is an object, merge properties
-					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
-						extended[prop] = extend(extended[prop], obj[prop]);
-					} else {
-						extended[prop] = obj[prop];
-					}
-				}
-			}
-		};
-
-		// Loop through each object and conduct a merge
-		for (; i < arguments.length; i++) {
-			var obj = arguments[i];
-			merge(obj);
-		}
-
-		return extended;
-
-	};
-
-	/**
-	 * Get all text nodes within a container
-	 * @param  {Node} node The parent node to search within
-	 * @return {Array}     The text nodes
-	 */
-	var getTextNodes = function (node){
-		var allNodes = [];
-		for (node = node.firstChild; node; node = node.nextSibling) {
-			if (node.nodeType === 3 && !node.parentElement.matches('script, [data-translate]')) {
-				allNodes.push(node);
-			} else {
-				allNodes = allNodes.concat(getTextNodes(node));
-			}
-		}
-		return allNodes;
-	};
-
-
-	//
-	// Constructor
-	// Can be named anything you want
-	//
-
-	var Constructor = function (options) {
-
-		//
-		// Unique Variables
-		//
-
-		var translate = {}; // Placeholder for the public APIs
-		var settings; // Local settings
-		var currentLang; // The currently selected language
-
-
-		//
-		// Unique Methods
-		//
-
-		/**
-		 * Merge user options into defaults
-		 * @param  {Object} options The user options
-		 */
-		translate.updateOptions = function (options) {
-			settings = extend(defaults, options || {});
-		};
-
-		/**
-		 * Save the chosen language into local storage
-		 * @param  {String} lang The language
-		 */
-		translate.saveLang = function (lang) {
-			localStorage.setItem('translateLang', lang);
-		};
-
-		/**
-		 * Get the saved language from local storage
-		 * @return {String} lang The language
-		 */
-		translate.getSavedLang = function () {
-			return localStorage.getItem('translateLang');
-		};
-
-		/**
-		 * Remove the saved language from local storage
-		 */
-		translate.removeSavedLang = function () {
-			localStorage.removeItem('translateLang');
-		};
-
-		/**
-		 * Set the current language
-		 * @param {String} lang The language
-		 */
-		translate.setCurrentLang = function (lang) {
-
-			// If no language is provided, set a default
-			if (!lang) {
-
-				// If there's no dictionary to use, bail
-				if (settings.dictionary.length < 1) return;
-
-				// Otherwise, get the first language of the first definition and use that
-				for (var i = 0; i < settings.dictionary.length; i++) {
-					for (var key in settings.dictionary[i]) {
-						lang = key;
-						break;
-					}
-					break;
-				}
-
-				// Set the settings default to this language
-				settings.default = lang;
-
-			}
-
-			// Update the current language
-			currentLang = lang;
-
-			// Save the chosen language in local storagea
-			translate.saveLang(lang);
-
-		};
-
-		/**
-		 * Show any content blocks for the current language (and hide all others)
-		 * @param  {String} lang The selected language
-		 */
-		translate.toggleLangBlock = function (lang) {
-
-			// Hide active lang blocks
-			document.querySelectorAll(settings.langBlockSelector + '.' + settings.activeClass).forEach((function (block) {
-				block.classList.remove(settings.activeClass);
-			}));
-
-			// Show new lang blocks
-			document.querySelectorAll(settings.langBlockPrefix + lang).forEach((function (block) {
-				block.classList.add(settings.activeClass);
-			}));
-
-		};
-
-		/**
-		 * Translate targeted content into the new language
-		 * @param  {Node|String} content  The content area to translate
-		 * @param  {String}      lang     The selected language
-		 */
-		translate.translateContent = function (content, lang) {
-
-			// Make sure definitions exist
-			if (settings.dictionary.length < 1) return;
-
-			// Get content if only a selector
-			content = typeof content === 'string' ? document.querySelector(content) : content;
-
-			// Get all of the text nodes in the content area
-			var textNodes = getTextNodes(content);
-			if (textNodes.length < 1) return;
-
-			// Translate each text node
-			settings.dictionary.forEach((function (definition) {
-
-				// If the selected or current language don't exist for this definition, bail
-				if (!definition[lang] || !definition[currentLang]) return;
-
-				// Get all matching strings
-				var matches = textNodes.filter((function (text) {
-					return text.textContent.trim() === definition[currentLang].trim();
-				}));
-
-				// Translate all matching nodes
-				matches.forEach((function (match) {
-					match.textContent = definition[lang];
-				}));
-
-			}));
-
-		};
-
-		/**
-		 * Translate all content areas
-		 * @param  {String} lang The selected language
-		 */
-		var translateContentAreas = function (lang) {
-
-			// If there are not content areas to translate, bail
-			if (!settings.contentSelectors) return;
-
-			// Translate the content of each content area
-			document.querySelectorAll(settings.contentSelectors).forEach((function (content) {
-				translate.translateContent(content, lang);
-			}));
-
-		};
-
-		/**
-		 * Activate the toggle for the currently selected language
-		 * @param  {String} lang   The selected language
-		 * @param  {Node}   toggle The toggle for the language
-		 */
-		translate.activateToggle = function (lang, toggle) {
-
-			// Deselected any currently active toggles
-			document.querySelectorAll('[data-translate="' + currentLang + '"].' + settings.activeClass).forEach((function (currentToggle) {
-				currentToggle.classList.remove(settings.activeClass);
-			}));
-
-			// Activate the toggle for the currently selected language
-			if (toggle) {
-				toggle.classList.add(settings.activeClass);
-			}
-
-		};
-
-		/**
-		 * Run a translation
-		 * @param  {String} lang   The selected language
-		 * @param  {Node}   toggle The toggle for the language
-		 */
-		translate.run = function (lang, toggle) {
-
-			// Activate toggle
-			translate.activateToggle(lang, toggle);
-
-			// Only run if language changes
-			if (lang === currentLang) return;
-
-			// Toggle lang block
-			translate.toggleLangBlock(lang);
-
-			// Translate content areas
-			translateContentAreas(lang);
-
-			// Update the currentLang
-			translate.setCurrentLang(lang);
-
-		};
-
-		/**
-		 * Handle click events
-		 * @param  {Event} event  The click event
-		 */
-		var clickHandler = function (event) {
-
-			// Get the selected language
-			var lang = event.target.getAttribute('data-translate');
-			if (!lang) return;
-
-			// Prevent default link/button behavior
-			event.preventDefault();
-
-			// Run translation
-			translate.run(lang, event.target);
-
-		};
-
-		/**
-		 * Run a translation on Ajax page loads
-		 */
-		var ajaxHandler = function () {
-			translate.run(currentLang, document.querySelector('[data-translate="' + currentLang + '"]'));
-		};
-
-		/**
-		 * Destroy the current instantiation
-		 */
-		translate.destroy = function () {
-
-			// If plugin isn't already initialized, stop
-			if (!settings) return;
-
-			// Reset to the default language
-			translate.run(settings.default, document.querySelector('[data-translate="' + settings.default + '"]'));
-
-			// Remove event listeners
-			document.removeEventListener('click', clickHandler, false);
-			window.removeEventListener('portalAfterRenderAjax', ajaxHandler, false);
-
-			// Remove saved language
-			translate.removeSavedLang();
-
-			// Remove init class
-			document.documentElement.classList.remove(settings.initClass);
-
-			// Reset variables
-			settings = null;
-
-		};
-
-		/**
-		 * Initialize the plugin
-		 */
-		translate.init = function (options) {
-
-			// Merge options into defaults
-			translate.updateOptions(options);
-
-			// Add init class
-			document.documentElement.classList.add(settings.initClass);
-
-			// Check for a saved language
-			var saved = translate.getSavedLang();
-
-			// Set the current language
-			translate.setCurrentLang(settings.default);
-
-			// Activate the current lang
-			var lang = saved ? saved : currentLang;
-			translate.run(lang, document.querySelector('[data-translate="' + lang + '"]'));
-
-			// Listen for translation events
-			document.addEventListener('click', clickHandler, false);
-			window.addEventListener('portalAfterRenderAjax', ajaxHandler, false);
-
-		};
-
-		// Initialize the plugin
-		translate.init(options);
-
-		// Return the public APIs
-		return translate;
-
-	};
-
-
-	//
-	// Return the constructor
-	//
-
-	return Constructor;
-
-}));

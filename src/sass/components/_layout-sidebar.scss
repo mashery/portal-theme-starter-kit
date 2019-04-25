@@ -84,38 +84,35 @@
 #nav-docs {
 	@extend .list-unstyled;
 
+	a {
+		@extend .link-no-underline;
+	}
+
+	.docs-nav-dropdown {
+		& > summary {
+			color: $color-primary;
+			cursor: pointer;
+			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+		}
+
+		& > summary:after {
+			content: ' \25b6';
+		}
+
+		&[open] > summary:after {
+			content: ' \25bc';
+		}
+	}
+
 	// Active link
 	.current-page > a {
 		color: $color-gray-dark;
 	}
-
-	.js-docs-expand & li > ul {
-		display: none;
-		visibility: hidden;
-	}
-
-	li.is-shown > ul,
-	li.active > ul {
-		display: block;
-		visibility: visible;
-	}
-}
-
-.docs-expand-toggle {
-	float: right;
-}
-
-.docs-expand-show,
-.js-docs-expand .is-shown .docs-expand-show,
-.docs-expand-hide {
-	display: none;
-	visibility: hidden;
-}
-
-.js-docs-expand .docs-expand-show,
-.is-shown .docs-expand-hide {
-	display: inline-block;
-	visibility: visible;
 }
 
 #footer {

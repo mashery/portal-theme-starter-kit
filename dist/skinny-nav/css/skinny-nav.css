@@ -1,11 +1,12 @@
 /*!
- * portal-theme v1.0.0
+ * portal-theme v1.1.0
  * Portal theme for...
- * (c) 2018 Chris Ferdinandi
+ * (c) 2019 Chris Ferdinandi
  * MIT License
  * http://github.com/mashery/portal-theme-starter-kit
  */
 
+@charset "UTF-8";
 /**
  * @section Normalize.css
  * Normalize.css base with custom code.
@@ -86,12 +87,20 @@ html {
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
   /* 3 */
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  /* line 51, src/sass/components/_normalize.scss */
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /**
  * Remove default margin.
  */
-/* line 60, src/sass/components/_normalize.scss */
+/* line 65, src/sass/components/_normalize.scss */
 body {
   margin: 0;
 }
@@ -102,7 +111,7 @@ body {
  * and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
-/* line 70, src/sass/components/_normalize.scss */
+/* line 75, src/sass/components/_normalize.scss */
 article,
 aside,
 cite,
@@ -122,7 +131,7 @@ section {
 /*
  * Add the correct display in all browsers.
  */
-/* line 89, src/sass/components/_normalize.scss */
+/* line 94, src/sass/components/_normalize.scss */
 summary {
   display: list-item;
 }
@@ -130,7 +139,7 @@ summary {
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */
-/* line 96, src/sass/components/_normalize.scss */
+/* line 101, src/sass/components/_normalize.scss */
 audio,
 canvas,
 progress,
@@ -142,7 +151,7 @@ video {
 /**
  * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
-/* line 106, src/sass/components/_normalize.scss */
+/* line 111, src/sass/components/_normalize.scss */
 progress {
   vertical-align: baseline;
 }
@@ -151,7 +160,7 @@ progress {
  * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
-/* line 114, src/sass/components/_normalize.scss */
+/* line 119, src/sass/components/_normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
@@ -160,7 +169,7 @@ audio:not([controls]) {
 /**
  * Prevent img and video elements from spilling outside of the page on smaller screens.
  */
-/* line 122, src/sass/components/_normalize.scss */
+/* line 127, src/sass/components/_normalize.scss */
 img,
 video {
   max-width: 100%;
@@ -171,7 +180,7 @@ video {
  * Prevent iframe, object, and embed elements from spilling outside of the page on smaller screens.
  * height: auto causes iframes to smush, so it's omitted here.
  */
-/* line 132, src/sass/components/_normalize.scss */
+/* line 137, src/sass/components/_normalize.scss */
 iframe,
 object,
 embed {
@@ -181,7 +190,7 @@ embed {
 /**
  * Hide the template element in IE, Safari, and Firefox < 22.
  */
-/* line 141, src/sass/components/_normalize.scss */
+/* line 146, src/sass/components/_normalize.scss */
 template {
   display: none;
   visibility: hidden;
@@ -191,7 +200,7 @@ template {
  * 1. Remove border when inside `a` element in IE 8/9/10.
  * 2. Prevents IE from making scaled images look like crap
  */
-/* line 150, src/sass/components/_normalize.scss */
+/* line 155, src/sass/components/_normalize.scss */
 img {
   border: 0;
   /* 1 */
@@ -202,7 +211,7 @@ img {
 /**
  * Correct overflow not hidden in IE 9/10/11.
  */
-/* line 158, src/sass/components/_normalize.scss */
+/* line 163, src/sass/components/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -210,7 +219,7 @@ svg:not(:root) {
 /**
  * Address inconsistent margin.
  */
-/* line 165, src/sass/components/_normalize.scss */
+/* line 170, src/sass/components/_normalize.scss */
 figure {
   margin: 0;
 }
@@ -219,7 +228,7 @@ figure {
  * @workaround Remove focus from <main> element when using tabindex="-1" hack for skipnav link
  * @link https://code.google.com/p/chromium/issues/detail?id=37721
  */
-/* line 173, src/sass/components/_normalize.scss */
+/* line 178, src/sass/components/_normalize.scss */
 .tabindex:focus,
 [tabindex="-1"]:focus {
   outline: none;
@@ -467,45 +476,34 @@ figure {
   margin-bottom: 0;
 }
 
-/* line 54, src/sass/components/_layout-skinny-nav.scss */
+/* line 58, src/sass/components/_layout-skinny-nav.scss */
+#nav-docs .docs-nav-dropdown > summary {
+  color: #0088cc;
+  cursor: pointer;
+  list-style: none;
+}
+
+/* line 63, src/sass/components/_layout-skinny-nav.scss */
+#nav-docs .docs-nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* line 69, src/sass/components/_layout-skinny-nav.scss */
+#nav-docs .docs-nav-dropdown > summary:after {
+  content: ' \25b6';
+}
+
+/* line 73, src/sass/components/_layout-skinny-nav.scss */
+#nav-docs .docs-nav-dropdown[open] > summary:after {
+  content: ' \25bc';
+}
+
+/* line 79, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .current-page > a, #nav-docs .current-page > .link-block-styled {
   color: #808080;
 }
 
-/* line 58, src/sass/components/_layout-skinny-nav.scss */
-.js-docs-expand #nav-docs li > ul {
-  display: none;
-  visibility: hidden;
-}
-
-/* line 63, src/sass/components/_layout-skinny-nav.scss */
-#nav-docs li.is-shown > ul,
-#nav-docs li.active > ul {
-  display: block;
-  visibility: visible;
-}
-
-/* line 70, src/sass/components/_layout-skinny-nav.scss */
-.docs-expand-toggle {
-  float: right;
-}
-
-/* line 74, src/sass/components/_layout-skinny-nav.scss */
-.docs-expand-show,
-.js-docs-expand .is-shown .docs-expand-show,
-.docs-expand-hide {
-  display: none;
-  visibility: hidden;
-}
-
-/* line 81, src/sass/components/_layout-skinny-nav.scss */
-.js-docs-expand .docs-expand-show,
-.is-shown .docs-expand-hide {
-  display: inline-block;
-  visibility: visible;
-}
-
-/* line 87, src/sass/components/_layout-skinny-nav.scss */
+/* line 84, src/sass/components/_layout-skinny-nav.scss */
 #footer {
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
@@ -588,12 +586,12 @@ a.link-block, .link-block.link-block-styled {
  * No underline links
  */
 /* line 79, src/sass/components/_typography.scss */
-.link-no-underline, #nav-account a, #nav-account .link-block-styled, #nav-mashery-account a, #nav-mashery-account .link-block-styled {
+.link-no-underline, #nav-account a, #nav-account .link-block-styled, #nav-mashery-account a, #nav-mashery-account .link-block-styled, #nav-docs a, #nav-docs .link-block-styled {
   text-decoration: none;
 }
 
 /* line 82, src/sass/components/_typography.scss */
-.link-no-underline:active, #nav-account a:active, #nav-account .link-block-styled:active, #nav-mashery-account a:active, #nav-mashery-account .link-block-styled:active, .link-no-underline:focus, #nav-account a:focus, #nav-account .link-block-styled:focus, #nav-mashery-account a:focus, #nav-mashery-account .link-block-styled:focus, .link-no-underline:hover, #nav-account a:hover, #nav-account .link-block-styled:hover, #nav-account .link-block:hover .link-block-styled, .link-block:hover #nav-account .link-block-styled, #nav-mashery-account a:hover, #nav-mashery-account .link-block-styled:hover, #nav-mashery-account .link-block:hover .link-block-styled, .link-block:hover #nav-mashery-account .link-block-styled {
+.link-no-underline:active, #nav-account a:active, #nav-account .link-block-styled:active, #nav-mashery-account a:active, #nav-mashery-account .link-block-styled:active, #nav-docs a:active, #nav-docs .link-block-styled:active, .link-no-underline:focus, #nav-account a:focus, #nav-account .link-block-styled:focus, #nav-mashery-account a:focus, #nav-mashery-account .link-block-styled:focus, #nav-docs a:focus, #nav-docs .link-block-styled:focus, .link-no-underline:hover, #nav-account a:hover, #nav-account .link-block-styled:hover, #nav-account .link-block:hover .link-block-styled, .link-block:hover #nav-account .link-block-styled, #nav-mashery-account a:hover, #nav-mashery-account .link-block-styled:hover, #nav-mashery-account .link-block:hover .link-block-styled, .link-block:hover #nav-mashery-account .link-block-styled, #nav-docs a:hover, #nav-docs .link-block-styled:hover, #nav-docs .link-block:hover .link-block-styled, .link-block:hover #nav-docs .link-block-styled {
   text-decoration: underline;
 }
 
@@ -980,12 +978,6 @@ a #search-button:active,
   border-color: #005580;
   color: #ffffff;
   text-decoration: none;
-}
-
-/* line 38, src/sass/components/_buttons.scss */
-.btn:hover, :hover[type="submit"], #main-wrapper button:hover, #search-button:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
 }
 
 /**
@@ -1532,37 +1524,6 @@ th {
 .table-condensed th,
 .table-condensed td {
   padding: 0.25em;
-}
-
-/**
- * Pure CSS responsive tables
- * Adds label to each cell using the [data-label] attribute
- * @link https://techblog.livingsocial.com/blog/2015/04/06/responsive-tables-in-pure-css/
- */
-@media (max-width: 40em) {
-  /* line 59, src/sass/components/_tables.scss */
-  .table-responsive thead {
-    display: none;
-    visibility: hidden;
-  }
-  /* line 64, src/sass/components/_tables.scss */
-  .table-responsive tr {
-    border-top: 1px solid #ededed;
-    display: block;
-    padding: 0.5em;
-  }
-  /* line 70, src/sass/components/_tables.scss */
-  .table-responsive td {
-    border: 0;
-    display: block;
-    padding: 0.25em;
-  }
-  /* line 75, src/sass/components/_tables.scss */
-  .table-responsive td:before {
-    content: attr(data-label);
-    display: block;
-    font-weight: bold;
-  }
 }
 
 /**
@@ -2453,6 +2414,86 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
     display: block;
     float: right;
     visibility: visible;
+  }
+}
+
+/**
+ * @section Dropdown
+ * Styling for dropdown menus.
+ */
+/* line 6, src/sass/components/_dropdown.scss */
+.nav-dropdown > summary {
+  color: #0088cc;
+  cursor: pointer;
+}
+
+@media (min-width: 60em) {
+  /**
+	 * Dropdown menu
+	 */
+  /* line 16, src/sass/components/_dropdown.scss */
+  .nav-dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  /* line 31, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul {
+    background-color: #ffffff;
+    border: 1px solid lightgray;
+    list-style: none;
+    margin-left: 0;
+    min-width: 19em;
+    position: absolute;
+    padding: 0;
+    text-align: left;
+    top: 2.5em;
+    z-index: 999;
+  }
+  /* line 44, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul:after,
+  .nav-dropdown > ul:before {
+    bottom: 100%;
+    left: 15%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  /* line 56, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-bottom-color: #ffffff;
+    border-width: 11px;
+    margin-left: -11px;
+  }
+  /* line 63, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul:before {
+    border-color: rgba(211, 211, 211, 0);
+    border-bottom-color: lightgray;
+    border-width: 12px;
+    margin-left: -12px;
+  }
+  /* line 70, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul > li > a, .nav-dropdown > ul > li > .link-block-styled {
+    display: inline-block;
+    padding: 0.125em 0.5em;
+    text-decoration: none;
+    width: 100%;
+  }
+  /* line 76, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul > li > a:hover, .nav-dropdown > ul > li > .link-block-styled:hover, .link-block:hover .nav-dropdown > ul > li > .link-block-styled {
+    background-color: #0088cc;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  /* line 83, src/sass/components/_dropdown.scss */
+  .nav-dropdown > ul > li:before {
+    content: "\200B";
+    /* 1 */
+    position: absolute;
+    /* 2 */
   }
 }
 

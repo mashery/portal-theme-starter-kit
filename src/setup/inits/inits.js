@@ -9,9 +9,8 @@ window.addEventListener('portalAfterRender', function () {
 	astro.init();
 
 	// Enhanced documentation
-	var docs = {};
 	if (document.querySelector('.better-docs-nav')) {
-		docs = new BetterDocs('.content', {
+		new BetterDocs('.content', {
 			langs: {
 				bash: {
 					selector: 'bash',
@@ -34,12 +33,6 @@ window.addEventListener('portalAfterRender', function () {
 			wideLayout: (document.documentElement.classList.contains('js-theme-sidebar') ? true : false),
 		});
 	}
-	// Destroy instantiation on Ajax page reload
-	window.addEventListener('portalBeforeRender', function () {
-		if ('destroy' in docs) {
-			docs.destroy();
-		}
-	}, false);
 
 	// Conditional content
 	// Add logged-in/logged-out class
@@ -60,32 +53,13 @@ window.addEventListener('portalAfterRender', function () {
 	// Get the latest blog posts
 	latestBlogPosts();
 
-	// Smooth scrolling to anchor links
-	var scroll = {};
-	scroll = new SmoothScroll('.category-page #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-docs #main-wrapper a[href*="#"], .category-blogall #main-wrapper a[href*="#"], .category-blogsingle #main-wrapper a[href*="#"], #nav-docs a[href*="#"]', {
-		ignore: '.js-scroll-ignore'
-	});
-
-	// Destroy instantiation on Ajax page reload
-	window.addEventListener('portalBeforeRender', function () {
-		if ('destroy' in scroll) {
-			scroll.destroy();
-		}
-	}, false);
-
-	// Language translation
-	window.addEventListener('portalAfterRender', function () {
-		// NOTE: You should update this with your desired options, languages, and translations.
-		// Details at https://developer.mashery.com/docs/customizing_your_portal/plugins/Translate
-		var translate = new Translate();
-	}, false);
-
 	// Sticky footer
-	stickyFooter('#footer');
 	if (mashery.contentType === 'ioDocs') {
 		window.setTimeout(function () {
 			stickyFooter('#footer');
 		}, 300);
+	} else {
+		stickyFooter('#footer');
 	}
 
 }, false);
