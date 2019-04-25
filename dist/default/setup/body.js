@@ -1,6 +1,6 @@
 /*!
  * Templates & Initializations
- * portal-theme v1.1.0
+ * portal-theme v2.0.0
  * Portal Theme Starter Kit v2.7.17 - Default Theme
  * http://github.com/mashery/portal-theme-starter-kit
  */

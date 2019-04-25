@@ -1,5 +1,5 @@
 /*!
- * portal-theme v1.1.0
+ * portal-theme v2.0.0
  * Portal theme for...
  * (c) 2019 Chris Ferdinandi
  * MIT License
@@ -2600,7 +2600,7 @@ a.logo:active, .logo.link-block-styled:active, a.logo:focus, .logo.link-block-st
 
 @media (min-width: 60em) {
   /* line 92, src/sass/components/_betterDocs.scss */
-  .complete.better-docs-wide-bg body {
+  .complete .better-docs-wide-bg {
     background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f7f7f7), color-stop(25%, #f7f7f7), color-stop(25%, transparent), color-stop(63%, transparent), color-stop(63%, #f7f7f7), to(#f7f7f7));
     background-image: linear-gradient(to right, #f7f7f7 0, #f7f7f7 25%, transparent 25%, transparent 63%, #f7f7f7 63%, #f7f7f7 100%);
   }

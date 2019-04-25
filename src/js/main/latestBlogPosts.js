@@ -45,12 +45,12 @@ var latestBlogPosts = function (options) {
 			posts.forEach(function (post, index) {
 				if (index >= settings.count) return;
 				var title = post.querySelector('h2 a');
-				var author = post.querySelector('.user-reference a');
+				var author = post.querySelector('.user-reference');
 				var excerpt = document.createElement('div');
 				excerpt.innerHTML = m$.convertMarkdown(post.querySelector('.section-body').innerHTML);
 				postData = {
-					author: author.innerHTML,
-					authorUrl: author.getAttribute('href'),
+					author: author.innerHTML.split('(')[0],
+					authorUrl: null,
 					excerpt: excerpt.textContent.slice(0, parseInt(settings.excerptLength, 10)),
 					published: post.querySelector('.timestamp abbr').getAttribute('title'),
 					title: title.innerHTML,

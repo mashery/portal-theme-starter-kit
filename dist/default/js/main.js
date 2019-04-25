@@ -1,5 +1,5 @@
 /*!
- * portal-theme v1.1.0
+ * portal-theme v2.0.0
  * Portal theme for...
  * (c) 2019 Chris Ferdinandi
  * MIT License
@@ -235,7 +235,7 @@ Copyright © 2019 Javan Makhmali
 
 	var astro = {}; // Object for public APIs
 	var supports = 'querySelector' in document && 'addEventListener' in root && 'classList' in document.createElement('_'); // Feature test
-	var settings;
+	var settings, app;
 
 	// Default settings
 	var defaults = {
@@ -374,7 +374,7 @@ Copyright © 2019 Javan Makhmali
 	 */
 	astro.destroy = function () {
 		if ( !settings ) return;
-		document.documentElement.classList.remove( settings.initClass );
+		app.classList.remove( settings.initClass );
 		document.removeEventListener('click', eventHandler, false);
 		settings = null;
 	};
@@ -394,9 +394,10 @@ Copyright © 2019 Javan Makhmali
 
 		// Selectors and variables
 		settings = extend( defaults, options || {} ); // Merge user options with defaults
+		app = document.querySelector('#app');
 
 		// Listeners and methods
-		document.documentElement.classList.add( settings.initClass ); // Add class to HTML element to activate conditional CSS
+		app.classList.add( settings.initClass ); // Add class to HTML element to activate conditional CSS
 		document.addEventListener('click', eventHandler, false); // Listen for click events and run event handler
 
 	};
@@ -590,7 +591,7 @@ Copyright © 2019 Javan Makhmali
 		//
 
 		var betterDocs = {}; // Object for public APIs
-		var settings, content;
+		var settings, content, app;
 
 
 		//
@@ -715,9 +716,9 @@ Copyright © 2019 Javan Makhmali
 			document.removeEventListener('click', clickHandler, false);
 
 			// Remove classes
-			document.documentElement.classList.remove(settings.initClass);
-			document.documentElement.classList.remove(settings.wideLayoutClass);
-			document.documentElement.classList.remove(settings.wideLayoutBgClass);
+			app.classList.remove(settings.initClass);
+			app.classList.remove(settings.wideLayoutClass);
+			app.classList.remove(settings.wideLayoutBgClass);
 			if (content) {
 				content.classList.remove(settings.initClass + settings.contentClassSuffix);
 				content.classList.remove(settings.wideLayoutClass + settings.contentClassSuffix);
@@ -756,17 +757,21 @@ Copyright © 2019 Javan Makhmali
 			content = document.querySelector(selector);
 			if (!content) return;
 
+			// The app
+			app = document.querySelector('#app');
+			if (!app) return;
+
 			// Add initialization class
-			document.documentElement.classList.add(settings.initClass);
+			app.classList.add(settings.initClass);
 			content.classList.add(settings.initClass + settings.contentClassSuffix);
 
 			// If wide layout, add wide class
 			if (settings.wideLayout) {
-				document.documentElement.classList.add(settings.wideLayoutClass);
+				app.classList.add(settings.wideLayoutClass);
 				content.classList.add(settings.wideLayoutClass + settings.contentClassSuffix);
 
 				if (settings.wideLayoutBg) {
-					document.documentElement.classList.add(settings.wideLayoutBgClass);
+					app.classList.add(settings.wideLayoutBgClass);
 				}
 			}
 
@@ -1057,22 +1062,28 @@ var latestBlogPosts = function (options) {
 		responseType: 'document'
 	}).success((function (data) {
 		var list = '';
-		data.querySelectorAll('#main .section').forEach((function (post, index) {
-			if (index >= settings.count) return;
-			var title = post.querySelector('h2 a');
-			var author = post.querySelector('.user-reference a');
-			var excerpt = document.createElement('div');
-			excerpt.innerHTML = m$.convertMarkdown(post.querySelector('.section-body').innerHTML);
-			postData = {
-				author: author.innerHTML,
-				authorUrl: author.getAttribute('href'),
-				excerpt: excerpt.textContent.slice(0, parseInt(settings.excerptLength, 10)),
-				published: post.querySelector('.timestamp abbr').getAttribute('title'),
-				title: title.innerHTML,
-				url: title.getAttribute('href'),
-			};
-			list += settings.template(postData);
-		}));
+		var posts = data.querySelectorAll('#main .section');
+		if (posts.length > 0) {
+			posts.forEach((function (post, index) {
+				if (index >= settings.count) return;
+				var title = post.querySelector('h2 a');
+				var author = post.querySelector('.user-reference');
+				var excerpt = document.createElement('div');
+				excerpt.innerHTML = m$.convertMarkdown(post.querySelector('.section-body').innerHTML);
+				postData = {
+					author: author.innerHTML.split('(')[0],
+					authorUrl: null,
+					excerpt: excerpt.textContent.slice(0, parseInt(settings.excerptLength, 10)),
+					published: post.querySelector('.timestamp abbr').getAttribute('title'),
+					title: title.innerHTML,
+					url: title.getAttribute('href'),
+				};
+				list += settings.template(postData);
+			}));
+		} else {
+			list = '<li><em>No blog posts yet.</em></li>';
+		}
+
 		latestPosts.innerHTML = '<' + settings.listType + ' class="' + settings.listClass + '">' + list + '</' + settings.listType + '>';
 	}));
 

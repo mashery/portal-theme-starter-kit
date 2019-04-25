@@ -1,5 +1,5 @@
 /*!
- * portal-theme v1.1.0
+ * portal-theme v2.0.0
  * Portal theme for...
  * (c) 2019 Chris Ferdinandi
  * MIT License
