@@ -157,7 +157,7 @@ window.addEventListener('portalAfterRender', function () {
 				}
 			],
 			langDefault: 'js',
-			wideLayout: true,
+			wideLayout: !mashery.globals.betterDocsOneColumn,
 		});
 	}
 
