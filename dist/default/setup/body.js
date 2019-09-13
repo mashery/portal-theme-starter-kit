@@ -1,7 +1,7 @@
 /*!
  * Templates & Initializations
  * portal-theme v2.0.0
- * Portal Theme Starter Kit v2.8.0 - Default Theme
+ * Portal Theme Starter Kit v2.9.0 - Default Theme
  * http://github.com/mashery/portal-theme-starter-kit
  */
 
@@ -20,6 +20,9 @@ window.portalOptions.templates.page = function () {
 
 // Add theme style hook
 document.documentElement.className += ' js-theme-default';
+
+
+// Add customizations here...
 
 
 /**

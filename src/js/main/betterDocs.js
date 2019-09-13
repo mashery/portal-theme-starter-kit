@@ -91,6 +91,9 @@
 
 	var createStyles = function (langs) {
 
+		// If the styles already exist, do nothing
+		if (document.querySelector('#better-docs-lang-styles')) return;
+
 		// Variables
 		var ref = document.querySelector('script');
 		var css = document.createElement('style');
@@ -100,8 +103,8 @@
 		langs.forEach(function (lang) {
 			var classes = lang.selector.split(',');
 			classes.forEach(function (className) {
-				selectors.push('pre.lang-' + className.trim());
-				selectors.push('pre.language-' + className.trim());
+				selectors.push(settings.initClass + settings.contentClassSuffix + ' pre.lang-' + className.trim());
+				selectors.push(settings.initClass + settings.contentClassSuffix + ' pre.language-' + className.trim());
 			});
 		});
 
