@@ -103,8 +103,8 @@
 		settings.langs.forEach(function (lang) {
 			var classes = lang.selector.split(',');
 			classes.forEach(function (className) {
-				selectors.push(settings.initClass + settings.contentClassSuffix + ' pre.lang-' + className.trim());
-				selectors.push(settings.initClass + settings.contentClassSuffix + ' pre.language-' + className.trim());
+				selectors.push('.' + settings.initClass + settings.contentClassSuffix + ' pre.lang-' + className.trim());
+				selectors.push('.' + settings.initClass + settings.contentClassSuffix + ' pre.language-' + className.trim());
 			});
 		});
 
