@@ -501,7 +501,7 @@ Copyright © 2019 Javan Makhmali
 
 	};
 
-	var createStyles = function (langs) {
+	var createStyles = function (settings) {
 
 		// If the styles already exist, do nothing
 		if (document.querySelector('#better-docs-lang-styles')) return;
@@ -512,7 +512,7 @@ Copyright © 2019 Javan Makhmali
 		var selectors = [];
 
 		// Create classes
-		langs.forEach((function (lang) {
+		settings.langs.forEach((function (lang) {
 			var classes = lang.selector.split(',');
 			classes.forEach((function (className) {
 				selectors.push(settings.initClass + settings.contentClassSuffix + ' pre.lang-' + className.trim());
@@ -726,7 +726,7 @@ Copyright © 2019 Javan Makhmali
 
 			// Add inline styles
 			if (settings.langs) {
-				createStyles(settings.langs);
+				createStyles(settings);
 			}
 
 			// Listen for click events
