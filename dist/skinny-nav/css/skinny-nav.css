@@ -449,61 +449,66 @@ figure {
  * @section Layout
  * Styling for section layouts
  */
+/* line 6, src/sass/components/_layout-skinny-nav.scss */
+.content {
+  min-height: 70vh;
+}
+
 @media (min-width: 60em) {
-  /* line 9, src/sass/components/_layout-skinny-nav.scss */
+  /* line 12, src/sass/components/_layout-skinny-nav.scss */
   #nav-user-list {
     float: right;
   }
 }
 
 @media (max-width: 60em) {
-  /* line 15, src/sass/components/_layout-skinny-nav.scss */
+  /* line 18, src/sass/components/_layout-skinny-nav.scss */
   .js-astro #nav-user-list {
     border-bottom: 1px solid #e5e5e5;
   }
 }
 
-/* line 21, src/sass/components/_layout-skinny-nav.scss */
+/* line 24, src/sass/components/_layout-skinny-nav.scss */
 #nav-primary {
   background-color: #ffffff;
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 1.5625em;
 }
 
-/* line 26, src/sass/components/_layout-skinny-nav.scss */
+/* line 29, src/sass/components/_layout-skinny-nav.scss */
 .loading #nav-primary,
 .page-no-heading #nav-primary {
   margin-bottom: 0;
 }
 
-/* line 58, src/sass/components/_layout-skinny-nav.scss */
+/* line 61, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .docs-nav-dropdown > summary {
   color: #0088cc;
   cursor: pointer;
   list-style: none;
 }
 
-/* line 63, src/sass/components/_layout-skinny-nav.scss */
+/* line 66, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .docs-nav-dropdown > summary::-webkit-details-marker {
   display: none;
 }
 
-/* line 69, src/sass/components/_layout-skinny-nav.scss */
+/* line 72, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .docs-nav-dropdown > summary:after {
   content: ' \25b6';
 }
 
-/* line 73, src/sass/components/_layout-skinny-nav.scss */
+/* line 76, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .docs-nav-dropdown[open] > summary:after {
   content: ' \25bc';
 }
 
-/* line 79, src/sass/components/_layout-skinny-nav.scss */
+/* line 82, src/sass/components/_layout-skinny-nav.scss */
 #nav-docs .current-page > a, #nav-docs .current-page > .link-block-styled {
   color: #808080;
 }
 
-/* line 84, src/sass/components/_layout-skinny-nav.scss */
+/* line 87, src/sass/components/_layout-skinny-nav.scss */
 #footer {
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
@@ -2498,60 +2503,32 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
 }
 
 /*! BetterDocs.js v1.0.0 | (c) 2017 TIBCO Software Inc. | Written by Chris Ferdinandi | All Rights Reserved */
-/* line 5, src/sass/components/_betterDocs.scss */
-.better-docs-nav ul {
-  list-style: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
-}
-
-/* line 11, src/sass/components/_betterDocs.scss */
-.better-docs-nav ul > li {
-  display: inline-block;
-}
-
-/* line 16, src/sass/components/_betterDocs.scss */
-.better-docs-nav a, .better-docs-nav .link-block-styled {
-  padding: 0.3125em 0.6875em;
-  text-decoration: none;
-}
-
-/* line 20, src/sass/components/_betterDocs.scss */
-.better-docs-nav a:active, .better-docs-nav .link-block-styled:active, .better-docs-nav a:focus, .better-docs-nav .link-block-styled:focus, .better-docs-nav a:hover, .better-docs-nav .link-block-styled:hover, .better-docs-nav .link-block:hover .link-block-styled, .link-block:hover .better-docs-nav .link-block-styled {
+/* line 3, src/sass/components/_betterDocs.scss */
+.better-docs-nav {
   background-color: #e5e5e5;
-  text-decoration: none;
+  padding: 0.5em;
 }
 
-/* line 27, src/sass/components/_betterDocs.scss */
-.better-docs-nav a.active, .better-docs-nav .active.link-block-styled {
-  background-color: #0088cc;
-  color: #ffffff;
-  text-decoration: none;
+/* line 7, src/sass/components/_betterDocs.scss */
+.better-docs-nav select {
+  margin-bottom: 0;
+  width: auto;
 }
 
-@media (min-width: 60em) {
-  /* line 37, src/sass/components/_betterDocs.scss */
-  .js-theme-sidebar .better-docs-nav {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  /* line 42, src/sass/components/_betterDocs.scss */
-  .js-theme-sidebar .better-docs-nav ul {
-    background-color: #f7f7f7;
-    position: fixed;
-    width: 47.2%;
-  }
+/* line 14, src/sass/components/_betterDocs.scss */
+.better-docs-content pre, .better-docs-content .swagger-ui .model-box .inner-object, .swagger-ui .model-box .better-docs-content .inner-object,
+.better-docs-content .swagger-ui .model-box .brace-open, .swagger-ui .model-box .better-docs-content .brace-open,
+.better-docs-content .swagger-ui .model-box .brace-close, .swagger-ui .model-box .better-docs-content .brace-close {
+  margin-top: 0;
 }
 
-/* line 50, src/sass/components/_betterDocs.scss */
+/* line 19, src/sass/components/_betterDocs.scss */
 .better-docs-wide-content {
   position: relative;
 }
 
 @media (min-width: 60em) {
-  /* line 54, src/sass/components/_betterDocs.scss */
+  /* line 23, src/sass/components/_betterDocs.scss */
   .better-docs-wide-content > h1,
   .better-docs-wide-content > h2,
   .better-docs-wide-content > h3,
@@ -2565,11 +2542,11 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
   .better-docs-wide-content > dl {
     margin-right: 52.8%;
   }
-  /* line 68, src/sass/components/_betterDocs.scss */
+  /* line 37, src/sass/components/_betterDocs.scss */
   .better-docs-wide-content > table {
     max-width: 47.2%;
   }
-  /* line 72, src/sass/components/_betterDocs.scss */
+  /* line 41, src/sass/components/_betterDocs.scss */
   .better-docs-wide-content .better-docs-nav,
   .better-docs-wide-content blockquote,
   .better-docs-wide-content pre,
@@ -2585,24 +2562,16 @@ a.logo:hover, .logo.link-block-styled:hover, .link-block:hover .logo.link-block-
   }
 }
 
-/* line 81, src/sass/components/_betterDocs.scss */
+/* line 50, src/sass/components/_betterDocs.scss */
 .better-docs-wide-content blockquote {
   font-size: 1em;
   font-style: normal;
   margin-bottom: 0;
 }
 
-/* line 86, src/sass/components/_betterDocs.scss */
+/* line 55, src/sass/components/_betterDocs.scss */
 .better-docs-wide-content blockquote p:last-child {
   margin-bottom: 0.5em;
-}
-
-@media (min-width: 60em) {
-  /* line 92, src/sass/components/_betterDocs.scss */
-  .complete .better-docs-wide-bg {
-    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f7f7f7), color-stop(25%, #f7f7f7), color-stop(25%, transparent), color-stop(63%, transparent), color-stop(63%, #f7f7f7), to(#f7f7f7));
-    background-image: linear-gradient(to right, #f7f7f7 0, #f7f7f7 25%, transparent 25%, transparent 63%, #f7f7f7 63%, #f7f7f7 100%);
-  }
 }
 
 /**

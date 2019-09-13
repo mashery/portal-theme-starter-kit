@@ -38,17 +38,10 @@
 		// Only run on certain pages
 		restrictToPages: 'docs',
 
-		// Table of Contents
-		tocSelector: 'h2, h3, h4, h5, h6',
-		tocHeading: '',
-		tocLocation: '#nav-docs',
-		currentPageSelector: '.current-page',
-		tocLocationReplace: false,
-
 		// Languages
 		langs: null,
 		langDefault: null,
-		langsNav: '.better-docs-nav',
+		langsNav: 'better-docs-nav',
 
 		// Styles
 		wideLayout: true,
@@ -96,41 +89,6 @@
 
 	};
 
-	/**
-	 * Create a valid ID from a heading's content
-	 * @param  {Node}   heading  The heading
-	 * @return {string}          The ID
-	 */
-	var createID = function (heading) {
-		return 'toc-' + heading.innerText.toLowerCase().replace(/^[^a-z]+|[^\w:.-]+/g, '-');
-	};
-
-	/**
-	 * Add a sub-item to the navigation list
-	 * @param {Node}   heading     The heading element
-	 * @param {Number} difference  The difference between the current and last heading
-	 */
-	var addSubItem = function (heading, difference) {
-		var toc = '';
-		for (var i = Math.abs(difference); i > 0; i--) {
-			toc += '<ul>';
-		}
-		return toc;
-	};
-
-	/**
-	 * Close a sub-item from the navigation list
-	 * @param {Node}   heading     The heading element
-	 * @param {Number} difference  The difference between the current and last heading
-	 */
-	var closeSubItem = function (heading, difference) {
-		var toc = '';
-		for (var i = Math.abs(difference); i > 0; i--) {
-			toc += '</li></ul>';
-		}
-		return toc;
-	};
-
 	var createStyles = function (langs) {
 
 		// Variables
@@ -156,13 +114,39 @@
 
 	};
 
-	var createLangNav = function (langs, selector) {
-		var list = '';
-		langs.forEach(function (lang, key) {
-			list += '<li><a role="button" data-lang="' + key + '" href="#lang-' + key + '">' + lang.title + '</a></li>';
-		});
-		document.querySelectorAll(selector).forEach(function (langNav) {
-			langNav.innerHTML = '<ul>' + list + '</ul>';
+	var createLangNav = function (settings, selector) {
+
+		var codes = document.querySelectorAll(selector + ' pre code');
+		var reg = new RegExp(settings.langDefault);
+		var lang = settings.langs.filter(function (lang) {
+			return reg.test(lang.selector);
+		})[0];
+
+		// Create select menu
+		var select = document.createElement('div');
+		select.className = settings.langsNav;
+		select.innerHTML = '<label class="screen-reader">Select your preferred programming language</label><select>' + settings.langs.map(function (lang, index) {
+			return '<option value="' + lang.selector.split(',')[0].trim() + '" ' + (reg.test(lang.selector) ? 'selected="selected"' : '') + '>' + lang.title + '</option>';
+		}).join('') + '</select>';
+
+		codes.forEach(function (code, index) {
+
+			var pre = code.parentNode;
+
+			// Inject selector before the first pre element in a group
+			if (!pre.previousElementSibling.matches('pre')) {
+				var toggle = select.cloneNode(true);
+				toggle.querySelector('select').id = 'lang-toggle-' + index;
+				toggle.querySelector('label').setAttribute('for', 'lang-toggle-' + index);
+				pre.parentNode.insertBefore(toggle, pre);
+			}
+
+			// Show default languages
+			lang.selector.split(',').forEach(function (className) {
+				if (!code.matches('.lang-' + className.trim() + ', .language-' + className.trim())) return;
+				pre.classList.add('active');
+			});
+
 		});
 
 	};
@@ -214,70 +198,25 @@
 
 		};
 
-		/**
-		 * Render the Table of Contents
-		 */
-		var createTOC = function () {
+		betterDocs.toggleLang = function (langName) {
 
-			var headings = content.querySelectorAll(settings.tocSelector);
-			var toc = settings.tocLocationReplace ? document.querySelector(settings.tocLocation) : document.querySelector(settings.tocLocation + ' ' + settings.currentPageSelector);
-			var list = '';
-			var last, current, close;
+			var reg = new RegExp(langName);
+			var lang = settings.langs.filter(function (lang) {
+				return reg.test(lang.selector);
+			})[0];
+			var val = lang.selector.split(',')[0].trim();
 
-			if (!toc) return;
+			if (!lang || !lang.selector) return;
 
-			headings.forEach(function (heading) {
+			var classes = lang.selector.split(',').reduce(function (arr, className) {
+				arr.push('pre.lang-' + className.trim());
+				arr.push('pre.language-' + className.trim());
+				return arr;
+			}, []);
 
-				// Get current heading position
-				current = parseInt(heading.tagName.substring(1), 10);
-				close = '</li>';
-
-				// If first loop, set last to current
-				if (!last) {
-					close = '';
-					last = current;
-				}
-
-				// Create an ID if the heading is missing one
-				if (!heading.id || heading.id.length < 1) {
-					heading.id = createID(heading);
-				}
-
-				// Get difference between last and current
-				var difference = current - last;
-
-				if (difference > 0) {
-					list += addSubItem(heading, difference);
-				} else if (difference < 0) {
-					list += closeSubItem(heading, difference);
-				}
-
-				list += close + '<li><a href="#' + heading.id + '">' + heading.innerText + '</a>';
-
-				// Update last position
-				last = current;
-
-			});
-
-			if (settings.tocLocationReplace) {
-				toc.innerHTML = settings.tocHeading + '<ul>' + list + '</ul>';
-			} else {
-				toc.innerHTML += settings.tocHeading + '<ul>' + list + '</ul>';
-			}
-
-		};
-
-		betterDocs.toggleLang = function (active) {
-			var currentLang = document.querySelectorAll('[class*="lang-"].active, [class*="language-"].active, ' + settings.langsNav + ' a.active');
-
-			var classes = settings.langs[active].selector.split(',');
-			var selectors = [];
-			classes.forEach(function (className) {
-				selectors.push('.lang-' + className.trim());
-				selectors.push('.language-' + className.trim());
-			});
-
-			var newLang = document.querySelectorAll(selectors.join(',') + ',' + settings.langsNav + ' [data-lang="' + active + '"]');
+			var currentLang = document.querySelectorAll('[class*="lang-"].active, [class*="language-"].active');
+			var newLang = document.querySelectorAll(classes.join(','));
+			var toggles = document.querySelectorAll('.' + settings.langsNav + ' select');
 
 			currentLang.forEach(function (lang) {
 				lang.classList.remove('active');
@@ -286,13 +225,17 @@
 			newLang.forEach(function (lang) {
 				lang.classList.add('active');
 			});
+
+			toggles.forEach(function (toggle) {
+				toggle.value = val;
+			});
+
 		};
 
-		var clickHandler = function (event) {
-			var toggle = event.target.closest(settings.langsNav + ' a');
+		var changeHandler = function (event) {
+			var toggle = event.target.closest('.' + settings.langsNav + ' select');
 			if (!toggle) return;
-			event.preventDefault();
-			betterDocs.toggleLang(toggle.getAttribute('data-lang'));
+			betterDocs.toggleLang(event.target.value);
 		};
 
 		betterDocs.destroy = function () {
@@ -301,7 +244,7 @@
 			if (!settings) return;
 
 			// Remove event listeners
-			document.removeEventListener('click', clickHandler, false);
+			document.removeEventListener('click', changeHandler, false);
 
 			// Remove classes
 			app.classList.remove(settings.initClass);
@@ -363,11 +306,8 @@
 				}
 			}
 
-			// Create Table of Contents
-			createTOC();
-
 			// Create language navigation
-			createLangNav(settings.langs, settings.langsNav);
+			createLangNav(settings, selector);
 
 			// Add inline styles
 			if (settings.langs) {
@@ -377,16 +317,13 @@
 			// Listen for click events
 			var app = document.querySelector('#app');
 			if (!app) return;
-			app.addEventListener('click', clickHandler, false);
+			app.addEventListener('change', changeHandler, false);
 
 			// Set a default language
-			if (settings.langDefault) {
-				betterDocs.toggleLang(settings.langDefault);
-
-				window.setTimeout(function () {
-					betterDocs.toggleLang(settings.langDefault);
-				}, 300);
-			}
+			// betterDocs.toggleLang(settings.langDefault);
+			// window.setTimeout(function () {
+			// 	betterDocs.toggleLang(settings.langDefault);
+			// }, 300);
 
 		};
 

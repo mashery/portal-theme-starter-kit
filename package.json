@@ -19,6 +19,10 @@
 		"type": "git",
 		"url": "http://github.com/mashery/portal-theme-starter-kit"
 	},
+	"browserslist": [
+		"last 2 version",
+		"> 0.25%"
+	],
 	"devDependencies": {
 		"browser-sync": "^2.26.5",
 		"del": "3.0.0",

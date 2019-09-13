@@ -3,6 +3,9 @@
  * Styling for section layouts
  */
 
+.content {
+	min-height: 70vh;
+}
 
 #nav-user-wrapper {
 	background-color: $color-gray-lighter;

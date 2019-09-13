@@ -41,9 +41,9 @@ window.addEventListener('portalBeforeRender', function (event) {
 		'<div class="highlight" style="position: fixed; bottom: 0; left: 0; right: 0;" id="theme-toggle-wrapper">' +
 			'<div class="container">' +
 				'<strong style="display: inline-block; margin-right: 8px;">Change Themes:</strong> ' +
-				'<label class="input-inline text-no-bold margin-right" style="margin-right: 16px;"><input class="input-inline" type="radio" name="theme-toggle" id="toggle-theme-default"> Default</label> ' +
+				'<label class="input-inline text-no-bold margin-right" style="margin-right: 16px;"><input class="input-inline" type="radio" name="theme-toggle" id="toggle-theme-default" checked> Default</label> ' +
 				'<label class="input-inline text-no-bold margin-right" style="margin-right: 16px;"><input class="input-inline" type="radio" name="theme-toggle" id="toggle-theme-skinny-nav"> Skinny Nav</label> ' +
-				'<label class="input-inline text-no-bold margin-right" style="margin-right: 16px;"><input class="input-inline" type="radio" name="theme-toggle" id="toggle-theme-sidebar" checked> Sidebar</label> ' +
+				'<label class="input-inline text-no-bold margin-right" style="margin-right: 16px;"><input class="input-inline" type="radio" name="theme-toggle" id="toggle-theme-sidebar"> Sidebar</label> ' +
 				'</div>' +
 			'</div>';
 
