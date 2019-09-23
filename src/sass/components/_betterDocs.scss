@@ -14,6 +14,17 @@
 	pre {
 		margin-top: 0;
 	}
+
+	blockquote {
+		font-size: 1em;
+		font-style: normal;
+		margin-bottom: 0;
+		padding: 0;
+
+		p:last-child {
+			margin-bottom: calc-em(8px);
+		}
+	}
 }
 
 .better-docs-wide-content {
@@ -44,16 +55,6 @@
 			clear: right;
 			float: right;
 			width: (50% - ($grid-margins * 2));
-		}
-	}
-
-	blockquote {
-		font-size: 1em;
-		font-style: normal;
-		margin-bottom: 0;
-
-		p:last-child {
-			margin-bottom: calc-em(8px);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 /*!
  * Templates & Initializations
  * portal-theme v2.0.0
- * Portal Theme Starter Kit v2.9.0 - Default Theme
+ * Portal Theme Starter Kit v2.10.0 - Default Theme
  * http://github.com/mashery/portal-theme-starter-kit
  */
 
@@ -104,7 +104,7 @@ window.addEventListener('portalAfterRender', function () {
 				}
 			],
 			langDefault: 'js',
-			wideLayout: true,
+			wideLayout: !mashery.globals.betterDocsOneColumn,
 		});
 	}
 

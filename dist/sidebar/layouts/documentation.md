@@ -6,7 +6,13 @@ This example API documentation page was created with Better Docs. Feel free to e
 
 ## Authentication
 
-> To authorize, use this code:
+Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our developer portal.
+
+Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: meowmeowmeow`
+
+To authorize, use this code:
 
 ```bash
 # With shell, you can just pass the correct header with each request
@@ -14,32 +20,7 @@ curl "api_endpoint_here"
   -H "Authorization: meowmeowmeow"
 ```
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
 Make sure to replace meowmeowmeow with your API key.
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```js
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
->Make sure to replace meowmeowmeow with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our developer portal.
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
 
 ## Kittens
 
@@ -48,28 +29,7 @@ curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
 ```
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+The above command returns JSON structured like this:
 
 ```json
 [
