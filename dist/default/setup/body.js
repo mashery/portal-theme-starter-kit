@@ -56,7 +56,7 @@ window.addEventListener('portalAfterRender', function () {
 			],
 			langDefault: 'js',
 			wideLayout: true,
-		};
+		});
 	}
 
 	// Responsive iFrame Videos
