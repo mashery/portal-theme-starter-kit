@@ -16,14 +16,7 @@ The Blackbeard Quick Start Guide will walk you through how to setup a new Portal
 
 You need to explicitly activate Blackbeard to use it. By default, your Portal will have the standard Portal front end enabled.
 
-<mark markdown="1">*__Note:__ This step can only be completed by a Mashery employee with MashDash access. If you're a Mashery customer, please contact your Mashery representative to enable Blackbeard for you.*</mark>
-
-0. Log into MashDash.
-0. Click the `Config` tab.
-0. Scroll down to `Enhanced Portal Configuration`.
-0. Check the box for `Enables the modernized portal experience.`.
-0. Update the `Portal Assets Domain` to `https://s3-us-west-1.amazonaws.com/mashery.assets`. In the future, we'll use a dedicated CDN.
-0. Scroll to the bottom and click `Save`.
+**This step can only be completed by a TIBCO Mashery employee. Please contact your representative or open a support request to enable Blackbeard on your portal.**
 
 
 ## Step 2: Pick a Theme
