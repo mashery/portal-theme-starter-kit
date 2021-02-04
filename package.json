@@ -5,13 +5,13 @@
 	"main": "./dist/js/main.js",
 	"author": {
 		"owner": "TIBCO",
-		"name": "Chris Ferdinandi",
-		"url": "http://gomakethings.com"
+		"name": "TIBCO",
+		"url": "https://tibco.com"
 	},
 	"license": "MIT",
 	"blackbeard": {
 		"version": "2.10.0",
-		"author": "Chris Ferdinandi",
+		"author": "TIBCO",
 		"owner": "TIBCO",
 		"theme": "Default"
 	},
