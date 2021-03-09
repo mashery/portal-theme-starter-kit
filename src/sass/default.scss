@@ -16,8 +16,8 @@
 @import "components/tables";
 @import "components/prism"; // syntax highlighting uses prism.js
 @import "components/iodocs";
-// @import "components/swagger";
-@import "components/swagger-ui";
+@import "components/swagger";
+// @import "components/swagger-ui";
 @import "components/mashtips";
 @import "components/nav-default"; // expand/collapse nav uses astro.js
 @import "components/dropdown";

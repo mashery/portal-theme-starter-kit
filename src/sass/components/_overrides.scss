@@ -11,7 +11,7 @@
 	background-color: $color-black;
 	color: $color-white;
 
-	a {
+	a:not(.btn) {
 		color: $color-gray-light;
 
 		&:hover,
