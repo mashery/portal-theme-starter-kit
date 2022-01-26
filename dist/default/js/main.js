@@ -1,7 +1,7 @@
 /*!
  * portal-theme v2.0.0
  * Portal theme for...
- * (c) 2021 Chris Ferdinandi
+ * (c) 2022 TIBCO
  * MIT License
  * http://github.com/mashery/portal-theme-starter-kit
  */

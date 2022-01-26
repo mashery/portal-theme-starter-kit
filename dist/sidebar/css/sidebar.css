@@ -1,7 +1,7 @@
 /*!
  * portal-theme v2.0.0
  * Portal theme for...
- * (c) 2021 Chris Ferdinandi
+ * (c) 2022 TIBCO
  * MIT License
  * http://github.com/mashery/portal-theme-starter-kit
  */
@@ -82,10 +82,8 @@ html {
   /* 1 */
   overflow-y: scroll;
   /* 2 */
-  -webkit-text-size-adjust: 100%;
-     -moz-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
   /* 3 */
   scroll-behavior: smooth;
 }
@@ -458,21 +456,22 @@ figure {
 }
 
 /* line 13, src/sass/components/_layout-sidebar.scss */
-.content {
+.content,
+#main {
   min-height: 70vh;
 }
 
 @media (max-width: 60em) {
-  /* line 19, src/sass/components/_layout-sidebar.scss */
+  /* line 20, src/sass/components/_layout-sidebar.scss */
   #nav-user-list {
     padding: 0;
   }
-  /* line 25, src/sass/components/_layout-sidebar.scss */
+  /* line 26, src/sass/components/_layout-sidebar.scss */
   .js-astro #nav-user-list {
     margin-left: -0.5em;
     margin-right: -0.5em;
   }
-  /* line 30, src/sass/components/_layout-sidebar.scss */
+  /* line 31, src/sass/components/_layout-sidebar.scss */
   #nav-user-list > li {
     display: inline-block;
     margin-left: 0.5em;
@@ -480,17 +479,17 @@ figure {
   }
 }
 
-/* line 38, src/sass/components/_layout-sidebar.scss */
+/* line 39, src/sass/components/_layout-sidebar.scss */
 #nav-primary-menu {
   padding-bottom: 1.5625em;
 }
 
-/* line 41, src/sass/components/_layout-sidebar.scss */
+/* line 42, src/sass/components/_layout-sidebar.scss */
 .loading #nav-primary-menu {
   margin-bottom: 0;
 }
 
-/* line 46, src/sass/components/_layout-sidebar.scss */
+/* line 47, src/sass/components/_layout-sidebar.scss */
 #nav-primary-list {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 0.5em;
@@ -498,16 +497,16 @@ figure {
 }
 
 @media (max-width: 60em) {
-  /* line 46, src/sass/components/_layout-sidebar.scss */
+  /* line 47, src/sass/components/_layout-sidebar.scss */
   #nav-primary-list {
     padding: 0;
   }
-  /* line 55, src/sass/components/_layout-sidebar.scss */
+  /* line 56, src/sass/components/_layout-sidebar.scss */
   .js-astro #nav-primary-list {
     margin-left: -0.5em;
     margin-right: -0.5em;
   }
-  /* line 60, src/sass/components/_layout-sidebar.scss */
+  /* line 61, src/sass/components/_layout-sidebar.scss */
   #nav-primary-list > li {
     display: inline-block;
     margin-left: 0.5em;
@@ -515,34 +514,34 @@ figure {
   }
 }
 
-/* line 96, src/sass/components/_layout-sidebar.scss */
+/* line 97, src/sass/components/_layout-sidebar.scss */
 #nav-docs .docs-nav-dropdown > summary {
   color: #0088cc;
   cursor: pointer;
   list-style: none;
 }
 
-/* line 101, src/sass/components/_layout-sidebar.scss */
+/* line 102, src/sass/components/_layout-sidebar.scss */
 #nav-docs .docs-nav-dropdown > summary::-webkit-details-marker {
   display: none;
 }
 
-/* line 107, src/sass/components/_layout-sidebar.scss */
+/* line 108, src/sass/components/_layout-sidebar.scss */
 #nav-docs .docs-nav-dropdown > summary:after {
   content: ' \25b6';
 }
 
-/* line 111, src/sass/components/_layout-sidebar.scss */
+/* line 112, src/sass/components/_layout-sidebar.scss */
 #nav-docs .docs-nav-dropdown[open] > summary:after {
   content: ' \25bc';
 }
 
-/* line 117, src/sass/components/_layout-sidebar.scss */
+/* line 118, src/sass/components/_layout-sidebar.scss */
 #nav-docs .current-page > a, #nav-docs .current-page > .link-block-styled {
   color: #808080;
 }
 
-/* line 122, src/sass/components/_layout-sidebar.scss */
+/* line 123, src/sass/components/_layout-sidebar.scss */
 #footer {
   background-color: #ffffff;
   border-top: 1px solid #e5e5e5;
@@ -587,8 +586,7 @@ a, .link-block-styled {
   /* 1 */
   color: #0088cc;
   text-decoration: underline;
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip: ink;
+  text-decoration-skip: ink;
   /* 2 */
   text-decoration-skip-ink: auto;
   /* 2 */
@@ -802,8 +800,7 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -927,9 +924,8 @@ pre,
   margin-bottom: 1.5625em;
   overflow: auto;
   padding: 0.8125em;
-  -moz-tab-size: 4;
-    -o-tab-size: 4;
-       tab-size: 4;
+  -o-tab-size: 4;
+     tab-size: 4;
   white-space: pre-wrap;
   word-break: break-all;
 }
@@ -2728,12 +2724,12 @@ a[data-translate].active, .link-block-styled[data-translate].active {
 }
 
 /* line 14, src/sass/components/_overrides.scss */
-.bg-dark a, .bg-primary a, .bg-dark .link-block-styled, .bg-primary .link-block-styled {
+.bg-dark a:not(.btn):not([type="submit"]):not(#search-button), .bg-primary a:not(.btn):not([type="submit"]):not(#search-button), .bg-dark .link-block-styled:not(.btn):not([type="submit"]):not(#search-button), .bg-primary .link-block-styled:not(.btn):not([type="submit"]):not(#search-button) {
   color: #e5e5e5;
 }
 
 /* line 17, src/sass/components/_overrides.scss */
-.bg-dark a:hover, .bg-primary a:hover, .bg-dark .link-block-styled:hover, .bg-primary .link-block-styled:hover, .bg-dark .link-block:hover .link-block-styled, .link-block:hover .bg-dark .link-block-styled, .bg-primary .link-block:hover .link-block-styled, .link-block:hover .bg-primary .link-block-styled, .bg-dark a:active, .bg-primary a:active, .bg-dark .link-block-styled:active, .bg-primary .link-block-styled:active {
+.bg-dark a:not(.btn):not([type="submit"]):not(#search-button):hover, .bg-primary a:not(.btn):not([type="submit"]):not(#search-button):hover, .bg-dark .link-block-styled:not(.btn):not([type="submit"]):not(#search-button):hover, .bg-primary .link-block-styled:not(.btn):not([type="submit"]):not(#search-button):hover, .bg-dark .link-block:hover .link-block-styled:not(.btn):not([type="submit"]):not(#search-button), .link-block:hover .bg-dark .link-block-styled:not(.btn):not([type="submit"]):not(#search-button), .bg-primary .link-block:hover .link-block-styled:not(.btn):not([type="submit"]):not(#search-button), .link-block:hover .bg-primary .link-block-styled:not(.btn):not([type="submit"]):not(#search-button), .bg-dark a:not(.btn):not([type="submit"]):not(#search-button):active, .bg-primary a:not(.btn):not([type="submit"]):not(#search-button):active, .bg-dark .link-block-styled:not(.btn):not([type="submit"]):not(#search-button):active, .bg-primary .link-block-styled:not(.btn):not([type="submit"]):not(#search-button):active {
   color: #ffffff;
 }
 

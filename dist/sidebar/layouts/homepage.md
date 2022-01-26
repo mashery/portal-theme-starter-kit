@@ -42,7 +42,7 @@
 				</a>
 			</div>
 			<div class="grid-dynamic margin-bottom">
-				<a class="link-block" href="mailto:mashery-seteam@tibco.com">
+				<a class="link-block" href="/contact">
 					<svg xmlns="http://www.w3.org/2000/svg" style="height: 3em; width: 3em;" viewBox="0 0 21 21"><title></title><path fill="#0088cc" d="M6.09 12.81V6.3H2.1C.945 6.3 0 7.245 0 8.4v6.3c0 1.155.945 2.1 2.1 2.1h1.05v3.15L6.3 16.8h5.25c1.155 0 2.1-.945 2.1-2.1v-1.911a.972.972 0 0 1-.21.022l-7.35-.001zM18.9 1.05H9.45c-1.155 0-2.1.945-2.1 2.1v8.4h7.35l3.15 3.15v-3.15h1.05c1.155 0 2.1-.944 2.1-2.1v-6.3c0-1.155-.945-2.1-2.1-2.1z"/></svg>
 					<h3 class="h2 no-margin-bottom no-padding-top">Get Support</h3>
 					<p>Ask questions and get advice by sending an email to our support team.<br><span class="link-block-styled">Connect Now...</span></p>
