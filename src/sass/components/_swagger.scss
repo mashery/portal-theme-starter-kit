@@ -247,3 +247,11 @@
 	}
 
 }
+
+.swagger-ui .model-toggle::before {
+	content: " ▾ ";
+}
+
+.swagger-ui .model-toggle.collapsed::before {
+	content: " ▸ ";
+}
