@@ -34,7 +34,7 @@ a.logo {
 	display: inline-block;
 	font-size: 1.2em;
 	line-height: 1.2;
-	// margin-bottom: calc-em(8px);
+	// margin-bottom: 0.5em;
 	text-decoration: none;
 
 	&:hover {
@@ -71,13 +71,13 @@ a.logo {
 	}
 
 	.js-astro .nav-collapse.nav-menu {
-		margin-top: calc-em(8px);
+		margin-top: 0.5em;
 
 		li {
 			display: block;
 			// width: 100%;
-			padding-top: calc-em(4px);
-			padding-bottom: calc-em(4px);
+			padding-top: 0.25em;
+			padding-bottom: 0.25em;
 			// box-sizing: border-box;
 		}
 	}
@@ -89,14 +89,14 @@ a.logo {
  */
 .nav {
 	list-style: none;
-	margin: 0 calc-em(-8px);
+	margin: 0 -0.5em;
 	padding: 0;
 
 	& > li {
 		display: inline-block;
 		float: none;
-		margin-left: calc-em(8px);
-		margin-right: calc-em(8px);
+		margin-left: 0.5em;
+		margin-right: 0.5em;
 	}
 
 	// Active link styling

@@ -713,12 +713,12 @@ blockquote {
 	font-size: 1.1875em;
 	font-style: italic;
 	margin: 0 0 1.5625em;
-	padding-left: 0.8421052632em;
-	padding-right: 0.8421052632em;
+	padding-left: 0.842105263em;
+	padding-right: 0.842105263em;
 }
 blockquote cite {
 	color: #808080;
-	font-size: 0.8421052632em;
+	font-size: 0.842105263em;
 	padding-top: 1em;
 }
 
@@ -1821,7 +1821,7 @@ pre.error, .swagger-ui .model-box .error.inner-object,
 }
 .swagger-ui .dialog-ux .modal-ux-header {
 	display: flex;
-	padding: 0 1.25em;
+	padding: 0 1.3125em;
 	border-bottom: 1px solid #e5e5e5;
 	align-items: center;
 }

@@ -89,12 +89,12 @@ a.link-block {
 
 ul,
 ol {
-	margin: 0 0 $spacing calc-em(32px);
+	margin: 0 0 $spacing 2em;
 	padding: 0;
 }
 
 li {
-	margin-bottom: calc-em(4px);
+	margin-bottom: 0.25em;
 }
 
 ul ul,
@@ -133,15 +133,15 @@ dt {
 
 .list-inline {
 	list-style: none;
-	margin-left: calc-em(-8px);
-	margin-right: calc-em(-8px);
+	margin-left: -0.5em;
+	margin-right: -0.5em;
 	padding: 0;
 }
 
 .list-inline > li {
 	display: inline-block;
-	margin-left: calc-em(8px);
-	margin-right: calc-em(8px);
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
 
 
@@ -160,27 +160,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1,
 .h1 {
-	font-size: calc-em(24px);
+	font-size: 1.5em;
 	padding-top: .5em;
 
 	@media (min-width: $bp-medium) {
-		font-size: calc-em(28px);
+		font-size: 1.75em;
 	}
 }
 
 h2,
 .h2 {
-	font-size: calc-em(21px);
+	font-size: 1.3125em;
 }
 
 h3,
 .h3 {
-	font-size: calc-em(19px);
+	font-size: 1.1875em;
 }
 
 h4, h5, h6,
 .h4, .h5, .h6 {
-	font-size: calc-em(16px);
+	font-size: 1em;
 }
 
 h4,
@@ -195,10 +195,10 @@ h4,
 
 hr {
 	border: 0;
-	border-top: calc-em(1px) solid $color-gray-light;
+	border-top: 1px solid $color-gray-light;
 	border-bottom: 0 solid transparent;
 	box-sizing: content-box;
-	margin: calc-em(32px) auto;
+	margin: 2em auto;
 	overflow: visible;
 }
 
@@ -277,16 +277,16 @@ sub {
  */
 
 blockquote {
-	font-size: calc-em(19px);
+	font-size: 1.1875em;
 	font-style: italic;
 	margin: 0 0 $spacing;
-	padding-left: calc-em(16px, 19px);
-	padding-right: calc-em(16px, 19px);
+	padding-left: 0.842105263em;
+	padding-right: 0.842105263em;
 
 	cite {
 		color: $color-gray-dark;
-		font-size: calc-em(16px, 19px);
-		padding-top: calc-em(16px);
+		font-size: 0.842105263em;
+		padding-top: 1em;
 	}
 }
 

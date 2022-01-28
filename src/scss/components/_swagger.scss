@@ -44,57 +44,57 @@
 
 	.opblock {
 		margin-bottom: $spacing;
-		padding: calc-em(12px);
+		padding: 0.75em;
 	}
 
 	.opblock-get {
 		background-color: mix(white, $color-get, 90%);
-		border: calc-em(1px) solid mix(white, $color-get, 75%);
+		border: 1px solid mix(white, $color-get, 75%);
 	}
 
 	.opblock-post {
 		background-color: mix(white, $color-post, 90%);
-		border: calc-em(1px) solid mix(white, $color-post, 75%);
+		border: 1px solid mix(white, $color-post, 75%);
 	}
 
 	.opblock-put {
 		background-color: mix(white, $color-put, 90%);
-		border: calc-em(1px) solid mix(white, $color-put, 75%);
+		border: 1px solid mix(white, $color-put, 75%);
 	}
 
 	.opblock-delete {
 		background-color: mix(white, $color-delete, 90%);
-		border: calc-em(1px) solid mix(white, $color-delete, 75%);
+		border: 1px solid mix(white, $color-delete, 75%);
 	}
 
 	.opblock-patch {
 		background-color: mix(white, $color-patch, 90%);
-		border: calc-em(1px) solid mix(white, $color-patch, 75%);
+		border: 1px solid mix(white, $color-patch, 75%);
 	}
 
 	.opblock-options {
 		background-color: mix(white, $color-options, 90%);
-		border: calc-em(1px) solid mix(white, $color-options, 75%);
+		border: 1px solid mix(white, $color-options, 75%);
 	}
 
 	.opblock-head {
 		background-color: mix(white, $color-head, 90%);
-		border: calc-em(1px) solid mix(white, $color-head, 75%);
+		border: 1px solid mix(white, $color-head, 75%);
 	}
 
 	.opblock-deprecated {
 		background-color: $color-gray-lighter;
-		border: calc-em(1px) solid $color-gray-light;
+		border: 1px solid $color-gray-light;
 	}
 
 	.opblock-summary-method {
-		border-radius: calc-em(5px);
+		border-radius: 0.3125em;
 		color: $color-white;
 		display: inline-block;
 		font-family: $font-monospace;
-		font-size: calc-em(15px);
-		margin-right: calc-em(8px);
-		padding: calc-em(4px) calc-em(8px);
+		font-size: 0.9375em;
+		margin-right: 0.5em;
+		padding: 0.25em 0.5em;
 		text-align: center;
 	}
 
@@ -190,7 +190,7 @@
 		background-color: transparent !important;
 		border: none !important;
 		float: right;
-		margin-top: calc-em(-56px);
+		margin-top: -3.5em;
 	}
 
 	.dialog-ux {
@@ -216,25 +216,25 @@
 			top: 50%;
 			left: 50%;
 			width: 100%;
-			min-width: calc-em(300px);
-			max-width: calc-em(650px);
+			min-width: 18.75em;
+			max-width: 40.625em;
 			transform: translate(-50%, -50%);
-			border: calc-em(1px) solid $color-gray-light;
-			border-radius: calc-em(4px);
+			border: 1px solid $color-gray-light;
+			border-radius: 0.25em;
 			background: $color-white;
-			box-shadow: 0 calc-em(10px) calc-em(30px) 0 rgba(0, 0, 0, .2);
+			box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, .2);
 		}
 
 		.modal-ux-content {
 			overflow-y: auto;
-			max-height: calc-em(540px);
-			padding: calc-em(21px);
+			max-height: 33.75em;
+			padding: 1.3125em;
 		}
 
 		.modal-ux-header {
 			display: flex;
-			padding: 0 calc-em(20px);
-			border-bottom: calc-em(1px) solid $color-gray-light;
+			padding: 0 1.3125em;
+			border-bottom: 1px solid $color-gray-light;
 			align-items: center;
 		}
 

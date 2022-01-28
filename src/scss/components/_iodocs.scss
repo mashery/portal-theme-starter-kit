@@ -13,7 +13,7 @@
 
 // API Select Menu
 .servicesIodocs {
-	margin-bottom: calc-em(8px);
+	margin-bottom: 0.5em;
 }
 
 
@@ -22,11 +22,11 @@
  */
 .credentials {
 	background-color: lighten($color-gray-light, 7%);
-	border: calc-em(1px) solid $color-gray-light;
-	border-radius: calc-em(1px);
+	border: 1px solid $color-gray-light;
+	border-radius: 1px;
 	margin-bottom: $spacing;
 	overflow: hidden;
-	padding: calc-em(24px);
+	padding: 1.5em;
 }
 
 
@@ -74,7 +74,7 @@ pre.error {
 	@extend .h3;
 	a.select-all {
 		font-size: 0.85em;
-		margin-left: calc-em(16px);
+		margin-left: 1em;
 	}
 }
 
@@ -99,7 +99,7 @@ pre.error {
 
 	.title {
 		@extend .clearfix;
-		padding: calc-em(12px);
+		padding: 0.75em;
 
 		&:hover {
 			.name {
@@ -107,20 +107,20 @@ pre.error {
 			}
 		}
 		.http-method {
-			border-radius: calc-em(5px);
+			border-radius: 0.3125em;
 			color: $color-white;
 			display: inline-block;
 			font-family: $font-monospace;
-			font-size: calc-em(15px);
-			margin-right: calc-em(8px);
-			padding: calc-em(4px) calc-em(8px);
+			font-size: 0.9375em;
+			margin-right: 0.5em;
+			padding: 0.25em 0.5em;
 			text-align: center;
 		}
 		.name {
-			margin-right: calc-em(8px);
+			margin-right: 0.5em;
 		}
 		.uri {
-			margin-right: calc-em(8px);
+			margin-right: 0.5em;
 			opacity: 0.8;
 		}
 		.description {
@@ -129,14 +129,14 @@ pre.error {
 		}
 	}
 	form {
-		padding: calc-em(12px);
+		padding: 0.75em;
 		.parameters tr.hidden {
 			display: none;
 		}
 	}
 	a.clear-results {
 		color: red;
-		margin-left: calc-em(16px);
+		margin-left: 1em;
 		&:hover {
 			background-color: $color-primary;
 			color: $color-white;
@@ -153,9 +153,9 @@ pre.error {
  */
 
 .fieldset-expanded {
-	border: calc-em(1px) solid darken($color-gray-light, 7%);
-	padding-left: calc-em(16px);
-	padding-right: calc-em(16px);
+	border: 1px solid darken($color-gray-light, 7%);
+	padding-left: 1em;
+	padding-right: 1em;
 	@media (min-width: $bp-medium) {
 		padding-left: $spacing;
 		padding-right: $spacing;
@@ -164,8 +164,8 @@ pre.error {
 
 .legend-expanded {
 	background-color: inherit;
-	padding-left: calc-em(4px);
-	padding-right: calc-em(4px);
+	padding-left: 0.25em;
+	padding-right: 0.25em;
 }
 
 .category-iodocs {
@@ -174,7 +174,7 @@ pre.error {
 	 */
 	.get {
 		background-color: mix(white, $color-get, 90%);
-		border: calc-em(1px) solid mix(white, $color-get, 75%);
+		border: 1px solid mix(white, $color-get, 75%);
 		.http-method {
 			background-color: $color-get;
 		}
@@ -191,7 +191,7 @@ pre.error {
 	 */
 	.post {
 		background-color: mix(white, $color-post, 90%);
-		border: calc-em(1px) solid mix(white, $color-post, 75%);
+		border: 1px solid mix(white, $color-post, 75%);
 		.http-method {
 			background-color: $color-post;
 		}
@@ -208,7 +208,7 @@ pre.error {
 	 */
 	.put {
 		background-color: mix(white, $color-put, 90%);
-		border: calc-em(1px) solid mix(white, $color-put, 75%);
+		border: 1px solid mix(white, $color-put, 75%);
 		.http-method {
 			background-color: $color-put;
 		}
@@ -225,7 +225,7 @@ pre.error {
 	 */
 	.delete {
 		background-color: mix(white, $color-delete, 90%);
-		border: calc-em(1px) solid mix(white, $color-delete, 75%);
+		border: 1px solid mix(white, $color-delete, 75%);
 		.http-method {
 			background-color: $color-delete;
 		}
@@ -242,7 +242,7 @@ pre.error {
 	 */
 	.patch {
 		background-color: mix(white, $color-patch, 90%);
-		border: calc-em(1px) solid mix(white, $color-patch, 75%);
+		border: 1px solid mix(white, $color-patch, 75%);
 		.http-method {
 			background-color: $color-patch;
 		}
@@ -259,7 +259,7 @@ pre.error {
 	 */
 	.method.options {
 		background-color: mix(white, $color-options, 90%);
-		border: calc-em(1px) solid mix(white, $color-options, 75%);
+		border: 1px solid mix(white, $color-options, 75%);
 		.http-method {
 			background-color: $color-options;
 		}
@@ -276,7 +276,7 @@ pre.error {
 	 */
 	.head {
 		background-color: mix(white, $color-head, 90%);
-		border: calc-em(1px) solid mix(white, $color-head, 75%);
+		border: 1px solid mix(white, $color-head, 75%);
 		.http-method {
 			background-color: $color-head;
 		}
