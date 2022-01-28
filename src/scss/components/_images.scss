@@ -1,0 +1,28 @@
+/**
+ * @section Images
+ * Styling for images.
+ */
+
+/**
+ * Adds a border
+ */
+.img-border {
+	border: 1px solid darken( $color-gray-light, 10% );
+}
+
+/**
+ * Adds padding and a white border
+ */
+.img-photo {
+	@extend .img-border;
+	background-color: $color-white;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	padding: 0.25em;
+}
+
+/**
+ * Adds a 50% border radius, turning square images into a circle.
+ */
+.img-circle {
+	border-radius: 50%;
+}

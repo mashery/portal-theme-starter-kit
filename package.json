@@ -8,7 +8,7 @@
 		"name": "TIBCO",
 		"url": "https://tibco.com"
 	},
-	"license": "MIT",
+	"license": "All Rights Reserved",
 	"blackbeard": {
 		"version": "2.10.0",
 		"author": "TIBCO",
@@ -19,30 +19,38 @@
 		"type": "git",
 		"url": "http://github.com/mashery/portal-theme-starter-kit"
 	},
-	"browserslist": [
-		"last 2 version",
-		"> 0.25%"
-	],
+	"scripts": {
+		"clean": "recursive-delete 'dist'",
+		"js": "rollup --config",
+		"setup": "rollup --config rollup.setup.js",
+		"css": "node sass.js",
+		"svg-default": "svgo -f src/svg dist/default/svg -r",
+		"svg-skinny-nav": "svgo -f src/svg dist/skinny-nav/svg -r",
+		"svg-sidebar": "svgo -f src/svg dist/sidebar/svg -r",
+		"svg": "npm-run-all -p svg-default svg-skinny-nav svg-sidebar",
+		"copy-default": "recursive-copy 'src/copy' 'dist/default'",
+		"copy-skinny-nav": "recursive-copy 'src/copy' 'dist/skinny-nav'",
+		"copy-sidebar": "recursive-copy 'src/copy' 'dist/sidebar'",
+		"copy": "npm-run-all -p copy-default copy-skinny-nav copy-sidebar",
+		"build-dirty": "npm-run-all -p js setup css svg copy",
+		"build": "npm-run-all -s clean build-dirty",
+		"watch-css": "chokidar './src/**/*.scss' -c 'npm run css'",
+		"watch-js": "chokidar './src/**/*.js' -c 'npm run js'",
+		"watch-setup": "chokidar './src/**/*.js' -c 'npm run setup'",
+		"watch-svg": "chokidar './src/**/*.svg' -c 'npm run svg'",
+		"watch-copy": "chokidar './src/copy/**/*.*' -c 'npm run copy'",
+		"watch": "npm-run-all -p build watch-css watch-js watch-setup watch-svg watch-copy",
+		"server-start": "browser-sync start --files 'dist' --server 'dist'",
+		"server": "npm-run-all -p watch server-start"
+	},
 	"devDependencies": {
-		"browser-sync": "^2.27.7",
-		"del": "3.0.0",
-		"gulp": "4.0.1",
-		"gulp-autoprefixer": "6.0.0",
-		"gulp-concat": "2.6.1",
-		"gulp-cssnano": "2.1.3",
-		"gulp-flatmap": "1.0.2",
-		"gulp-header": "^2.0.9",
-		"gulp-jshint": "2.1.0",
-		"gulp-multi-dest": "1.3.7",
-		"gulp-optimize-js": "1.1.0",
-		"gulp-rename": "1.4.0",
-		"gulp-s3": "0.11.0",
-		"gulp-sass": "4.0.2",
-		"gulp-svgmin": "2.1.0",
-		"gulp-uglify": "3.0.1",
-		"jshint": "^2.13.4",
-		"jshint-stylish": "2.2.1",
-		"lazypipe": "1.0.1",
-		"properties": "1.2.1"
+		"npm-run-all": "^4.1.5",
+		"recursive-fs": "^2.1.0",
+		"rollup": "^2.6.1",
+		"rollup-plugin-terser": "^7.0.2",
+		"sass": "^1.26.5",
+		"svgo": "^2.8.0",
+		"chokidar-cli": "^2.1.0",
+		"browser-sync": "^2.26.14"
 	}
 }

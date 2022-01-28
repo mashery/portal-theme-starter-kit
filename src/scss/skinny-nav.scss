@@ -1,0 +1,38 @@
+// Options & Settings
+@import "config";
+
+// Core Theme Files
+// Don't remove these (generally speaking)
+@import "components/normalize";
+@import "components/grid";
+@import "components/layout-skinny-nav";
+@import "components/typography";
+@import "components/code";
+@import "components/buttons";
+@import "components/forms";
+@import "components/passwords";
+@import "components/registration";
+@import "components/tables";
+@import "components/prism"; // syntax highlighting uses prism.js
+@import "components/iodocs";
+@import "components/swagger";
+@import "components/mashtips";
+@import "components/nav-skinny-nav"; // expand/collapse nav uses astro.js
+@import "components/dropdown";
+
+// Plugins & Components
+// Comment these out or add others as desired
+@import "components/betterDocs"; // columned navigation and toggle code examples requires betterDocs.js
+@import "components/conditional-content";
+@import "components/houdini"; // show-and-hide content modules requires houdini.js
+@import "components/images";
+@import "components/translate"; // language translation requires translate.js
+
+// Modifier Classes
+// These are used to nudge and tweak the layout
+// Don't remove these either
+@import "components/overrides";
+
+// Print Styles
+// Last in the source on purpose
+@import "components/print";

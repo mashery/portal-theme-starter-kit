@@ -1,0 +1,257 @@
+/**
+ * @section Swagger
+ * Styling specific to Swagger pages
+ */
+
+.swagger-ui {
+
+	.topbar,
+	.info .url {
+		@extend [hidden];
+	}
+
+	.scheme-container {
+		@extend .credentials;
+		@extend .margin-top;
+
+		.btn svg,
+		.close-modal {
+			display: none;
+			visibility: hidden;
+		}
+	}
+
+	.opblock-tag {
+
+		& > a {
+			@extend .h3;
+			color: $color-black;
+			text-decoration: none;
+		}
+
+		small {
+			@extend .text-muted;
+			font-size: 1em;
+			text-transform: none;
+		}
+
+		.expand-operation {
+			display: none !important;
+			visibility: hidden !important;
+		}
+
+	}
+
+	.opblock {
+		margin-bottom: $spacing;
+		padding: 0.75em;
+	}
+
+	.opblock-get {
+		background-color: mix(white, $color-get, 90%);
+		border: 1px solid mix(white, $color-get, 75%);
+	}
+
+	.opblock-post {
+		background-color: mix(white, $color-post, 90%);
+		border: 1px solid mix(white, $color-post, 75%);
+	}
+
+	.opblock-put {
+		background-color: mix(white, $color-put, 90%);
+		border: 1px solid mix(white, $color-put, 75%);
+	}
+
+	.opblock-delete {
+		background-color: mix(white, $color-delete, 90%);
+		border: 1px solid mix(white, $color-delete, 75%);
+	}
+
+	.opblock-patch {
+		background-color: mix(white, $color-patch, 90%);
+		border: 1px solid mix(white, $color-patch, 75%);
+	}
+
+	.opblock-options {
+		background-color: mix(white, $color-options, 90%);
+		border: 1px solid mix(white, $color-options, 75%);
+	}
+
+	.opblock-head {
+		background-color: mix(white, $color-head, 90%);
+		border: 1px solid mix(white, $color-head, 75%);
+	}
+
+	.opblock-deprecated {
+		background-color: $color-gray-lighter;
+		border: 1px solid $color-gray-light;
+	}
+
+	.opblock-summary-method {
+		border-radius: 0.3125em;
+		color: $color-white;
+		display: inline-block;
+		font-family: $font-monospace;
+		font-size: 0.9375em;
+		margin-right: 0.5em;
+		padding: 0.25em 0.5em;
+		text-align: center;
+	}
+
+	.opblock-get .opblock-summary-method {
+		background-color: $color-get;
+	}
+
+	.opblock-post .opblock-summary-method {
+		background-color: $color-post;
+	}
+
+	.opblock-put .opblock-summary-method {
+		background-color: $color-put;
+	}
+
+	.opblock-delete .opblock-summary-method {
+		background-color: $color-delete;
+	}
+
+	.opblock-patch .opblock-summary-method {
+		background-color: $color-patch;
+	}
+
+	.opblock-options .opblock-summary-method {
+		background-color: $color-options;
+	}
+
+	.opblock-head .opblock-summary-method {
+		background-color: $color-head;
+	}
+
+	.opblock-deprecated .opblock-summary-method {
+		background-color: $color-gray-dark;
+	}
+
+	.opblock-summary-path a,
+	.opblock-summary-path__deprecated a {
+		color: $color-black;
+		text-decoration: none;
+
+		&:active,
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.models h4 {
+		@extend .h3;
+
+		svg {
+			@extend [hidden];
+		}
+	}
+
+	.model-box {
+
+		.inner-object,
+		.brace-open,
+		.brace-close {
+			@extend pre;
+		}
+
+		.brace-open,
+		.inner-object {
+			margin-bottom: 0;
+		}
+
+		table {
+			margin-bottom: 0;
+
+			td {
+				border-top: none;
+			}
+
+			thead td,
+			th {
+				border-bottom: none;
+			}
+
+			th,
+			td {
+				padding: 0;
+			}
+		}
+
+		.brace-close {
+			margin-bottom: $spacing;
+		}
+
+	}
+
+	.authorization__btn {
+		background-color: transparent !important;
+		border: none !important;
+		float: right;
+		margin-top: -3.5em;
+	}
+
+	.dialog-ux {
+		position: fixed;
+		z-index: 9999;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		.backdrop-ux {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0, .8);
+		}
+
+		.modal-ux {
+			position: absolute;
+			z-index: 9999;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			min-width: 18.75em;
+			max-width: 40.625em;
+			transform: translate(-50%, -50%);
+			border: 1px solid $color-gray-light;
+			border-radius: 0.25em;
+			background: $color-white;
+			box-shadow: 0 0.625em 1.875em 0 rgba(0, 0, 0, .2);
+		}
+
+		.modal-ux-content {
+			overflow-y: auto;
+			max-height: 33.75em;
+			padding: 1.3125em;
+		}
+
+		.modal-ux-header {
+			display: flex;
+			padding: 0 1.3125em;
+			border-bottom: 1px solid $color-gray-light;
+			align-items: center;
+		}
+
+		// .modal-ux-header .close-modal {
+		// 	padding: 0 10px;
+		// 	border: none;
+		// 	background: none;
+		// 	appearance: none
+		// }
+	}
+
+}
+
+.swagger-ui .model-toggle::before {
+	content: " ▾ ";
+}
+
+.swagger-ui .model-toggle.collapsed::before {
+	content: " ▸ ";
+}

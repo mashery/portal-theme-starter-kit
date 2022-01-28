@@ -1,3 +1,6 @@
+import '../inits/_custom.js';
+import '../inits/inits.js';
+
 /**
  * Theme Templates
  */

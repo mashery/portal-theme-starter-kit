@@ -1,0 +1,95 @@
+/**
+ * @section Layout
+ * Styling for section layouts
+ */
+
+.content,
+#main {
+	min-height: 70vh;
+}
+
+#nav-user-wrapper {
+	background-color: $color-gray-lighter;
+}
+
+#nav-user-list {
+	a {
+		text-decoration: none;
+
+		&:active,
+		&:focus,
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+#nav-primary {
+	background-color: $color-white;
+	border-bottom: 1px solid $color-gray-light;
+	margin-bottom: $spacing;
+
+	.loading &,
+	.page-no-heading & {
+		margin-bottom: 0;
+	}
+}
+
+#nav-secondary-list {
+	@extend .list-inline;
+}
+
+#nav-account {
+	@extend .list-inline;
+
+	a {
+		@extend .link-no-underline;
+	}
+}
+
+#nav-mashery-account {
+	@extend .list-inline;
+
+	a {
+		@extend .link-no-underline;
+	}
+}
+
+#nav-docs {
+	a {
+		@extend .link-no-underline;
+	}
+
+	.docs-nav-dropdown {
+		& > summary {
+			color: $color-primary;
+			cursor: pointer;
+			list-style: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+		}
+
+		& > summary:after {
+			content: ' \25b6';
+		}
+
+		&[open] > summary:after {
+			content: ' \25bc';
+		}
+	}
+
+	// Active link
+	.current-page > a {
+		color: $color-gray-dark;
+	}
+}
+
+#footer {
+	background-color: $color-white;
+	border-top: 1px solid $color-gray-light;
+	margin-top: 2em;
+	padding-top: 2em;
+}
