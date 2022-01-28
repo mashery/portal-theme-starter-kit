@@ -90,3 +90,5 @@ var docsNavCollapse = function (options) {
 	init();
 
 };
+
+export default docsNavCollapse;

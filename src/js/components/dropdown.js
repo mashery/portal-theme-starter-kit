@@ -80,3 +80,5 @@ var addDropdown = function (url, data, home) {
 	addEvent();
 
 };
+
+export default addDropdown;

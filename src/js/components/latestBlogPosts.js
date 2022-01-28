@@ -63,6 +63,10 @@ var latestBlogPosts = function (options) {
 		}
 
 		latestPosts.innerHTML = '<' + settings.listType + ' class="' + settings.listClass + '">' + list + '</' + settings.listType + '>';
+	}).error(function () {
+		latestPosts.innerHTML = '';
 	});
 
 };
+
+export default latestBlogPosts;

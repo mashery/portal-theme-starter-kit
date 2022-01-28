@@ -65,10 +65,6 @@ a.link-block {
 
 .link-block-styled {
 	@extend a;
-
-	.link-block:hover & {
-		@extend a:hover;
-	}
 }
 
 
